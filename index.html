@@ -27,6 +27,11 @@
                 <div class="nav-right">
                     <a href="#" class="fc-login-btn">FC LOGIN</a>
                 </div>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </nav>
         
@@ -133,5 +138,20 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // モバイルメニューの切り替え
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        });
+
+        // メニューリンククリック時にメニューを閉じる
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-menu').classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
