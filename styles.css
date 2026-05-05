@@ -21,7 +21,7 @@ body {
 /* ヒーローセクション */
 .hero-section {
     position: relative;
-    min-height: 100vh;
+    min-height: 916px;
     background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
     overflow: hidden;
 }
@@ -42,9 +42,17 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center top;
     opacity: 0;
     transition: opacity 1s ease-in-out;
+}
+
+/* デスクトップ版では画像サイズに合わせる */
+.desktop-hero {
+    object-fit: contain;
+    width: 100%;
+    height: auto;
 }
 
 .hero-bg.active {
