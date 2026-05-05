@@ -529,7 +529,12 @@ body {
     /* モバイル時のヒーローセクション調整 */
     .hero-section {
         height: 100vh;
-        background: #ffffff;
+        background: #ffffff !important;
+        background-image: none !important;
+    }
+    
+    .hero-section::before {
+        display: none !important;
     }
     
     .hero-images {
@@ -549,10 +554,11 @@ body {
     
     .mobile-hero {
         display: block;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center center;
         width: 100%;
         height: 100%;
+        aspect-ratio: 1/1;
     }
     .nav-container {
         padding: 0 20px;
