@@ -100,13 +100,13 @@ body {
 }
 
 .nav-container {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
 }
 
 .logo {
@@ -124,7 +124,7 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 35px;
+    gap: 25px;
     margin: 0;
     padding: 0;
 }
@@ -132,8 +132,8 @@ body {
 .nav-menu a {
     color: #d47b8e;
     text-decoration: none;
-    font-size: 13px;
-    letter-spacing: 1.5px;
+    font-size: 12px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 400;
     transition: all 0.3s ease;
@@ -164,7 +164,7 @@ body {
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 15px;
 }
 
 /* 検索ボックス */
@@ -175,18 +175,18 @@ body {
 }
 
 .search-box {
-    width: 200px;
+    width: 150px;
     padding: 8px 35px 8px 15px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 25px;
     background: rgba(255, 255, 255, 0.8);
-    font-size: 13px;
+    font-size: 12px;
     transition: all 0.3s ease;
     outline: none;
 }
 
 .search-box:focus {
-    width: 250px;
+    width: 200px;
     border-color: #d4af37;
     background: #ffffff;
 }
