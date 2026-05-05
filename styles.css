@@ -264,47 +264,6 @@ body {
     top: 14px;
 }
 
-/* ヒーローコンテンツ */
-.hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 100;
-    width: 90%;
-    max-width: 900px;
-}
-
-.hero-title {
-    font-size: 100px;
-    font-weight: 100;
-    letter-spacing: 15px;
-    margin-bottom: 20px;
-    color: #d47b8e;
-    text-transform: uppercase;
-    position: relative;
-}
-
-.hero-title::after {
-    content: '';
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 1px;
-    background: #d4af37;
-}
-
-.hero-tagline {
-    font-size: 14px;
-    letter-spacing: 5px;
-    color: #666;
-    margin-bottom: 60px;
-    text-transform: uppercase;
-    font-weight: 300;
-}
 
 
 /* ニュースセクション */
@@ -645,16 +604,6 @@ body {
         right: 20px;
     }
 
-    .hero-title {
-        font-size: 50px;
-        letter-spacing: 8px;
-    }
-
-    .hero-tagline {
-        font-size: 12px;
-        letter-spacing: 3px;
-        margin-bottom: 40px;
-    }
 
 
     .section-title {
@@ -714,10 +663,6 @@ body {
         padding: 0 25px;
     }
 
-    .hero-title {
-        font-size: 75px;
-        letter-spacing: 10px;
-    }
 
     .news-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -738,15 +683,6 @@ body {
 
 /* 小さなスマートフォン対応 */
 @media screen and (max-width: 480px) {
-    .hero-title {
-        font-size: 40px;
-        letter-spacing: 5px;
-    }
-
-    .hero-tagline {
-        font-size: 10px;
-        letter-spacing: 2px;
-    }
 
     .section-title {
         font-size: 24px;
