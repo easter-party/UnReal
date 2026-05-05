@@ -9,9 +9,9 @@
 <body>
     <div class="hero-section">
         <div class="hero-images">
-            <img src="images/hero-image_web.png" alt="UnReal" class="hero-bg active">
-            <img src="images/hero-image_mobile1.png" alt="UnReal" class="hero-bg">
-            <img src="images/hero-image_mobile2.png" alt="UnReal" class="hero-bg">
+            <img src="images/hero-image_web.png" alt="UnReal" class="hero-bg desktop-hero active">
+            <img src="images/hero-image_mobile1.png" alt="UnReal" class="hero-bg mobile-hero active">
+            <img src="images/hero-image_mobile2.png" alt="UnReal" class="hero-bg mobile-hero">
         </div>
         <div class="hero-overlay"></div>
         <nav class="main-nav">
@@ -210,17 +210,19 @@
             }
         });
 
-        // 画像スライドショー
+        // モバイル版のみ画像スライドショー
         function startSlideshow() {
-            const images = document.querySelectorAll('.hero-bg');
-            let currentIndex = 0;
-            
-            if (images.length > 1) {
-                setInterval(() => {
-                    images[currentIndex].classList.remove('active');
-                    currentIndex = (currentIndex + 1) % images.length;
-                    images[currentIndex].classList.add('active');
-                }, 3000);
+            if (window.innerWidth <= 768) {
+                const mobileImages = document.querySelectorAll('.mobile-hero');
+                let currentIndex = 0;
+                
+                if (mobileImages.length > 1) {
+                    setInterval(() => {
+                        mobileImages[currentIndex].classList.remove('active');
+                        currentIndex = (currentIndex + 1) % mobileImages.length;
+                        mobileImages[currentIndex].classList.add('active');
+                    }, 3000);
+                }
             }
         }
 

@@ -29,10 +29,10 @@ body {
 /* ヒーロー画像 */
 .hero-images {
     position: absolute;
-    top: 0;
+    top: 80px;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 80px);
     z-index: 0;
 }
 
@@ -49,6 +49,11 @@ body {
 
 .hero-bg.active {
     opacity: 1;
+}
+
+/* デスクトップ版では横広画像1枚のみ */
+.mobile-hero {
+    display: none;
 }
 
 
@@ -593,6 +598,15 @@ body {
 /* スマートフォン対応 */
 @media screen and (max-width: 768px) {
     .mobile-only {
+        display: block;
+    }
+    
+    /* モバイル時は横広画像を非表示、スクエア画像を表示 */
+    .desktop-hero {
+        display: none !important;
+    }
+    
+    .mobile-hero {
         display: block;
     }
     .nav-container {
