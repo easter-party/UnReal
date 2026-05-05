@@ -526,6 +526,21 @@ body {
         display: block;
     }
     
+    /* モバイル時のヒーローセクション調整 */
+    .hero-section {
+        height: 100vh;
+        background: #ffffff;
+    }
+    
+    .hero-images {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        z-index: 0;
+    }
+    
     /* モバイル時は横広画像を非表示、スクエア画像を表示 */
     .desktop-hero {
         display: none !important;
@@ -533,6 +548,8 @@ body {
     
     .mobile-hero {
         display: block;
+        object-fit: cover;
+        object-position: center center;
     }
     .nav-container {
         padding: 0 20px;
@@ -621,7 +638,8 @@ body {
     }
 
     .latest-news {
-        padding: 60px 0;
+        padding: 40px 0;
+        margin-top: 0;
     }
 
     .news-grid {
