@@ -25,6 +25,15 @@
                     <li><a href="#">ABOUT</a></li>
                 </ul>
                 <div class="nav-right">
+                    <div class="search-container">
+                        <input type="text" class="search-box" placeholder="SEARCH" id="searchBox">
+                        <button class="search-btn" onclick="performSearch()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </button>
+                    </div>
                     <a href="#" class="fc-login-btn">FC LOGIN</a>
                 </div>
                 <div class="mobile-menu-toggle">
@@ -140,17 +149,59 @@
     </footer>
 
     <script>
-        // モバイルメニューの切り替え
+        // モバイルメニューの切り替え（アニメーション付き）
         document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
             const navMenu = document.querySelector('.nav-menu');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
             navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         });
 
         // メニューリンククリック時にメニューを閉じる
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 document.querySelector('.nav-menu').classList.remove('active');
+                document.querySelector('.mobile-menu-toggle').classList.remove('active');
             });
+        });
+
+        // 検索機能（隠しページへの導線）
+        function performSearch() {
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase().trim();
+            
+            // 検索ワードと隠しページのマッピング（後で拡張）
+            const hiddenPages = {
+                'truth': '/hidden/truth.html',
+                'secret': '/hidden/secret.html',
+                'center': '/hidden/center-diary.html',
+                '失踪': '/hidden/missing.html',
+                '真実': '/hidden/truth-jp.html'
+            };
+
+            if (hiddenPages[searchTerm]) {
+                // 隠しページへ遷移
+                window.location.href = hiddenPages[searchTerm];
+            } else if (searchTerm) {
+                // 通常の検索結果ページ（後で実装）
+                alert('検索機能は準備中です...');
+            }
+        }
+
+        // Enterキーで検索実行
+        document.getElementById('searchBox').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // スクロール時のナビゲーション変化
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         });
     </script>
 </body>
