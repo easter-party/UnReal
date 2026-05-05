@@ -561,15 +561,17 @@ body {
         aspect-ratio: 1/1;
     }
     .nav-container {
-        padding: 0 20px;
-        justify-content: center;
+        padding: 0 15px;
+        justify-content: space-between;
         position: relative;
+        gap: 10px;
+        flex-wrap: nowrap;
     }
 
     .logo {
-        font-size: 20px;
-        position: absolute;
-        left: 20px;
+        font-size: 18px;
+        flex-shrink: 0;
+        min-width: 80px;
     }
 
     .nav-menu {
@@ -603,18 +605,19 @@ body {
 
     .search-container {
         display: flex;
-        margin: 0 auto;
-        order: 2;
+        flex: 1;
+        max-width: 200px;
+        justify-content: center;
     }
     
     .search-box {
-        width: 150px;
+        width: 120px;
         padding: 6px 30px 6px 12px;
         font-size: 12px;
     }
     
     .search-box:focus {
-        width: 180px;
+        width: 150px;
     }
     
     .search-btn {
@@ -623,9 +626,9 @@ body {
 
     .nav-right {
         display: flex;
-        justify-content: center;
-        width: 100%;
+        align-items: center;
         gap: 10px;
+        flex-shrink: 0;
     }
 
     .fc-login-btn {
@@ -634,8 +637,7 @@ body {
 
     .mobile-menu-toggle {
         display: block;
-        position: absolute;
-        right: 20px;
+        flex-shrink: 0;
     }
 
 
