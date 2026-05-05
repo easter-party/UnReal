@@ -8,6 +8,11 @@
 </head>
 <body>
     <div class="hero-section">
+        <div class="hero-images">
+            <img src="images/hero-image_web.png" alt="UnReal" class="hero-bg active">
+            <img src="images/hero-image_mobile1.png" alt="UnReal" class="hero-bg">
+            <img src="images/hero-image_mobile2.png" alt="UnReal" class="hero-bg">
+        </div>
         <div class="hero-overlay"></div>
         <nav class="main-nav">
             <div class="nav-container">
@@ -204,6 +209,24 @@
                 nav.classList.remove('scrolled');
             }
         });
+
+        // 画像スライドショー
+        function startSlideshow() {
+            const images = document.querySelectorAll('.hero-bg');
+            let currentIndex = 0;
+            
+            if (images.length > 1) {
+                setInterval(() => {
+                    images[currentIndex].classList.remove('active');
+                    currentIndex = (currentIndex + 1) % images.length;
+                    images[currentIndex].classList.add('active');
+                }, 3000);
+            }
+        }
+
+        // ページ読み込み時に開始
+        window.addEventListener('load', startSlideshow);
+
     </script>
 </body>
 </html>
