@@ -516,11 +516,13 @@ body {
 .mobile-fc-login {
     background: #d47b8e;
     color: #ffffff !important;
-    padding: 12px 20px;
-    border-radius: 25px;
+    padding: 8px 15px;
+    border-radius: 20px;
     display: inline-block;
     text-align: center;
     font-weight: bold;
+    font-size: 11px;
+    white-space: nowrap;
 }
 
 /* スマートフォン対応 */
