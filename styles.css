@@ -306,48 +306,6 @@ body {
     font-weight: 300;
 }
 
-.hero-announcement {
-    padding: 40px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    display: inline-block;
-    position: relative;
-}
-
-.hero-announcement::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    border: 1px solid #d4af37;
-    opacity: 0.3;
-}
-
-.announcement-date {
-    font-size: 12px;
-    color: #d4af37;
-    letter-spacing: 3px;
-    margin-bottom: 15px;
-    font-weight: 400;
-}
-
-.announcement-title {
-    font-size: 28px;
-    font-weight: 200;
-    letter-spacing: 5px;
-    margin-bottom: 10px;
-    color: #d47b8e;
-}
-
-.announcement-venue {
-    font-size: 14px;
-    color: #666;
-    letter-spacing: 3px;
-    font-weight: 300;
-}
 
 /* ニュースセクション */
 .latest-news {
@@ -698,15 +656,6 @@ body {
         margin-bottom: 40px;
     }
 
-    .hero-announcement {
-        padding: 25px;
-        margin: 0 20px;
-    }
-
-    .announcement-title {
-        font-size: 22px;
-        letter-spacing: 3px;
-    }
 
     .section-title {
         font-size: 28px;
