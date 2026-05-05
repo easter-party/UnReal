@@ -549,8 +549,26 @@ body {
     font-weight: 300;
 }
 
+/* モバイル専用要素 */
+.mobile-only {
+    display: none;
+}
+
+.mobile-fc-login {
+    background: #d47b8e;
+    color: #ffffff !important;
+    padding: 12px 20px;
+    border-radius: 25px;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+}
+
 /* スマートフォン対応 */
 @media screen and (max-width: 768px) {
+    .mobile-only {
+        display: block;
+    }
     .nav-container {
         padding: 0 20px;
     }
@@ -589,16 +607,33 @@ body {
     }
 
     .search-container {
-        display: none;
+        display: flex;
+        margin-right: 10px;
+    }
+    
+    .search-box {
+        width: 120px;
+        padding: 6px 30px 6px 12px;
+        font-size: 12px;
+    }
+    
+    .search-box:focus {
+        width: 150px;
+    }
+    
+    .search-btn {
+        right: 8px;
     }
 
     .nav-right {
-        margin-right: 40px;
+        margin-right: 10px;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
     }
 
     .fc-login-btn {
-        padding: 8px 20px;
-        font-size: 11px;
+        display: none;
     }
 
     .mobile-menu-toggle {
