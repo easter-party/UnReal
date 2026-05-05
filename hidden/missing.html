@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[CLASSIFIED] - Missing Person Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 0, 0.03) 2px,
+                    rgba(0, 255, 0, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .terminal-header {
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .terminal-prompt {
+            color: #00ff00;
+            opacity: 0.6;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .classified-stamp {
+            display: inline-block;
+            border: 2px solid #ff0000;
+            color: #ff0000;
+            padding: 5px 15px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            animation: flicker 2s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .document-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .metadata {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .content {
+            line-height: 1.8;
+            font-size: 14px;
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+        }
+
+        .redacted {
+            background-color: #00ff00;
+            color: #00ff00;
+            padding: 0 5px;
+        }
+
+        .data-block {
+            border: 1px solid #00ff00;
+            padding: 20px;
+            margin: 30px 0;
+            background: rgba(0, 255, 0, 0.05);
+        }
+
+        .data-label {
+            color: #00ff00;
+            font-size: 10px;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .warning {
+            color: #ffff00;
+            animation: blink 1s infinite;
+            margin: 30px 0;
+            font-weight: bold;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .footer-nav {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #00ff00;
+            display: flex;
+            justify-content: space-between;
+            opacity: 0.6;
+        }
+
+        .nav-link {
+            color: #00ff00;
+            text-decoration: none;
+            font-size: 12px;
+            transition: opacity 0.3s;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .glitch {
+            position: relative;
+            animation: glitch 5s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-1px, 1px); }
+            40% { transform: translate(1px, -1px); }
+            60% { transform: translate(-1px, -1px); }
+            80% { transform: translate(1px, 1px); }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: #00ff00;
+            animation: cursor-blink 1s infinite;
+        }
+
+        @keyframes cursor-blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal-header">
+        <div class="terminal-prompt">> ACCESSING SECURE DATABASE...</div>
+        <div class="terminal-prompt">> AUTHENTICATION: <span class="glitch">OVERRIDE</span></div>
+        <div class="terminal-prompt">> CONNECTION: ESTABLISHED</div>
+    </div>
+
+    <div class="classified-stamp">CLASSIFIED</div>
+
+    <div class="content">
+        <h1 class="document-title">失踪事案 #UN-2025-001</h1>
+        
+        <div class="metadata">
+            DATE: 2025.02.01<br>
+            TIME: 03:47:23 JST<br>
+            CASE_ID: UN-CTR-MISSING<br>
+            SECURITY_LEVEL: <span style="color: #ff0000;">MAXIMUM</span><br>
+            ACCESS_LOG: RECORDED
+        </div>
+
+        <div class="data-block">
+            <div class="data-label">SUBJECT INFORMATION</div>
+            <p>
+                NAME: <span class="redacted">████████</span><br>
+                POSITION: UnReal - Center<br>
+                LAST_SEEN: Tokyo Dome 楽屋<br>
+                STATUS: <span style="color: #ff0000;">MISSING</span>
+            </p>
+        </div>
+
+        <p>
+            2025年2月1日 03:47、センターが最後のメッセージを残して失踪。
+            ワンマンライブまで残り29日という重要な時期での突然の消失。
+        </p>
+
+        <p class="warning">
+            ⚠ 警告: 本情報は極秘扱いです。外部への漏洩は固く禁じられています。
+        </p>
+
+        <div class="data-block">
+            <div class="data-label">LAST MESSAGE</div>
+            <p style="font-style: italic;">
+                「真実は闇の中にある。<br>
+                すべては計画通り。<br>
+                3月2日、約束の時に。」
+            </p>
+        </div>
+
+        <p>
+            事務所は公式発表を控え、メンバーにも詳細を伝えていない。
+            占い好きのメンバー<span class="redacted">███</span>のみが何かを知っている様子。
+        </p>
+
+        <p>
+            調査ログ: <br>
+            - 監視カメラ映像: データ破損<br>
+            - 携帯電話: 電源OFF、GPS追跡不可<br>
+            - 目撃情報: なし<br>
+            - 残された手がかり: <a href="diary.html" class="nav-link" style="display: inline;">個人ファイル参照</a>
+        </p>
+
+        <div class="warning">
+            システム異常検知: 不正なアクセス試行を検出<span class="cursor"></span>
+        </div>
+    </div>
+
+    <div class="footer-nav">
+        <a href="../index.html" class="nav-link">[EXIT SECURE SYSTEM]</a>
+        <a href="truth.html" class="nav-link">[NEXT FILE >>]</a>
+    </div>
+
+    <script>
+        // ランダムなグリッチエフェクト
+        setInterval(() => {
+            const elements = document.querySelectorAll('p');
+            const randomElement = elements[Math.floor(Math.random() * elements.length)];
+            randomElement.style.transform = `translateX(${Math.random() * 2 - 1}px)`;
+            setTimeout(() => {
+                randomElement.style.transform = 'translateX(0)';
+            }, 100);
+        }, 3000);
+
+        // アクセスログ記録（localStorage）
+        const accessLog = {
+            page: 'missing.html',
+            timestamp: new Date().toISOString(),
+            referrer: document.referrer
+        };
+        
+        let logs = JSON.parse(localStorage.getItem('unreal_access_logs') || '[]');
+        logs.push(accessLog);
+        localStorage.setItem('unreal_access_logs', JSON.stringify(logs));
+    </script>
+</body>
+</html>
