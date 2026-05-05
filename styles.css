@@ -571,10 +571,14 @@ body {
     }
     .nav-container {
         padding: 0 20px;
+        justify-content: center;
+        position: relative;
     }
 
     .logo {
         font-size: 20px;
+        position: absolute;
+        left: 20px;
     }
 
     .nav-menu {
@@ -608,17 +612,18 @@ body {
 
     .search-container {
         display: flex;
-        margin-right: 10px;
+        margin: 0 auto;
+        order: 2;
     }
     
     .search-box {
-        width: 120px;
+        width: 150px;
         padding: 6px 30px 6px 12px;
         font-size: 12px;
     }
     
     .search-box:focus {
-        width: 150px;
+        width: 180px;
     }
     
     .search-btn {
@@ -626,9 +631,9 @@ body {
     }
 
     .nav-right {
-        margin-right: 10px;
-        flex-direction: row;
-        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 100%;
         gap: 10px;
     }
 
@@ -638,6 +643,8 @@ body {
 
     .mobile-menu-toggle {
         display: block;
+        position: absolute;
+        right: 20px;
     }
 
     .hero-title {
