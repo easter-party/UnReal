@@ -102,11 +102,11 @@ body {
 .nav-container {
     max-width: 1600px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .logo {
@@ -164,7 +164,8 @@ body {
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
+    flex-shrink: 0;
 }
 
 /* 検索ボックス */
@@ -208,16 +209,18 @@ body {
 
 /* FCログインボタン */
 .fc-login-btn {
-    padding: 10px 25px;
+    padding: 8px 20px;
     border: 1px solid #d47b8e;
     color: #d47b8e;
     background: transparent;
     text-decoration: none;
     border-radius: 25px;
-    font-size: 12px;
-    letter-spacing: 1px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .fc-login-btn:hover {
