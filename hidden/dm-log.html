@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message - @fortune</title>
+    <title>Message - fortune</title>
     <style>
         * {
             margin: 0;
@@ -12,27 +12,102 @@
         }
 
         body {
-            background-color: #000000;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            color: #ffffff;
+            background-color: #7B9EB8;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'Hiragino Sans', sans-serif;
+            color: #000000;
             height: 100vh;
             overflow: hidden;
         }
 
+        /* 名前入力画面 */
+        .name-input-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .name-input-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .name-input-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .name-input-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .name-input-field {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .name-input-field:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .name-input-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .name-input-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .name-input-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* メインのDM画面 */
         .dm-container {
-            max-width: 600px;
+            max-width: 500px;
             height: 100vh;
             margin: 0 auto;
-            background-color: #000000;
+            background-color: #7B9EB8;
             display: flex;
             flex-direction: column;
         }
 
         .dm-header {
-            background-color: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 12px 16px;
-            border-bottom: 1px solid #2f3336;
+            background-color: #293A4C;
+            padding: 15px 16px 12px;
             display: flex;
             align-items: center;
             position: sticky;
@@ -43,7 +118,7 @@
         .back-btn {
             color: #ffffff;
             font-size: 20px;
-            margin-right: 20px;
+            margin-right: 15px;
             cursor: pointer;
             text-decoration: none;
         }
@@ -55,8 +130,8 @@
         }
 
         .profile-pic {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin-right: 12px;
@@ -64,27 +139,21 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
-        }
-
-        .profile-info {
-            flex: 1;
+            color: white;
+            font-size: 16px;
         }
 
         .profile-name {
-            font-weight: 700;
-            font-size: 15px;
-        }
-
-        .profile-handle {
-            color: #71767b;
-            font-size: 13px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
         }
 
         .dm-messages {
             flex: 1;
             overflow-y: auto;
-            padding: 20px 16px;
-            scroll-behavior: smooth;
+            padding: 10px 12px 20px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCBmaWxsPSIjN0I5RUI4IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIvPjwvc3ZnPg==');
         }
 
         .dm-messages::-webkit-scrollbar {
@@ -96,24 +165,24 @@
         }
 
         .dm-messages::-webkit-scrollbar-thumb {
-            background: #2f3336;
+            background: rgba(0, 0, 0, 0.2);
             border-radius: 3px;
         }
 
-        .date-divider {
-            text-align: center;
-            color: #71767b;
-            font-size: 13px;
-            margin: 20px 0;
-        }
-
         .message {
-            margin-bottom: 20px;
+            margin-bottom: 8px;
             display: flex;
-            gap: 12px;
-            animation: fadeIn 0.5s ease-in;
+            animation: fadeIn 0.3s ease-in;
             opacity: 0;
             animation-fill-mode: forwards;
+        }
+
+        .message.fortune {
+            justify-content: flex-start;
+        }
+
+        .message.player {
+            justify-content: flex-end;
         }
 
         @keyframes fadeIn {
@@ -127,81 +196,64 @@
             }
         }
 
-        .message-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .message-avatar.fortune {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-        }
-
-        .message-avatar.player {
-            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-        }
-
-        .message-content {
-            flex: 1;
-        }
-
-        .message-header {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
-            margin-bottom: 4px;
-        }
-
-        .message-name {
-            font-weight: 700;
+        .message-bubble {
+            max-width: 70%;
+            padding: 10px 14px;
+            border-radius: 18px;
             font-size: 15px;
+            line-height: 1.4;
+            word-wrap: break-word;
+            position: relative;
         }
 
-        .message-handle {
-            color: #71767b;
-            font-size: 15px;
+        .message.fortune .message-bubble {
+            background-color: white;
+            color: #000;
+            border-top-left-radius: 4px;
+        }
+
+        .message.player .message-bubble {
+            background-color: #5AC8FA;
+            color: white;
+            border-top-right-radius: 4px;
         }
 
         .message-time {
-            color: #71767b;
-            font-size: 13px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 3px;
+            padding: 0 5px;
         }
 
-        .message-text {
-            font-size: 15px;
-            line-height: 1.4;
-            color: #e7e9ea;
+        .message.fortune .message-time {
+            text-align: left;
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .message.player .message-time {
+            text-align: right;
+            color: rgba(0, 0, 0, 0.4);
         }
 
         .message-image {
-            margin-top: 12px;
+            margin-top: 8px;
             max-width: 100%;
-            border-radius: 16px;
-            border: 1px solid #2f3336;
+            border-radius: 12px;
+            display: block;
         }
 
         .typing-indicator {
             display: none;
-            padding: 8px 12px;
-            background: #1a1a1a;
-            border-radius: 20px;
+            padding: 10px 14px;
+            background: white;
+            border-radius: 18px;
+            border-top-left-radius: 4px;
             width: fit-content;
-            margin-left: 52px;
+            margin-bottom: 8px;
         }
 
         .typing-indicator.show {
-            display: block;
+            display: inline-block;
         }
 
         .typing-dots {
@@ -212,7 +264,7 @@
         .typing-dot {
             width: 8px;
             height: 8px;
-            background: #71767b;
+            background: #999;
             border-radius: 50%;
             animation: typing 1.4s infinite;
         }
@@ -250,6 +302,7 @@
             transition: all 0.3s ease;
             display: none;
             animation: slideIn 0.5s ease;
+            z-index: 200;
         }
 
         @keyframes slideIn {
@@ -281,25 +334,35 @@
                 bottom: 20px;
                 right: 20px;
             }
+
+            .message-bubble {
+                max-width: 80%;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 名前入力画面 -->
+    <div class="name-input-screen" id="nameInputScreen">
+        <div class="name-input-container">
+            <h1 class="name-input-title">あなたの名前を教えてください</h1>
+            <p class="name-input-subtitle">メッセージで表示される名前を入力してください</p>
+            <input type="text" class="name-input-field" id="userNameInput" placeholder="名前を入力" maxlength="20">
+            <button class="name-input-button" id="startChatBtn" disabled>チャットを開始</button>
+        </div>
+    </div>
+
+    <!-- メインのDM画面 -->
     <div class="dm-container">
         <div class="dm-header">
             <a href="../index.html" class="back-btn">←</a>
             <div class="profile-section">
                 <div class="profile-pic">な</div>
-                <div class="profile-info">
-                    <div class="profile-name">詩藤なぎさ</div>
-                    <div class="profile-handle">@fortune</div>
-                </div>
+                <div class="profile-name">fortune</div>
             </div>
         </div>
 
         <div class="dm-messages" id="messageContainer">
-            <div class="date-divider">2025年2月10日</div>
-            
             <!-- メッセージがJavaScriptで動的に追加される -->
         </div>
 
@@ -317,6 +380,34 @@
     </div>
 
     <script>
+        // 名前入力処理
+        const userNameInput = document.getElementById('userNameInput');
+        const startChatBtn = document.getElementById('startChatBtn');
+        const nameInputScreen = document.getElementById('nameInputScreen');
+        let userName = '';
+
+        userNameInput.addEventListener('input', function() {
+            startChatBtn.disabled = this.value.trim().length === 0;
+        });
+
+        userNameInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && this.value.trim().length > 0) {
+                startChat();
+            }
+        });
+
+        startChatBtn.addEventListener('click', startChat);
+
+        function startChat() {
+            userName = userNameInput.value.trim();
+            nameInputScreen.style.opacity = '0';
+            setTimeout(() => {
+                nameInputScreen.style.display = 'none';
+                startMessageSequence();
+            }, 500);
+        }
+
+        // メッセージのデータ
         const messages = [
             { sender: 'fortune', text: '突然のご連絡で申し訳ありません。', delay: 1000 },
             { sender: 'fortune', text: '私、UnRe:alというアイドルグループで活動している 詩藤なぎさ といいます。', delay: 2000 },
@@ -361,59 +452,40 @@
 
         function createMessage(messageData) {
             const messageDiv = document.createElement('div');
-            messageDiv.className = 'message';
+            messageDiv.className = `message ${messageData.sender}`;
             messageDiv.style.animationDelay = '0s';
 
-            const avatarDiv = document.createElement('div');
-            avatarDiv.className = `message-avatar ${messageData.sender}`;
-            avatarDiv.textContent = messageData.sender === 'fortune' ? 'な' : 'You';
-
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'message-content';
-
-            const headerDiv = document.createElement('div');
-            headerDiv.className = 'message-header';
-
-            const nameSpan = document.createElement('span');
-            nameSpan.className = 'message-name';
-            nameSpan.textContent = messageData.sender === 'fortune' ? '詩藤なぎさ' : 'You';
-
-            const handleSpan = document.createElement('span');
-            handleSpan.className = 'message-handle';
-            handleSpan.textContent = messageData.sender === 'fortune' ? '@fortune' : '@player';
-
-            const timeSpan = document.createElement('span');
-            timeSpan.className = 'message-time';
-            const now = new Date();
-            timeSpan.textContent = `${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
-
-            headerDiv.appendChild(nameSpan);
-            headerDiv.appendChild(handleSpan);
-            headerDiv.appendChild(timeSpan);
-
-            const textDiv = document.createElement('div');
-            textDiv.className = 'message-text';
-            textDiv.textContent = messageData.text;
-
-            contentDiv.appendChild(headerDiv);
-            contentDiv.appendChild(textDiv);
+            const bubbleDiv = document.createElement('div');
+            bubbleDiv.className = 'message-bubble';
+            
+            // プレイヤー名を表示
+            const displayName = messageData.sender === 'player' ? userName : 'なぎさ';
+            bubbleDiv.textContent = messageData.text;
 
             if (messageData.hasImage) {
                 const img = document.createElement('img');
                 img.className = 'message-image';
-                img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="200"%3E%3Crect fill="%23667eea" width="400" height="200"/%3E%3Ctext x="200" y="100" font-family="Arial" font-size="20" fill="white" text-anchor="middle"%3E[本人確認画像]%3C/text%3E%3C/svg%3E';
-                contentDiv.appendChild(img);
+                img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="150"%3E%3Crect fill="%23667eea" width="300" height="150"/%3E%3Ctext x="150" y="75" font-family="Arial" font-size="16" fill="white" text-anchor="middle"%3E[本人確認画像]%3C/text%3E%3C/svg%3E';
+                bubbleDiv.appendChild(img);
             }
 
             if (messageData.hasScreenshot) {
                 const img = document.createElement('img');
                 img.className = 'message-image';
-                img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%231a1a1a" width="400" height="300"/%3E%3Ctext x="200" y="150" font-family="Arial" font-size="16" fill="%2371767b" text-anchor="middle"%3E[りんとのメッセージログ]%3C/text%3E%3C/svg%3E';
-                contentDiv.appendChild(img);
+                img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="200"%3E%3Crect fill="%231a1a1a" width="300" height="200"/%3E%3Ctext x="150" y="100" font-family="Arial" font-size="14" fill="%2371767b" text-anchor="middle"%3E[りんとのメッセージログ]%3C/text%3E%3C/svg%3E';
+                bubbleDiv.appendChild(img);
             }
 
-            messageDiv.appendChild(avatarDiv);
-            messageDiv.appendChild(contentDiv);
+            const timeDiv = document.createElement('div');
+            timeDiv.className = 'message-time';
+            const now = new Date();
+            timeDiv.textContent = `${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
+
+            const wrapper = document.createElement('div');
+            wrapper.appendChild(bubbleDiv);
+            wrapper.appendChild(timeDiv);
+            
+            messageDiv.appendChild(wrapper);
 
             return messageDiv;
         }
@@ -445,8 +517,10 @@
             }, messageData.sender === 'fortune' ? 1500 : 500);
         }
 
-        // メッセージの表示を開始
-        setTimeout(showNextMessage, 1000);
+        // メッセージ表示を開始
+        function startMessageSequence() {
+            setTimeout(showNextMessage, 1000);
+        }
     </script>
 </body>
 </html>
