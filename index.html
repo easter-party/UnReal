@@ -172,15 +172,18 @@
                 'secret': 'hidden/secret.html',
                 'center': 'hidden/center-diary.html',
                 '失踪': 'hidden/missing.html',
-                '真実': 'hidden/truth-jp.html'
+                '真実': 'hidden/truth-jp.html',
+                'dm': 'hidden/dm-log.html',
+                'DM': 'hidden/dm-log.html',
+                'ログ': 'hidden/dm-log.html'
             };
 
             if (hiddenPages[searchTerm]) {
                 // 隠しページへ遷移
                 window.location.href = hiddenPages[searchTerm];
             } else if (searchTerm) {
-                // 通常の検索結果ページ（後で実装）
-                alert('検索機能は準備中です...');
+                // 404ページへ遷移
+                window.location.href = 'hidden/notfound.html';
             }
         }
 
