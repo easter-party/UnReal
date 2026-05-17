@@ -164,7 +164,7 @@
 
         // 検索機能（隠しページへの導線）
         function performSearch() {
-            const searchTerm = document.getElementById('searchBox').value.toLowerCase().trim();
+            const searchTerm = document.getElementById('searchBox').value.trim();
             
             // 検索ワードと隠しページのマッピング（後で拡張）
             const hiddenPages = {
@@ -178,9 +178,15 @@
                 'ログ': 'hidden/dm-log.html'
             };
 
+            // 小文字に変換して検索（DMは大文字も対応）
+            const lowerSearchTerm = searchTerm.toLowerCase();
+            
+            // まず完全一致を確認（大文字小文字含む）
             if (hiddenPages[searchTerm]) {
-                // 隠しページへ遷移
                 window.location.href = hiddenPages[searchTerm];
+            } else if (hiddenPages[lowerSearchTerm]) {
+                // 小文字版で検索
+                window.location.href = hiddenPages[lowerSearchTerm];
             } else if (searchTerm) {
                 // 404ページへ遷移
                 window.location.href = 'hidden/notfound.html';
