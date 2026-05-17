@@ -166,6 +166,15 @@
         function performSearch() {
             const searchTerm = document.getElementById('searchBox').value.trim();
             
+            // キャッシュクリア機能
+            if (searchTerm === 'CC' || searchTerm === 'cc') {
+                localStorage.clear();
+                sessionStorage.clear();
+                alert('キャッシュをクリアしました。ページを再読み込みします。');
+                location.reload();
+                return;
+            }
+
             // 検索ワードと隠しページのマッピング（後で拡張）
             const hiddenPages = {
                 'truth': 'hidden/truth.html',
