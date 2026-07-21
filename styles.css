@@ -52,21 +52,22 @@ body {
     transition: opacity 1s ease-in-out;
 }
 
-/* 4:3比率の画像（デフォルト） */
-.hero-43 {
-    object-fit: contain;  /* 4:3画像を切らずに表示 */
-    object-position: center center;
+/* デスクトップ用: 4:3画像を横長にトリミング */
+.desktop-hero {
+    display: block;
+    object-fit: cover;  /* 画面全体を覆うようにトリミング */
+    object-position: center 41.67%;  /* 上1/12と下5/12を削る（中央やや上寄り） */
     width: 100%;
     height: 100%;
 }
 
-/* 2:3比率の画像（将来用） */
-.hero-23 {
-    object-fit: contain;
+/* モバイル用: 2:3縦長画像 */
+.mobile-hero {
+    display: none;
+    object-fit: contain;  /* 縦長画像全体を表示 */
     object-position: center center;
     width: 100%;
     height: 100%;
-    display: none;
 }
 
 .hero-bg.active {
@@ -561,9 +562,14 @@ body {
         background: #ffffff;
     }
     
-    /* モバイル時も同じ4:3画像を使用 */
-    .hero-43 {
-        object-fit: contain;
+    /* モバイル時はデスクトップ画像を非表示、モバイル画像を表示 */
+    .desktop-hero {
+        display: none !important;
+    }
+    
+    .mobile-hero {
+        display: block !important;
+        object-fit: cover;  /* モバイルでも画面全体を覆う */
         object-position: center center;
         width: 100%;
         height: 100%;

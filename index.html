@@ -9,13 +9,13 @@
 <body>
     <div class="hero-section">
         <div class="hero-images">
-            <!-- 4:3 比率の画像（デフォルト使用） -->
-            <img src="images/hero_43_kpop.png" alt="UnReal KPOP" class="hero-bg hero-43 active">
-            <img src="images/hero_43_idol.png" alt="UnReal Idol" class="hero-bg hero-43">
+            <!-- デスクトップ用: 4:3 画像をトリミング -->
+            <img src="images/hero_43_kpop.png" alt="UnReal KPOP" class="hero-bg desktop-hero active">
+            <img src="images/hero_43_idol.png" alt="UnReal Idol" class="hero-bg desktop-hero">
             
-            <!-- 2:3 比率の画像（将来使用可能） -->
-            <img src="images/hero_23_kpop.png" alt="UnReal KPOP" class="hero-bg hero-23" style="display: none;">
-            <img src="images/hero_23_idol.png" alt="UnReal Idol" class="hero-bg hero-23" style="display: none;">
+            <!-- モバイル用: 2:3 縦長画像 -->
+            <img src="images/hero_23_kpop.png" alt="UnReal KPOP" class="hero-bg mobile-hero active">
+            <img src="images/hero_23_idol.png" alt="UnReal Idol" class="hero-bg mobile-hero">
         </div>
         <div class="hero-overlay"></div>
         <nav class="main-nav">
@@ -248,9 +248,10 @@
             }
         });
 
-        // ヒーロー画像のスライドショー（4:3画像を交互表示）
+        // ヒーロー画像のスライドショー
         function startSlideshow() {
-            const heroImages = document.querySelectorAll('.hero-43');
+            const isMobile = window.innerWidth <= 768;
+            const heroImages = document.querySelectorAll(isMobile ? '.mobile-hero' : '.desktop-hero');
             let currentIndex = 0;
             
             if (heroImages.length > 1) {

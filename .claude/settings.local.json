@@ -37,7 +37,8 @@
       "Bash(cp \"/Users/ryusan1215/Downloads/43_KPOP.png\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/hero_43_kpop.png\")",
       "Bash(cp \"/Users/ryusan1215/Downloads/43_アイドル.png\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/hero_43_idol.png\")",
       "Bash(cp \"/Users/ryusan1215/Downloads/23_KPOP.png\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/hero_23_kpop.png\")",
-      "Bash(cp \"/Users/ryusan1215/Downloads/23_アイドル.png\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/hero_23_idol.png\")"
+      "Bash(cp \"/Users/ryusan1215/Downloads/23_アイドル.png\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/hero_23_idol.png\")",
+      "Bash(git commit -m \"Fix profile page background and hero image display\n\n- Change profile page background from black to white\n- Update text colors to match white background\n- Set up desktop images (4:3) with cropping (remove top 1/12 and bottom 5/12)\n- Configure mobile-specific 2:3 portrait images\n- Implement proper image switching for desktop vs mobile\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
     ],
     "deny": [],
     "ask": [],
