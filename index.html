@@ -9,9 +9,13 @@
 <body>
     <div class="hero-section">
         <div class="hero-images">
-            <img src="images/hero-image_web.png" alt="UnReal" class="hero-bg desktop-hero active">
-            <img src="images/hero-image_mobile1.png" alt="UnReal" class="hero-bg mobile-hero active">
-            <img src="images/hero-image_mobile2.png" alt="UnReal" class="hero-bg mobile-hero">
+            <!-- 4:3 比率の画像（デフォルト使用） -->
+            <img src="images/hero_43_kpop.png" alt="UnReal KPOP" class="hero-bg hero-43 active">
+            <img src="images/hero_43_idol.png" alt="UnReal Idol" class="hero-bg hero-43">
+            
+            <!-- 2:3 比率の画像（将来使用可能） -->
+            <img src="images/hero_23_kpop.png" alt="UnReal KPOP" class="hero-bg hero-23" style="display: none;">
+            <img src="images/hero_23_idol.png" alt="UnReal Idol" class="hero-bg hero-23" style="display: none;">
         </div>
         <div class="hero-overlay"></div>
         <nav class="main-nav">
@@ -244,19 +248,17 @@
             }
         });
 
-        // モバイル版のみ画像スライドショー
+        // ヒーロー画像のスライドショー（4:3画像を交互表示）
         function startSlideshow() {
-            if (window.innerWidth <= 768) {
-                const mobileImages = document.querySelectorAll('.mobile-hero');
-                let currentIndex = 0;
-                
-                if (mobileImages.length > 1) {
-                    setInterval(() => {
-                        mobileImages[currentIndex].classList.remove('active');
-                        currentIndex = (currentIndex + 1) % mobileImages.length;
-                        mobileImages[currentIndex].classList.add('active');
-                    }, 3000);
-                }
+            const heroImages = document.querySelectorAll('.hero-43');
+            let currentIndex = 0;
+            
+            if (heroImages.length > 1) {
+                setInterval(() => {
+                    heroImages[currentIndex].classList.remove('active');
+                    currentIndex = (currentIndex + 1) % heroImages.length;
+                    heroImages[currentIndex].classList.add('active');
+                }, 3000); // 3秒ごとに切り替え
             }
         }
 
