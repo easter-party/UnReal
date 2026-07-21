@@ -1,0 +1,34 @@
+# SSH Config for Multiple GitHub Accounts
+# ~/.ssh/config に追加する設定例
+
+# --- デフォルト/個人用アカウント ---
+Host github.com
+	HostName github.com
+	User git
+	PreferredAuthentications publickey
+	IdentityFile ~/.ssh/WaltRyusan-GitHub
+	UseKeychain yes
+	AddKeysToAgent yes
+
+# --- easter-party アカウント用 ---
+Host github-easter
+	HostName github.com
+	User git
+	PreferredAuthentications publickey
+	IdentityFile ~/.ssh/id_ed25519_easter
+	UseKeychain yes
+	AddKeysToAgent yes
+
+# --- 仕事用アカウント ---
+Host github-work
+	HostName github.com
+	User git
+	PreferredAuthentications publickey
+	IdentityFile ~/.ssh/id_ed25519_work
+	UseKeychain yes
+	AddKeysToAgent yes
+
+# 使い方:
+# デフォルト: git clone git@github.com:user/repo.git
+# easter用:   git clone git@github-easter:easter-party/UnReal.git
+# 仕事用:     git clone git@github-work:company/repo.git

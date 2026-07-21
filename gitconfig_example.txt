@@ -1,0 +1,27 @@
+# Git設定で複数アカウントを管理する方法
+
+# 1. グローバル設定 (~/.gitconfig)
+[user]
+    name = Your Default Name
+    email = default@example.com
+
+[includeIf "gitdir:~/Work/"]
+    path = ~/.gitconfig-work
+
+[includeIf "gitdir:~/Personal/"]
+    path = ~/.gitconfig-personal
+
+[includeIf "gitdir:~/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/"]
+    path = ~/.gitconfig-easter
+
+# 2. Easter Party用の設定 (~/.gitconfig-easter)
+[user]
+    name = Easter Party
+    email = easter@example.com
+    
+[core]
+    sshCommand = "ssh -i ~/.ssh/id_ed25519_easter"
+
+# 3. ローカルリポジトリごとの設定（このプロジェクト内で実行）
+git config --local user.name "Easter Party"
+git config --local user.email "easter@example.com"

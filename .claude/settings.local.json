@@ -25,12 +25,20 @@
       "Bash(cp /Users/ryusan1215/Downloads/member5.jpg \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/members/iroha.jpg\")",
       "Bash(cp /Users/ryusan1215/Downloads/member6.jpg \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/members/ran.jpg\")",
       "Bash(cp /Users/ryusan1215/Downloads/member7.jpg \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/members/nagisa.jpg\")",
-      "Bash(git add -A)"
+      "Bash(git add -A)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nImplement complete Easter Party project structure\n\n- Add navigation system linking all pages\n- Create gallery with member images and lightbox\n- Add search functionality with CSV-based routing\n- Implement placement words on key pages\n- Create medical records and hidden pages\n- Add member profiles and blog sections\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push origin main)",
+      "Bash(git remote get-url origin)",
+      "Read(//Users/ryusan1215/.ssh/**)",
+      "Bash(cat ~/.ssh/WaltRyusan-GitHub.pub)",
+      "Bash(git remote set-url origin git@github.com:easter-party/UnReal.git)",
+      "Bash(git commit -m \"Fix DM message display and wrapping\n\n- Add dynamic text width detection for proper wrapping\n- Keep short messages on single line\n- Wrap only when text exceeds 70% container width\n- Increase bottom padding to prevent overlap with continue button\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
     ],
     "deny": [],
     "ask": [],
     "additionalDirectories": [
-      "/Users/ryusan1215/Downloads"
+      "/Users/ryusan1215/Downloads",
+      "/Users/ryusan1215/.ssh"
     ]
   }
 }
