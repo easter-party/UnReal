@@ -186,16 +186,16 @@
             animation: fadeIn 0.3s ease-in;
             opacity: 0;
             animation-fill-mode: forwards;
+            display: flex;
+            flex-direction: column;
         }
 
         .message.fortune {
-            display: flex;
-            justify-content: flex-start;
+            align-items: flex-start;
         }
 
         .message.player {
-            display: flex;
-            justify-content: flex-end;
+            align-items: flex-end;
         }
 
         @keyframes fadeIn {
@@ -210,8 +210,8 @@
         }
 
         .message-bubble {
-            max-width: 70%;
-            min-width: 60px;
+            max-width: 65%;
+            min-width: fit-content;
             padding: 10px 14px;
             border-radius: 18px;
             font-size: 15px;
@@ -224,8 +224,8 @@
         }
         
         .message-bubble.wrapped {
-            white-space: normal;
-            word-break: normal;
+            white-space: pre-wrap;
+            word-break: break-word;
         }
 
         .message.fortune .message-bubble {
@@ -496,17 +496,18 @@
             // テキストの長さに応じて折り返しを制御
             // 仮の要素で実際の幅を測定
             const tempSpan = document.createElement('span');
-            tempSpan.style.cssText = 'visibility: hidden; position: absolute; font-size: 15px; font-family: inherit; white-space: nowrap;';
+            tempSpan.style.cssText = 'visibility: hidden; position: absolute; font-size: 15px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; white-space: nowrap; padding: 10px 14px;';
             tempSpan.textContent = messageData.text;
             document.body.appendChild(tempSpan);
             const textWidth = tempSpan.offsetWidth;
             document.body.removeChild(tempSpan);
             
-            // 画面幅の70%（max-widthと同じ）を計算
-            const maxWidth = Math.min(500 * 0.7, window.innerWidth * 0.7);
+            // コンテナの幅の65%を計算
+            const containerWidth = document.getElementById('dmContainer').offsetWidth;
+            const maxWidth = containerWidth * 0.65;
             
             // テキスト幅がmax-widthを超える場合のみ折り返しを有効にする
-            if (textWidth > maxWidth - 28) { // padding分を引く
+            if (textWidth > maxWidth) {
                 bubbleDiv.classList.add('wrapped');
             }
 
@@ -529,11 +530,8 @@
             const now = new Date();
             timeDiv.textContent = `${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
 
-            const wrapper = document.createElement('div');
-            wrapper.appendChild(bubbleDiv);
-            wrapper.appendChild(timeDiv);
-            
-            messageDiv.appendChild(wrapper);
+            messageDiv.appendChild(bubbleDiv);
+            messageDiv.appendChild(timeDiv);
 
             return messageDiv;
         }
