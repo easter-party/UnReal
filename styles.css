@@ -35,9 +35,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: 0;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    overflow: hidden;
 }
 
 .hero-bg {
@@ -49,7 +47,7 @@ body {
     object-fit: cover;  /* 画面を覆うように表示 */
     object-position: center top;  /* 上部を基準に配置 */
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 2s ease-in-out;  /* よりゆっくりとしたフェード */
 }
 
 /* デスクトップ用: 4:3画像を横長にトリミング */
