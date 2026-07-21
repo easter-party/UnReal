@@ -21,7 +21,8 @@ body {
 /* ヒーローセクション */
 .hero-section {
     position: relative;
-    height: calc(916px + 80px);
+    height: 100vh;
+    min-height: 600px;
     background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
     overflow: hidden;
 }
@@ -29,13 +30,13 @@ body {
 /* ヒーロー画像 */
 .hero-images {
     position: absolute;
-    top: 80px;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 916px;
+    height: 100%;
     z-index: 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 
@@ -45,19 +46,18 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;  /* 画像全体を表示（切れない） */
-    object-position: center center;
+    object-fit: cover;  /* 画面を覆うように表示 */
+    object-position: center top;  /* 上部を基準に配置 */
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
 
 /* デスクトップ版では画像サイズに合わせる */
 .desktop-hero {
-    object-fit: contain;  /* 画像全体を表示 */
+    object-fit: cover;  /* 画面全体を覆う */
+    object-position: center top;
     width: 100%;
     height: 100%;
-    max-width: 100%;
-    max-height: 100%;
 }
 
 .hero-bg.active {
@@ -549,10 +549,10 @@ body {
     
     .hero-images {
         position: absolute;
-        top: 60px;
+        top: 0;
         left: 0;
         width: 100%;
-        height: calc(100vh - 60px);
+        height: 100%;
         z-index: 0;
         background: #ffffff;
     }
@@ -564,8 +564,8 @@ body {
     
     .mobile-hero {
         display: block;
-        object-fit: contain;  /* 正方形画像も切れないように */
-        object-position: center center;
+        object-fit: cover;  /* 縦長画像で画面全体を覆う */
+        object-position: center top;  /* 上部を基準に配置 */
         width: 100%;
         height: 100%;
         max-width: 100%;

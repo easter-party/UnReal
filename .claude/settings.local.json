@@ -32,7 +32,8 @@
       "Read(//Users/ryusan1215/.ssh/**)",
       "Bash(cat ~/.ssh/WaltRyusan-GitHub.pub)",
       "Bash(git remote set-url origin git@github.com:easter-party/UnReal.git)",
-      "Bash(git commit -m \"Fix DM message display and wrapping\n\n- Add dynamic text width detection for proper wrapping\n- Keep short messages on single line\n- Wrap only when text exceeds 70% container width\n- Increase bottom padding to prevent overlap with continue button\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
+      "Bash(git commit -m \"Fix DM message display and wrapping\n\n- Add dynamic text width detection for proper wrapping\n- Keep short messages on single line\n- Wrap only when text exceeds 70% container width\n- Increase bottom padding to prevent overlap with continue button\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
+      "Bash(git commit -m \"Fix hero image positioning and spacing\n\n- Remove top padding, align images to top\n- Change desktop hero to cover mode for full screen\n- Adjust mobile hero for portrait orientation\n- Set object-position to top for proper alignment\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
     ],
     "deny": [],
     "ask": [],
