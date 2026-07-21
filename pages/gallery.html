@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GALLERY - UnReal</title>
+    <style>
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 40px 20px;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .page-number {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: #666;
+            z-index: 100;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        .member-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: #fff;
+            padding: 20px;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #667eea;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #667eea;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .back-link:hover {
+            background: #667eea;
+            color: #fff;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 40px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 10px;
+            }
+            .gallery-item img {
+                height: 250px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-number">6/50</div>
+    <div class="container">
+        <h1>GALLERY</h1>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox('../images/members/rin.jpg')">
+                <img src="../images/members/rin.jpg" alt="Rin">
+                <div class="member-name">Rin</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('../images/members/yuno.jpg')">
+                <img src="../images/members/yuno.jpg" alt="Yuno">
+                <div class="member-name">Yuno</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('../images/members/aki.jpg')">
+                <img src="../images/members/aki.jpg" alt="Aki">
+                <div class="member-name">Aki</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('../images/members/mirei.jpg')">
+                <img src="../images/members/mirei.jpg" alt="Mirei">
+                <div class="member-name">Mirei</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('../images/members/iroha.jpg')">
+                <img src="../images/members/iroha.jpg" alt="Iroha">
+                <div class="member-name">Iroha</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('../images/members/ran.jpg')">
+                <img src="../images/members/ran.jpg" alt="Ran">
+                <div class="member-name">Ran</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('../images/members/nagisa.jpg')">
+                <img src="../images/members/nagisa.jpg" alt="Nagisa">
+                <div class="member-name">Nagisa</div>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="../index.html" class="back-link">← TOPに戻る</a>
+        </div>
+    </div>
+    
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+    
+    <script>
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

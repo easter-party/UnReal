@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOG - UnReal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        .page-number {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .page-title {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            color: #999;
+            margin-bottom: 60px;
+        }
+        
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .member-blog-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .member-blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .member-blog-card.rin { border-color: #ff0000; }
+        .member-blog-card.yuno { border-color: #ff69b4; }
+        .member-blog-card.aki { border-color: #ff8c00; }
+        .member-blog-card.mirei { border-color: #ffd700; }
+        .member-blog-card.iroha { border-color: #00ced1; }
+        .member-blog-card.ran { border-color: #4169e1; }
+        .member-blog-card.nagisa { border-color: #9370db; }
+        
+        .blog-header {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .blog-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .blog-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-emoji {
+            position: relative;
+            z-index: 1;
+            font-size: 72px;
+        }
+        
+        .blog-info {
+            padding: 20px;
+        }
+        
+        .member-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .blog-count {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .latest-post {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .color-bar {
+            height: 4px;
+            margin-top: 15px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 10px 20px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #fff;
+            color: #000;
+        }
+        
+        .notice {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+        }
+        
+        .notice-icon {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-number">5/50</div>
+    
+    <div class="container">
+        <h1 class="page-title">MEMBER BLOG</h1>
+        <p class="page-subtitle">メンバーを選択してブログを見る</p>
+        
+        <div class="notice">
+            <span class="notice-icon">🔐</span>
+            一部の記事はFC会員限定です。FCログイン後に閲覧可能になります。
+        </div>
+        
+        <div class="member-grid">
+            <div class="member-blog-card rin" onclick="goToBlog('rin')">
+                <div class="blog-header" style="background-image: url('../images/members/rin.jpg');">
+                    <span class="member-emoji">❤️</span>
+                </div>
+                <div class="blog-info">
+                    <div class="member-name">暁月 りん</div>
+                    <div class="blog-count">記事数: 12件</div>
+                    <div class="latest-post">最終更新: 2025.02.10</div>
+                    <div class="color-bar" style="background: #ff0000;"></div>
+                </div>
+            </div>
+            
+            <div class="member-blog-card yuno" onclick="goToBlog('yuno')">
+                <div class="blog-header" style="background-image: url('../images/members/yuno.jpg');">
+                    <span class="member-emoji">🩷</span>
+                </div>
+                <div class="blog-info">
+                    <div class="member-name">百瀬 ゆの</div>
+                    <div class="blog-count">記事数: 15件</div>
+                    <div class="latest-post">最終更新: 2025.02.14</div>
+                    <div class="color-bar" style="background: #ff69b4;"></div>
+                </div>
+            </div>
+            
+            <div class="member-blog-card aki" onclick="goToBlog('aki')">
+                <div class="blog-header" style="background-image: url('../images/members/aki.jpg');">
+                    <span class="member-emoji">🧡</span>
+                </div>
+                <div class="blog-info">
+                    <div class="member-name">燈真 あき</div>
+                    <div class="blog-count">記事数: 8件</div>
+                    <div class="latest-post">最終更新: 2025.02.13</div>
+                    <div class="color-bar" style="background: #ff8c00;"></div>
+                </div>
+            </div>
+            
+            <div class="member-blog-card mirei" onclick="goToBlog('mirei')">
+                <div class="blog-header" style="background-image: url('../images/members/mirei.jpg');">
+                    <span class="member-emoji">💛</span>
+                </div>
+                <div class="blog-info">
+                    <div class="member-name">城崎 みれい</div>
+                    <div class="blog-count">記事数: 20件</div>
+                    <div class="latest-post">最終更新: 2025.02.14</div>
+                    <div class="color-bar" style="background: #ffd700;"></div>
+                </div>
+            </div>
+            
+            <div class="member-blog-card iroha" onclick="goToBlog('iroha')">
+                <div class="blog-header" style="background-image: url('../images/members/iroha.jpg');">
+                    <span class="member-emoji">💚</span>
+                </div>
+                <div class="blog-info">
+                    <div class="member-name">桧翠 いろは</div>
+                    <div class="blog-count">記事数: 10件</div>
+                    <div class="latest-post">最終更新: 2025.02.12</div>
+                    <div class="color-bar" style="background: #00ced1;"></div>
+                </div>
+            </div>
+            
+            <div class="member-blog-card ran" onclick="goToBlog('ran')">
+                <div class="blog-header" style="background-image: url('../images/members/ran.jpg');">
+                    <span class="member-emoji">💙</span>
+                </div>
+                <div class="blog-info">
+                    <div class="member-name">星名 らん</div>
+                    <div class="blog-count">記事数: 18件</div>
+                    <div class="latest-post">最終更新: 2025.02.14</div>
+                    <div class="color-bar" style="background: #4169e1;"></div>
+                </div>
+            </div>
+            
+            <div class="member-blog-card nagisa" onclick="goToBlog('nagisa')">
+                <div class="blog-header" style="background-image: url('../images/members/nagisa.jpg');">
+                    <span class="member-emoji">💜</span>
+                </div>
+                <div class="blog-info">
+                    <div class="member-name">詩藤 なぎさ</div>
+                    <div class="blog-count">記事数: 11件</div>
+                    <div class="latest-post">最終更新: 2025.02.13</div>
+                    <div class="color-bar" style="background: #9370db;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <a href="../index.html" class="back-link">TOPに戻る</a>
+    </div>
+    
+    <script>
+        function goToBlog(member) {
+            // ページ番号に基づいてブログへ遷移
+            const blogPages = {
+                'rin': 18,
+                'yuno': 19,
+                'aki': 20,
+                'mirei': 21,
+                'iroha': 22,
+                'ran': 23,
+                'nagisa': 24
+            };
+            
+            const pageNo = blogPages[member];
+            if (pageNo) {
+                // 検索機能を通じて遷移
+                window.location.href = '../index.html?search=' + pageNo;
+            }
+        }
+    </script>
+</body>
+</html>

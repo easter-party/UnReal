@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パスワード入力 - UnReal</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .page-number {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: rgba(0,0,0,0.3);
+        }
+        .passcode-container {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+        }
+        .lock-icon {
+            font-size: 64px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .passcode-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .passcode-input:focus {
+            outline: none;
+            border-color: #ffed4e;
+            box-shadow: 0 0 10px rgba(255,215,0,0.3);
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,215,0,0.4);
+        }
+        .hint {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255,215,0,0.1);
+            border-radius: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-number">31/50</div>
+    
+    <div class="passcode-container">
+        <div class="lock-icon">🔐</div>
+        <h1>パスワードを入力</h1>
+        <input type="text" class="passcode-input" id="passcode" placeholder="パスワード">
+        <button class="submit-btn" onclick="checkPasscode()">確認</button>
+        
+        <div class="hint">
+            ヒント: 誕生日は大切な日...
+        </div>
+    </div>
+    
+    <script>
+        function checkPasscode() {
+            const input = document.getElementById('passcode').value;
+            
+            // パスワード: 20060719 (みれいのドラフト記事の日付)
+            if (input === '20060719') {
+                // 正解: りんちゃんのこと（ドラフト）へ
+                window.location.href = '../blog_ex/mirei/draft.html';
+            } else {
+                alert('パスワードが違います');
+                document.getElementById('passcode').value = '';
+            }
+        }
+        
+        document.getElementById('passcode').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPasscode();
+            }
+        });
+    </script>
+</body>
+</html>

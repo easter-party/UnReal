@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/ryusan1215/Downloads/**)",
+      "Bash(mkdir -p \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/pages\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/c_doc\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/blog\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/medical_record\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/passcode\")",
+      "Bash(mkdir -p \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/members\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/blog/rin\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/blog/yuno\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/blog/aki\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/blog/mirei\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/blog/iroha\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/blog/ran\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/blog/nagisa\")",
+      "Bash(mkdir -p \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/gallery\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/icons\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/pages/news\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/pages/discography\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/pages/endings\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/blog_ex\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/pages/fc\")",
+      "Bash(mkdir -p \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/pages/clone\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/pages/test_report\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/pages/r_n\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/blog_ex/mirei\")",
+      "Bash(cp \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/medical_record/template.html\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/medical_record/rin.html\")",
+      "Bash(chmod +x \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/create_pages.sh\")",
+      "Bash(./create_pages.sh)",
+      "Bash(chmod +x \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/create_blog_pages.sh\")",
+      "Bash(./create_blog_pages.sh)",
+      "Bash(mkdir -p \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/pages/endings\")",
+      "Bash(chmod +x \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/create_remaining_pages.sh\")",
+      "Bash(./create_remaining_pages.sh)",
+      "Bash(open \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/\")",
+      "Bash(grep -l \"活動休止\\|週刊ライク\" pages/news.html c_doc/like.html)",
+      "Bash(grep -l \"Signal\" pages/discography.html passcode/r.html)",
+      "Bash(grep -l \"CONTACT\\|contact\" pages/fc.html)",
+      "Bash(cp /Users/ryusan1215/Downloads/member1.jpg \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/members/rin.jpg\")",
+      "Bash(cp /Users/ryusan1215/Downloads/member2.jpg \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/members/yuno.jpg\")",
+      "Bash(cp /Users/ryusan1215/Downloads/member3.jpg \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/members/aki.jpg\")",
+      "Bash(cp /Users/ryusan1215/Downloads/member4.jpg \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/members/mirei.jpg\")",
+      "Bash(cp /Users/ryusan1215/Downloads/member5.jpg \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/members/iroha.jpg\")",
+      "Bash(cp /Users/ryusan1215/Downloads/member6.jpg \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/members/ran.jpg\")",
+      "Bash(cp /Users/ryusan1215/Downloads/member7.jpg \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/members/nagisa.jpg\")",
+      "Bash(git add -A)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "/Users/ryusan1215/Downloads"
+    ]
+  }
+}

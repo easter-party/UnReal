@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>なぎさの調査メモ - UnReal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'Hiragino Sans', sans-serif;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .hint-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hint-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .hint-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .hint-subtitle {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .hint-section {
+            margin-bottom: 30px;
+        }
+
+        .hint-section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .hint-list {
+            list-style: none;
+        }
+
+        .hint-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.2s ease;
+        }
+
+        .hint-item:hover {
+            transform: translateX(5px);
+            background: #f0f2ff;
+        }
+
+        .hint-keyword {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        .hint-description {
+            color: #555;
+            line-height: 1.6;
+            margin-top: 8px;
+        }
+
+        .important-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .important-note strong {
+            color: #856404;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .progress-indicator {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .hint-container {
+                padding: 30px 20px;
+            }
+
+            .hint-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hint-container">
+        <div class="hint-header">
+            <h1 class="hint-title">なぎさの調査メモ</h1>
+            <p class="hint-subtitle">@fortune_ngs</p>
+        </div>
+
+        <div class="hint-section">
+            <h2 class="hint-section-title">🔍 重要なキーワード</h2>
+            <ul class="hint-list">
+                <li class="hint-item">
+                    <span class="hint-keyword">失踪</span>
+                    <span class="hint-keyword">活動休止</span>
+                    <div class="hint-description">りんの状況について、事務所から正式な発表がありました。</div>
+                </li>
+                <li class="hint-item">
+                    <span class="hint-keyword">灰谷</span>
+                    <div class="hint-description">私たちのマネージャー。何か知っているかもしれません。</div>
+                </li>
+                <li class="hint-item">
+                    <span class="hint-keyword">週刊ライク</span>
+                    <div class="hint-description">最近、事務所についてのリーク記事を掲載した週刊誌です。</div>
+                </li>
+                <li class="hint-item">
+                    <span class="hint-keyword">Signal</span>
+                    <div class="hint-description">私たちのデビューシングル。何か意味があるのかも...？</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="hint-section">
+            <h2 class="hint-section-title">📝 調査のヒント</h2>
+            <ul class="hint-list">
+                <li class="hint-item">
+                    <div class="hint-description">
+                        メンバーのブログには会員限定記事があります。<br>
+                        FCログインすることで、隠された情報が見られるかもしれません。
+                    </div>
+                </li>
+                <li class="hint-item">
+                    <div class="hint-description">
+                        各ページには番号が振られています（1/50のような形式）。<br>
+                        すべてのページを見つけることが、真実への鍵となるでしょう。
+                    </div>
+                </li>
+                <li class="hint-item">
+                    <div class="hint-description">
+                        人物の名前や企業名で検索すると、新しい情報が見つかることがあります。
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="important-note">
+            <strong>⚠️ 注意：</strong>
+            調査を進める際は、見つけたキーワードをメモしておくことをお勧めします。
+            後で必要になることがあります。
+        </div>
+
+        <div class="progress-indicator">
+            <p>現在の調査進捗をローカルストレージに保存しています</p>
+        </div>
+
+        <a href="../index.html" class="back-link">サイトに戻る →</a>
+    </div>
+
+    <script>
+        // 調査進捗を記録
+        const currentPage = localStorage.getItem('currentLogPage') || '0';
+        const visitedPages = JSON.parse(localStorage.getItem('visitedPages') || '[]');
+        
+        if (!visitedPages.includes('hint')) {
+            visitedPages.push('hint');
+            localStorage.setItem('visitedPages', JSON.stringify(visitedPages));
+        }
+
+        // ページ訪問をトラッキング
+        console.log(`ヒントページ訪問 - 現在の進捗: ${visitedPages.length}ページ`);
+    </script>
+</body>
+</html>

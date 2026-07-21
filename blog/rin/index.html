@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>りんのブログ - UnReal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .page-number {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .blog-header {
+            background: linear-gradient(135deg, #ff0000, #ff6b6b);
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .member-icon {
+            font-size: 72px;
+            margin-bottom: 20px;
+        }
+        
+        .blog-title {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .blog-subtitle {
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .blog-post {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+        
+        .post-date {
+            color: #ff0000;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .post-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .post-excerpt {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .fc-post {
+            position: relative;
+            opacity: 0.6;
+        }
+        
+        .fc-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff0000;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #ff0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #cc0000;
+        }
+        
+        /* ダイアログ */
+        .dialog-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dialog-overlay.active {
+            display: flex;
+        }
+        
+        .dialog {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .dialog-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .dialog-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .dialog-message {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .dialog-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .dialog-btn {
+            padding: 10px 30px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .dialog-btn-primary {
+            background: #ff0000;
+            color: white;
+        }
+        
+        .dialog-btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .dialog-btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="page-number">18/50</div>
+    
+    <div class="blog-header">
+        <div class="member-icon">❤️</div>
+        <h1 class="blog-title">暁月りん Official Blog</h1>
+        <p class="blog-subtitle">りんの日常をお届け♪</p>
+    </div>
+    
+    <div class="container">
+        <div class="blog-post">
+            <div class="post-date">2025.02.10</div>
+            <h2 class="post-title">みんなへ</h2>
+            <p class="post-excerpt">
+                いつも応援ありがとうございます。
+                最近体調を崩してしまって、少しお休みをいただいています。
+                心配かけてごめんね...
+            </p>
+        </div>
+        
+        <div class="blog-post fc-post" onclick="showFCDialog()">
+            <span class="fc-badge">FC限定</span>
+            <div class="post-date">2025.02.08</div>
+            <h2 class="post-title">【会員限定】真実について</h2>
+            <p class="post-excerpt">
+                この記事はFC会員限定です。
+                ログインして続きを読む...
+            </p>
+        </div>
+        
+        <div class="blog-post">
+            <div class="post-date">2025.02.01</div>
+            <h2 class="post-title">新曲「Signal」リリース！</h2>
+            <p class="post-excerpt">
+                みんな〜！新曲「Signal」が配信開始されました！
+                今回の曲には特別な思いが込められています。
+                ぜひ聴いてみてね♪
+            </p>
+        </div>
+        
+        <div class="blog-post">
+            <div class="post-date">2025.01.28</div>
+            <h2 class="post-title">UnRe:alとして</h2>
+            <p class="post-excerpt">
+                UnRe:alとしてデビューしてもうすぐ1ヶ月。
+                メンバーみんなと過ごす時間が本当に楽しくて...
+                これからもよろしくね！
+            </p>
+        </div>
+        
+        <a href="../../pages/blog.html" class="back-link">ブログ一覧に戻る</a>
+    </div>
+    
+    <!-- FCログインダイアログ -->
+    <div class="dialog-overlay" id="fcDialog">
+        <div class="dialog">
+            <div class="dialog-icon">🔐</div>
+            <h2 class="dialog-title">ログインが必要です</h2>
+            <p class="dialog-message">
+                この記事はFC会員限定です。<br>
+                閲覧するにはFCログインが必要です。
+            </p>
+            <div class="dialog-buttons">
+                <button class="dialog-btn dialog-btn-primary" onclick="goToFCLogin()">ログインページへ</button>
+                <button class="dialog-btn dialog-btn-secondary" onclick="closeDialog()">閉じる</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showFCDialog() {
+            const isLoggedIn = localStorage.getItem('fcLoggedIn') === 'true';
+            if (isLoggedIn) {
+                // ログイン済みならFC記事へ
+                window.location.href = '../../blog_ex/rin.html';
+            } else {
+                // 未ログインならダイアログ表示
+                document.getElementById('fcDialog').classList.add('active');
+            }
+        }
+        
+        function closeDialog() {
+            document.getElementById('fcDialog').classList.remove('active');
+        }
+        
+        function goToFCLogin() {
+            window.location.href = '../../pages/fc.html';
+        }
+    </script>
+</body>
+</html>

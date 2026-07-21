@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFILE - UnRe:al</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .back-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #fff;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .group-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .member-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .member-card.rin { border-color: #ff0000; }
+        .member-card.yuno { border-color: #ff69b4; }
+        .member-card.aki { border-color: #ff8c00; }
+        .member-card.mirei { border-color: #ffd700; }
+        .member-card.iroha { border-color: #00ced1; }
+        .member-card.ran { border-color: #4169e1; }
+        .member-card.nagisa { border-color: #9370db; }
+
+        .member-image {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .member-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.7));
+        }
+
+        .member-name {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .member-color-bar {
+            height: 4px;
+            border-radius: 2px;
+            margin: 0 auto;
+            width: 50px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .modal-member-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .modal-member-name {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .member-details {
+            line-height: 2;
+        }
+
+        .member-details dt {
+            font-weight: bold;
+            color: #667eea;
+            margin-top: 15px;
+        }
+
+        .member-details dd {
+            margin-left: 0;
+            color: #ccc;
+        }
+
+        .blog-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .blog-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">UnRe:al</div>
+            <a href="../index.html" class="back-link">TOP</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">PROFILE</h1>
+        
+        <div class="group-description">
+            <p>🌟 UnRe:al（アンリアル）</p>
+            <p>"非現実的な""架空の"という意味を持つ「unreal」と"再び"という意味を持つ接頭語の"Re:"を組み合わせ、名付けられた7人組女性アイドルグループ。</p>
+            <p>メンバー全員が非現実的なまでに完成されており、全員過去にアイドルや俳優としての活動経験があることから名付けられた。</p>
+        </div>
+
+        <div class="members-grid">
+            <div class="member-card rin" onclick="openModal('rin')">
+                <div class="member-image" style="background-image: url('../images/members/rin.jpg');"></div>
+                <div class="member-name">暁月 りん</div>
+                <div class="member-color-bar" style="background: #ff0000;"></div>
+            </div>
+
+            <div class="member-card yuno" onclick="openModal('yuno')">
+                <div class="member-image" style="background-image: url('../images/members/yuno.jpg');"></div>
+                <div class="member-name">百瀬 ゆの</div>
+                <div class="member-color-bar" style="background: #ff69b4;"></div>
+            </div>
+
+            <div class="member-card aki" onclick="openModal('aki')">
+                <div class="member-image" style="background-image: url('../images/members/aki.jpg');"></div>
+                <div class="member-name">燈真 あき</div>
+                <div class="member-color-bar" style="background: #ff8c00;"></div>
+            </div>
+
+            <div class="member-card mirei" onclick="openModal('mirei')">
+                <div class="member-image" style="background-image: url('../images/members/mirei.jpg');"></div>
+                <div class="member-name">城崎 みれい</div>
+                <div class="member-color-bar" style="background: #ffd700;"></div>
+            </div>
+
+            <div class="member-card iroha" onclick="openModal('iroha')">
+                <div class="member-image" style="background-image: url('../images/members/iroha.jpg');"></div>
+                <div class="member-name">桧翠 いろは</div>
+                <div class="member-color-bar" style="background: #00ced1;"></div>
+            </div>
+
+            <div class="member-card ran" onclick="openModal('ran')">
+                <div class="member-image" style="background-image: url('../images/members/ran.jpg');"></div>
+                <div class="member-name">星名 らん</div>
+                <div class="member-color-bar" style="background: #4169e1;"></div>
+            </div>
+
+            <div class="member-card nagisa" onclick="openModal('nagisa')">
+                <div class="member-image" style="background-image: url('../images/members/nagisa.jpg');"></div>
+                <div class="member-name">詩藤 なぎさ</div>
+                <div class="member-color-bar" style="background: #9370db;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="memberModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-member-image" id="modalImage"></div>
+            <h2 class="modal-member-name" id="modalName"></h2>
+            <dl class="member-details" id="modalDetails"></dl>
+            <a href="#" class="blog-link" id="blogLink">ブログを見る</a>
+        </div>
+    </div>
+
+    <script>
+        const memberData = {
+            rin: {
+                name: '暁月 りん（あかつき りん）',
+                emoji: '❤️',
+                color: '#ff0000',
+                birthday: '2001年8月1日（25歳）',
+                height: '161cm',
+                memberColor: '赤色',
+                hobby: 'ダンス、ドライブ',
+                blog: '../blog/rin'
+            },
+            yuno: {
+                name: '百瀬 ゆの（ももせ ゆの）',
+                emoji: '🩷',
+                color: '#ff69b4',
+                birthday: '2005年2月20日（22歳）',
+                height: '155cm',
+                memberColor: 'ピンク色',
+                hobby: 'ぬいぐるみ作り、お菓子作り',
+                blog: '../blog/yuno'
+            },
+            aki: {
+                name: '燈真 あき（とうま あき）',
+                emoji: '🧡',
+                color: '#ff8c00',
+                birthday: '2004年3月2日（22歳）',
+                height: '163cm',
+                memberColor: 'オレンジ色',
+                hobby: 'アウトドア、作曲',
+                blog: '../blog/aki'
+            },
+            mirei: {
+                name: '城崎 みれい（きさき みれい）',
+                emoji: '💛',
+                color: '#ffd700',
+                birthday: '2006年7月19日（20歳）',
+                height: '152cm',
+                memberColor: '黄色',
+                hobby: '料理、イラスト、演技',
+                blog: '../blog/mirei'
+            },
+            iroha: {
+                name: '桧翠 いろは（ひすい いろは）',
+                emoji: '💚',
+                color: '#00ced1',
+                birthday: '2002年11月16日（24歳）',
+                height: '167cm',
+                memberColor: 'ミントグリーン',
+                hobby: '作詞、美術館巡り',
+                blog: '../blog/iroha'
+            },
+            ran: {
+                name: '星名 らん（せいな らん）',
+                emoji: '💙',
+                color: '#4169e1',
+                birthday: '2001年8月6日（25歳）',
+                height: '162cm',
+                memberColor: 'ブルー',
+                hobby: '走ること、食べること',
+                blog: '../blog/ran'
+            },
+            nagisa: {
+                name: '詩藤 なぎさ（しどう なぎさ）',
+                emoji: '💜',
+                color: '#9370db',
+                birthday: '2003年12月3日（23歳）',
+                height: '165cm',
+                memberColor: 'パープル',
+                hobby: '占い、読書',
+                blog: '../blog/nagisa'
+            }
+        };
+
+        function openModal(memberId) {
+            const modal = document.getElementById('memberModal');
+            const member = memberData[memberId];
+            
+            document.getElementById('modalImage').style.backgroundImage = `url('../images/members/${memberId}.jpg')`;
+            document.getElementById('modalName').textContent = member.name;
+            
+            const details = `
+                <dt>生年月日</dt><dd>${member.birthday}</dd>
+                <dt>身長</dt><dd>${member.height}</dd>
+                <dt>メンバーカラー</dt><dd>${member.memberColor}</dd>
+                <dt>趣味・特技</dt><dd>${member.hobby}</dd>
+            `;
+            document.getElementById('modalDetails').innerHTML = details;
+            document.getElementById('blogLink').href = member.blog;
+            
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('memberModal').classList.remove('active');
+        }
+
+        // モーダル外クリックで閉じる
+        document.getElementById('memberModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

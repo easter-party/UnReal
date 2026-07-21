@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>機密文書 - UnReal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .page-number {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: #00ff00;
+            opacity: 0.7;
+        }
+        
+        .document-header {
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .document-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .document-classification {
+            color: #ff0000;
+            font-weight: bold;
+        }
+        
+        .document-content {
+            margin-bottom: 30px;
+        }
+        
+        .search-field {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #000;
+            border: 1px solid #00ff00;
+            padding: 10px;
+            color: #00ff00;
+        }
+        
+        .search-field input {
+            background: transparent;
+            border: none;
+            color: #00ff00;
+            outline: none;
+            width: 200px;
+        }
+        
+        a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-number">No.XX/50</div>
+    
+    <div class="container">
+        <div class="document-header">
+            <div class="document-classification">【機密文書】</div>
+            <h1 class="document-title">文書タイトル</h1>
+            <div>作成日: 20XX年XX月XX日</div>
+        </div>
+        
+        <div class="document-content">
+            <p>この文書は仮のページです。</p>
+            <p>内容は後日追加されます。</p>
+        </div>
+        
+        <div class="search-field">
+            <label>検索: </label>
+            <input type="text" id="searchInput" placeholder="キーワード入力...">
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const keyword = this.value.trim();
+                if (keyword) {
+                    window.location.href = '../index.html?search=' + encodeURIComponent(keyword);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

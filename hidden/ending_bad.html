@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bad End - UnReal</title>
+    <style>
+        body {
+            background: #000;
+            color: #ff0000;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .ending-content {
+            max-width: 600px;
+            padding: 40px;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            animation: glitch 2s infinite;
+        }
+        @keyframes glitch {
+            0%, 100% { text-shadow: 2px 0 #ff0000, -2px 0 #00ffff; }
+            50% { text-shadow: -2px 0 #ff0000, 2px 0 #00ffff; }
+        }
+        .message {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        .restart-btn {
+            padding: 15px 30px;
+            background: #ff0000;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .restart-btn:hover {
+            background: #000;
+            color: #ff0000;
+            border: 2px solid #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="ending-content">
+        <h1>BAD END</h1>
+        <div class="message">
+            <p>調査は失敗に終わった。</p>
+            <p>真実は闇に葬られ、</p>
+            <p>りんは帰ってこなかった...</p>
+            <br>
+            <p>事務所の秘密は永遠に守られることになる。</p>
+        </div>
+        <button class="restart-btn" onclick="restart()">最初からやり直す</button>
+    </div>
+    <script>
+        function restart() {
+            localStorage.clear();
+            window.location.href = '../index.html';
+        }
+    </script>
+</body>
+</html>

@@ -12,9 +12,9 @@
         }
 
         body {
-            background-color: #000000;
+            background-color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'Hiragino Sans', sans-serif;
-            color: #ffffff;
+            color: #333333;
             height: 100vh;
             overflow: hidden;
         }
@@ -100,24 +100,24 @@
             max-width: 500px;
             height: 100vh;
             margin: 0 auto;
-            background-color: #000000;
+            background-color: #ffffff;
             display: flex;
             flex-direction: column;
         }
 
         .dm-header {
-            background-color: #1a1a1a;
+            background-color: #f8f8f8;
             padding: 15px 16px 12px;
             display: flex;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         .back-btn {
-            color: #ffffff;
+            color: #333333;
             font-size: 20px;
             margin-right: 15px;
             cursor: pointer;
@@ -134,27 +134,38 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #f0f0f0;
             margin-right: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            color: white;
-            font-size: 16px;
+            font-weight: normal;
+            color: #666666;
+            font-size: 20px;
         }
 
+        .profile-name-container {
+            display: flex;
+            flex-direction: column;
+        }
+        
         .profile-name {
-            color: white;
+            color: #333333;
             font-weight: 600;
             font-size: 16px;
+        }
+        
+        .profile-username {
+            color: #666666;
+            font-size: 13px;
+            margin-top: 2px;
         }
 
         .dm-messages {
             flex: 1;
             overflow-y: auto;
             padding: 10px 12px 20px;
-            background-color: #000000;
+            background-color: #ffffff;
         }
 
         .dm-messages::-webkit-scrollbar {
@@ -209,20 +220,20 @@
         }
 
         .message.fortune .message-bubble {
-            background-color: #2a2a2a;
-            color: #ffffff;
+            background-color: #e0e0e0;
+            color: #333333;
             border-top-left-radius: 4px;
         }
 
         .message.player .message-bubble {
-            background-color: #5AC8FA;
+            background-color: #7C3AED;
             color: white;
             border-top-right-radius: 4px;
         }
 
         .message-time {
             font-size: 11px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(0, 0, 0, 0.5);
             margin-top: 3px;
             padding: 0 5px;
         }
@@ -245,7 +256,7 @@
         .typing-indicator {
             display: none;
             padding: 10px 14px;
-            background: #2a2a2a;
+            background: #e0e0e0;
             border-radius: 18px;
             border-top-left-radius: 4px;
             width: fit-content;
@@ -357,8 +368,11 @@
         <div class="dm-header">
             <a href="../index.html" class="back-btn">←</a>
             <div class="profile-section">
-                <div class="profile-pic">な</div>
-                <div class="profile-name">fortune</div>
+                <div class="profile-pic">👤</div>
+                <div class="profile-name-container">
+                    <div class="profile-name">fortune</div>
+                    <div class="profile-username">@fortune_ngs</div>
+                </div>
             </div>
         </div>
 
@@ -380,6 +394,10 @@
     </div>
 
     <script>
+        // 初回訪問チェック
+        const hasVisited = localStorage.getItem('hasVisitedDM');
+        const currentPage = localStorage.getItem('currentLogPage') || '0';
+        
         // 名前入力処理
         const userNameInput = document.getElementById('userNameInput');
         const startChatBtn = document.getElementById('startChatBtn');
@@ -400,6 +418,8 @@
 
         function startChat() {
             userName = userNameInput.value.trim();
+            localStorage.setItem('hasVisitedDM', 'true');
+            localStorage.setItem('playerName', userName);
             nameInputScreen.style.opacity = '0';
             setTimeout(() => {
                 nameInputScreen.style.display = 'none';
@@ -442,6 +462,8 @@
             { sender: 'fortune', text: '私の方でもできる限り色々探ってみます。何かこちらでも分かったことがあれば連絡しますね。', delay: 3000, hasScreenshot: true },
             { sender: 'fortune', text: 'あ、そうだ。先ほどの画像とやり取りは、念のため私のプライベートブログに保存しておきました。', delay: 2500 },
             { sender: 'fortune', text: 'UnRe:alの公式サイトの検索欄に「DM」と入力していただければ、いつでも確認できるようにしてあります。', delay: 3000 },
+            { sender: 'fortune', text: 'あたしがみつけた手がかりを残しておきます。', delay: 2000 },
+            { sender: 'fortune', text: '調査に詰まっていることがあれば私のユーザー名「@fortune_ngs」で検索してみてください。', delay: 2500 },
             { sender: 'fortune', text: 'それでは、よろしくお願いします。りんのこと、必ず見つけましょう。', delay: 2500 }
         ];
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNA鑑定結果 - UnReal</title>
+    <style>
+        body {
+            background: #e8f4f8;
+            font-family: 'Courier New', monospace;
+            padding: 40px 20px;
+        }
+        .page-number { position: fixed; top: 20px; right: 20px; opacity: 0.5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px; }
+        .match { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="page-number">14/50</div>
+    <div class="container">
+        <h1>DNA鑑定結果報告書</h1>
+        <p>検体ID: R1, R2</p>
+        <table>
+            <tr><th>項目</th><th>結果</th></tr>
+            <tr><td>一致率</td><td class="match">99.9%</td></tr>
+            <tr><td>関係性</td><td>一卵性双生児</td></tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS - UnReal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        .page-number {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .page-title {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .news-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .news-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
+        }
+        
+        .news-date {
+            color: #667eea;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .news-excerpt {
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        .news-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .search-hint {
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-number">2/50</div>
+    
+    <div class="container">
+        <h1 class="page-title">NEWS</h1>
+        
+        <div class="news-list">
+            <div class="news-item" data-keyword="活動休止">
+                <div class="news-date">2025.02.14</div>
+                <h2 class="news-title">暁月りん 活動休止のお知らせ</h2>
+                <p class="news-excerpt">
+                    UnRe:alのセンター・暁月りんが体調不良のため、しばらくの間活動を休止することをお知らせいたします。
+                    復帰時期については改めてご案内いたします。
+                </p>
+                <a href="#" class="news-link">詳細を見る →</a>
+            </div>
+            
+            <div class="news-item" data-keyword="週刊ライク">
+                <div class="news-date">2025.02.10</div>
+                <h2 class="news-title">週刊誌報道について</h2>
+                <p class="news-excerpt">
+                    一部週刊誌にて報道された内容について、事実と異なる部分が多く含まれております。
+                    詳細については後日正式に発表させていただきます。
+                </p>
+                <a href="#" class="news-link">詳細を見る →</a>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">2025.02.01</div>
+                <h2 class="news-title">ワンマンライブ開催決定！</h2>
+                <p class="news-excerpt">
+                    3月2日、東京ドームにて初のワンマンライブ「UnReal World」を開催することが決定しました！
+                    チケット情報は近日公開予定です。
+                </p>
+                <a href="#" class="news-link">詳細を見る →</a>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">2025.01.15</div>
+                <h2 class="news-title">3rdシングル「Signal」リリース</h2>
+                <p class="news-excerpt">
+                    新曲「Signal」が各種配信サイトにてリリースされました。
+                    今作は暁月りんがセンターを務める楽曲となっております。
+                </p>
+                <a href="#" class="news-link">詳細を見る →</a>
+            </div>
+        </div>
+        
+        <div class="search-hint">
+            <p>💡 ヒント: ニュース内のキーワードで検索すると、関連情報が見つかるかもしれません。</p>
+        </div>
+        
+        <a href="../index.html" class="back-link">TOPに戻る</a>
+    </div>
+    
+    <script>
+        // ニュースアイテムクリックで検索
+        document.querySelectorAll('.news-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const keyword = this.dataset.keyword;
+                if (keyword) {
+                    window.location.href = '../index.html?search=' + encodeURIComponent(keyword);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

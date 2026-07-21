@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC限定 - aki - UnReal</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .fc-badge {
+            display: inline-block;
+            background: gold;
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        .content {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            line-height: 1.8;
+        }
+        .secret-hint {
+            background: rgba(255,0,0,0.2);
+            padding: 20px;
+            border-left: 4px solid #ff0000;
+            margin-top: 30px;
+        }
+        a {
+            color: gold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="fc-badge">FC会員限定</span>
+        <h1>akiの秘密</h1>
+        <div class="content">
+            <p>FC会員の皆様へ</p>
+            <p>いつも応援ありがとうございます。</p>
+            <p>この記事は特別な内容を含んでいます。</p>
+            
+            <div class="secret-hint">
+                <p><strong>重要な手がかり：</strong></p>
+                <p>事務所には隠された秘密があります。</p>
+                <p>メンバーそれぞれのカルテを見つけてください。</p>
+                <p>キーワード: <strong>下書き</strong></p>
+            </div>
+        </div>
+        <p style="margin-top: 30px;">
+            <a href="../pages/blog.html">← ブログ一覧に戻る</a>
+        </p>
+    </div>
+    <script>
+        // FC未ログインなら追い出す
+        if (localStorage.getItem('fcLoggedIn') !== 'true') {
+            alert('FC会員限定コンテンツです');
+            window.location.href = '../pages/fc.html';
+        }
+    </script>
+</body>
+</html>
