@@ -184,7 +184,7 @@ body {
 }
 
 .search-box {
-    width: 150px;
+    width: 180px;
     padding: 8px 35px 8px 15px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 25px;
@@ -195,7 +195,7 @@ body {
 }
 
 .search-box:focus {
-    width: 200px;
+    width: 250px;
     border-color: #d4af37;
     background: #ffffff;
 }
@@ -241,8 +241,8 @@ body {
 /* ハンバーガーメニュー */
 .mobile-menu-toggle {
     display: none;
-    width: 30px;
-    height: 30px;
+    width: 44px;
+    height: 44px;
     position: relative;
     cursor: pointer;
     z-index: 1001;
@@ -250,28 +250,28 @@ body {
 
 .mobile-menu-toggle span {
     position: absolute;
-    width: 22px;
-    height: 2px;
+    width: 28px;
+    height: 3px;
     background-color: #d47b8e;
     transition: all 0.3s ease;
-    left: 4px;
+    left: 8px;
 }
 
 .mobile-menu-toggle span:nth-child(1) {
-    top: 8px;
+    top: 12px;
 }
 
 .mobile-menu-toggle span:nth-child(2) {
-    top: 14px;
+    top: 21px;
 }
 
 .mobile-menu-toggle span:nth-child(3) {
-    top: 20px;
+    top: 30px;
 }
 
 .mobile-menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg);
-    top: 14px;
+    top: 21px;
 }
 
 .mobile-menu-toggle.active span:nth-child(2) {
@@ -280,7 +280,7 @@ body {
 
 .mobile-menu-toggle.active span:nth-child(3) {
     transform: rotate(-45deg);
-    top: 14px;
+    top: 21px;
 }
 
 
