@@ -567,6 +567,17 @@
         function startMessageSequence() {
             setTimeout(showNextMessage, 1000);
         }
+
+        // ページ読み込み時の処理
+        window.addEventListener('DOMContentLoaded', function() {
+            if (hasVisited === 'true') {
+                // 既に訪問済みの場合
+                userName = localStorage.getItem('playerName') || 'ゲスト';
+                nameInputScreen.style.display = 'none';
+                startMessageSequence();
+            }
+            // 初回訪問の場合は名前入力画面が表示される
+        });
     </script>
 </body>
 </html>
