@@ -403,27 +403,49 @@
     </div>
 
     <script>
-        // 初回訪問チェック
-        const hasVisited = localStorage.getItem('hasVisitedDM');
-        const currentPage = localStorage.getItem('currentLogPage') || '0';
-        
-        // 名前入力処理
-        const userNameInput = document.getElementById('userNameInput');
-        const startChatBtn = document.getElementById('startChatBtn');
-        const nameInputScreen = document.getElementById('nameInputScreen');
+        // グローバル変数の宣言
         let userName = '';
+        let currentMessageIndex = 0;
+        let messageContainer;
+        let typingIndicator;
+        let continueBtn;
+        let nameInputScreen;
+        let userNameInput;
+        let startChatBtn;
 
-        userNameInput.addEventListener('input', function() {
-            startChatBtn.disabled = this.value.trim().length === 0;
-        });
+        // ページ読み込み時の初期化
+        window.addEventListener('DOMContentLoaded', function() {
+            // DOM要素を取得
+            messageContainer = document.getElementById('messageContainer');
+            typingIndicator = document.getElementById('typingIndicator');
+            continueBtn = document.getElementById('continueBtn');
+            nameInputScreen = document.getElementById('nameInputScreen');
+            userNameInput = document.getElementById('userNameInput');
+            startChatBtn = document.getElementById('startChatBtn');
+            
+            // 初回訪問チェック
+            const hasVisited = localStorage.getItem('hasVisitedDM');
+            
+            if (hasVisited === 'true') {
+                // 既に訪問済みの場合
+                userName = localStorage.getItem('playerName') || 'ゲスト';
+                nameInputScreen.style.display = 'none';
+                startMessageSequence();
+            } else {
+                // 初回訪問の場合、イベントリスナーを設定
+                userNameInput.addEventListener('input', function() {
+                    startChatBtn.disabled = this.value.trim().length === 0;
+                });
 
-        userNameInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && this.value.trim().length > 0) {
-                startChat();
+                userNameInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && this.value.trim().length > 0) {
+                        startChat();
+                    }
+                });
+
+                startChatBtn.addEventListener('click', startChat);
             }
         });
-
-        startChatBtn.addEventListener('click', startChat);
 
         function startChat() {
             userName = userNameInput.value.trim();
@@ -475,11 +497,6 @@
             { sender: 'fortune', text: '調査に詰まっていることがあれば私のユーザー名「@fortune_ngs」で検索してみてください。', delay: 2500 },
             { sender: 'fortune', text: 'それでは、よろしくお願いします。りんのこと、必ず見つけましょう。', delay: 2500 }
         ];
-
-        let currentMessageIndex = 0;
-        const messageContainer = document.getElementById('messageContainer');
-        const typingIndicator = document.getElementById('typingIndicator');
-        const continueBtn = document.getElementById('continueBtn');
 
         function createMessage(messageData) {
             const messageDiv = document.createElement('div');
@@ -567,17 +584,6 @@
         function startMessageSequence() {
             setTimeout(showNextMessage, 1000);
         }
-
-        // ページ読み込み時の処理
-        window.addEventListener('DOMContentLoaded', function() {
-            if (hasVisited === 'true') {
-                // 既に訪問済みの場合
-                userName = localStorage.getItem('playerName') || 'ゲスト';
-                nameInputScreen.style.display = 'none';
-                startMessageSequence();
-            }
-            // 初回訪問の場合は名前入力画面が表示される
-        });
     </script>
 </body>
 </html>
