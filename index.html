@@ -9,13 +9,11 @@
 <body>
     <div class="hero-section">
         <div class="hero-images">
-            <!-- デスクトップ用: 4:3 画像をトリミング -->
-            <img src="images/hero_43_kpop.png" alt="UnReal KPOP" class="hero-bg desktop-hero active">
-            <img src="images/hero_43_idol.png" alt="UnReal Idol" class="hero-bg desktop-hero">
+            <!-- デスクトップ用: メインビジュアル -->
+            <img src="images/hero_main.png" alt="UnReal" class="hero-bg desktop-hero active">
             
-            <!-- モバイル用: 2:3 縦長画像 -->
+            <!-- モバイル用: KPOP画像のみ（2:3 縦長） -->
             <img src="images/hero_23_kpop.png" alt="UnReal KPOP" class="hero-bg mobile-hero active">
-            <img src="images/hero_23_idol.png" alt="UnReal Idol" class="hero-bg mobile-hero">
         </div>
         <div class="hero-overlay"></div>
         <nav class="main-nav">
@@ -249,23 +247,23 @@
             }
         });
 
-        // ヒーロー画像のスライドショー
-        function startSlideshow() {
-            const isMobile = window.innerWidth <= 768;
-            const heroImages = document.querySelectorAll(isMobile ? '.mobile-hero' : '.desktop-hero');
-            let currentIndex = 0;
+        // ヒーロー画像のスライドショー（現在はデスクトップは1枚のみ、モバイルも1枚のみなので無効）
+        // function startSlideshow() {
+        //     const isMobile = window.innerWidth <= 768;
+        //     const heroImages = document.querySelectorAll(isMobile ? '.mobile-hero' : '.desktop-hero');
+        //     let currentIndex = 0;
             
-            if (heroImages.length > 1) {
-                setInterval(() => {
-                    heroImages[currentIndex].classList.remove('active');
-                    currentIndex = (currentIndex + 1) % heroImages.length;
-                    heroImages[currentIndex].classList.add('active');
-                }, 6000); // 6秒ごとに切り替え
-            }
-        }
+        //     if (heroImages.length > 1) {
+        //         setInterval(() => {
+        //             heroImages[currentIndex].classList.remove('active');
+        //             currentIndex = (currentIndex + 1) % heroImages.length;
+        //             heroImages[currentIndex].classList.add('active');
+        //         }, 6000); // 6秒ごとに切り替え
+        //     }
+        // }
 
         // ページ読み込み時に開始
-        window.addEventListener('load', startSlideshow);
+        // window.addEventListener('load', startSlideshow);
 
     </script>
 </body>

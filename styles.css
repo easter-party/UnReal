@@ -50,11 +50,11 @@ body {
     transition: opacity 2s ease-in-out;  /* よりゆっくりとしたフェード */
 }
 
-/* デスクトップ用: 4:3画像を横長にトリミング */
+/* デスクトップ用: メインビジュアル */
 .desktop-hero {
     display: block;
     object-fit: cover;  /* 画面全体を覆うようにトリミング */
-    object-position: center 41.67%;  /* 上1/12と下5/12を削る（中央やや上寄り） */
+    object-position: center center;  /* 中央に配置 */
     width: 100%;
     height: 100%;
 }

@@ -44,13 +44,17 @@
       "Bash(git commit -m \"Fix UI improvements and navigation\n\n- Move page numbers to bottom-right with better styling\n- Remove duplicate FC LOGIN from mobile menu\n- Make hamburger menu button larger (44x44px) for better tap target\n- Expand search box width (180px default, 250px on focus)\n- Add log page access keywords (47, 会話ログ, りんとなぎさ)\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
       "Bash(git commit -m \"Remove hint text from 404 page\n\n- Delete unnecessary hint message at bottom of 404 page\n- Clean up related CSS styles\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com)\")",
       "Bash(git commit -m \"Fix DM conversation not starting for returning visitors\n\n- Add logic to start conversation automatically for returning visitors\n- Check localStorage for previous visits and stored player name\n- Hide name input screen if already visited\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com)\")",
-      "Bash(git commit -m \"Fix DM conversation initialization and variable scope\n\n- Move all DOM element retrieval to DOMContentLoaded event\n- Fix variable scope issues preventing message display\n- Ensure proper initialization order for both new and returning visitors\n- Remove duplicate variable declarations\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com)\")"
+      "Bash(git commit -m \"Fix DM conversation initialization and variable scope\n\n- Move all DOM element retrieval to DOMContentLoaded event\n- Fix variable scope issues preventing message display\n- Ensure proper initialization order for both new and returning visitors\n- Remove duplicate variable declarations\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com)\")",
+      "Bash(git remote set-url origin https://github.com/easter-party/UnReal.git)",
+      "Bash(cp \"/Users/ryusan1215/Downloads/ChatGPT Image 2026年7月25日 02_54_02.png\" \"/Users/ryusan1215/Library/Mobile Documents/com~apple~CloudDocs/Work/AIMO/images/hero_main.png\")",
+      "Bash(git commit -m \"Update hero images with new main visual\n\n- Use new 7-member group image for desktop\n- Keep KPOP image for mobile version\n- Disable slideshow as only single images are used\n- Preserve unused images for future use\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com)\")"
     ],
     "deny": [],
     "ask": [],
     "additionalDirectories": [
       "/Users/ryusan1215/Downloads",
-      "/Users/ryusan1215/.ssh"
+      "/Users/ryusan1215/.ssh",
+      "/var/folders/73/6_lqsf_947n5d7pv0v0v_77w0000gn/T"
     ]
   }
 }
