@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>詩藤なぎさのブログ - UnReal</title>
+    <title>なぎさのブログ - UnReal</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            background: linear-gradient(135deg, #f5f0ff 0%, #e8e0ff 100%);
-            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f5ff 0%, #e8e8ff 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             color: #333;
             min-height: 100vh;
         }
+        
         .page-number {
             position: fixed;
             top: 20px;
@@ -19,25 +25,34 @@
             color: #999;
             font-size: 14px;
         }
+        
         .blog-header {
             background: linear-gradient(135deg, #9370db, #9370dbaa);
             padding: 60px 20px;
             text-align: center;
             color: white;
         }
+        
         .member-icon {
             font-size: 72px;
             margin-bottom: 20px;
         }
+        
         .blog-title {
             font-size: 36px;
             margin-bottom: 10px;
         }
+        
+        .blog-subtitle {
+            opacity: 0.9;
+        }
+        
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
         }
+        
         .blog-post {
             background: white;
             border-radius: 10px;
@@ -47,36 +62,27 @@
             cursor: pointer;
             transition: transform 0.3s;
         }
+        
         .blog-post:hover {
             transform: translateY(-5px);
         }
+        
         .post-date {
             color: #9370db;
             font-size: 14px;
             margin-bottom: 10px;
         }
+        
         .post-title {
             font-size: 24px;
             margin-bottom: 15px;
         }
+        
         .post-excerpt {
             color: #666;
             line-height: 1.6;
         }
-        .fc-post {
-            position: relative;
-            opacity: 0.6;
-        }
-        .fc-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #9370db;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 12px;
-        }
+        
         .back-link {
             display: inline-block;
             margin-top: 30px;
@@ -87,6 +93,10 @@
             border-radius: 20px;
             transition: all 0.3s;
         }
+        
+        .back-link:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
@@ -94,49 +104,42 @@
     
     <div class="blog-header">
         <div class="member-icon">💜</div>
-        <h1 class="blog-title">詩藤なぎさ Official Blog</h1>
+        <h1 class="blog-title">なぎさ Official Blog</h1>
+        <p class="blog-subtitle">なぎさの日常をお届け♪</p>
     </div>
     
     <div class="container">
         <div class="blog-post">
             <div class="post-date">2025.02.14</div>
-            <h2 class="post-title">今日のこと</h2>
+            <h2 class="post-title">最近のこと</h2>
             <p class="post-excerpt">
-                今日もレッスン頑張りました！
-                みんなの応援が力になっています。
-            </p>
-        </div>
-        
-        <div class="blog-post fc-post" onclick="checkFC()">
-            <span class="fc-badge">FC限定</span>
-            <div class="post-date">2025.02.12</div>
-            <h2 class="post-title">【会員限定】特別メッセージ</h2>
-            <p class="post-excerpt">
-                FC会員限定記事です。ログインして続きを読む...
+                みなさんこんにちは！なぎさです。
+                最近はレッスンが続いていて、毎日充実しています。
+                応援いつもありがとうございます♪
             </p>
         </div>
         
         <div class="blog-post">
             <div class="post-date">2025.02.01</div>
+            <h2 class="post-title">新曲について</h2>
+            <p class="post-excerpt">
+                新曲「Signal」がリリースされました！
+                今回はメンバーみんなで一生懸命練習しました。
+                ぜひ聴いてくださいね。
+            </p>
+        </div>
+        
+        <div class="blog-post">
+            <div class="post-date">2025.01.20</div>
             <h2 class="post-title">UnRe:alとして</h2>
             <p class="post-excerpt">
-                新しい挑戦が始まりました。
-                これからもよろしくお願いします！
+                UnRe:alのメンバーになれて本当に嬉しいです。
+                これからもみんなと一緒に頑張っていきます！
+                応援よろしくお願いします！
             </p>
         </div>
         
         <a href="../../pages/blog.html" class="back-link">ブログ一覧に戻る</a>
     </div>
-    
-    <script>
-        function checkFC() {
-            if (localStorage.getItem('fcLoggedIn') === 'true') {
-                window.location.href = '../../blog_ex/nagisa.html';
-            } else {
-                alert('この記事はFC会員限定です。\nFCログインページからログインしてください。');
-                window.location.href = '../../pages/fc.html';
-            }
-        }
-    </script>
 </body>
 </html>

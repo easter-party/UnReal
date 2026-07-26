@@ -83,22 +83,6 @@
             line-height: 1.6;
         }
         
-        .fc-post {
-            position: relative;
-            opacity: 0.6;
-        }
-        
-        .fc-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #ff0000;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 12px;
-        }
-        
         .back-link {
             display: inline-block;
             margin-top: 30px;
@@ -112,87 +96,6 @@
         
         .back-link:hover {
             background: #cc0000;
-        }
-        
-        /* ダイアログ */
-        .dialog-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .dialog-overlay.active {
-            display: flex;
-        }
-        
-        .dialog {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 400px;
-            animation: slideIn 0.3s ease;
-        }
-        
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .dialog-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        
-        .dialog-title {
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .dialog-message {
-            color: #666;
-            margin-bottom: 30px;
-        }
-        
-        .dialog-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-        
-        .dialog-btn {
-            padding: 10px 30px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .dialog-btn-primary {
-            background: #ff0000;
-            color: white;
-        }
-        
-        .dialog-btn-secondary {
-            background: #f0f0f0;
-            color: #333;
-        }
-        
-        .dialog-btn:hover {
-            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -213,16 +116,6 @@
                 いつも応援ありがとうございます。
                 最近体調を崩してしまって、少しお休みをいただいています。
                 心配かけてごめんね...
-            </p>
-        </div>
-        
-        <div class="blog-post fc-post" onclick="showFCDialog()">
-            <span class="fc-badge">FC限定</span>
-            <div class="post-date">2025.02.08</div>
-            <h2 class="post-title">【会員限定】真実について</h2>
-            <p class="post-excerpt">
-                この記事はFC会員限定です。
-                ログインして続きを読む...
             </p>
         </div>
         
@@ -248,42 +141,5 @@
         
         <a href="../../pages/blog.html" class="back-link">ブログ一覧に戻る</a>
     </div>
-    
-    <!-- FCログインダイアログ -->
-    <div class="dialog-overlay" id="fcDialog">
-        <div class="dialog">
-            <div class="dialog-icon">🔐</div>
-            <h2 class="dialog-title">ログインが必要です</h2>
-            <p class="dialog-message">
-                この記事はFC会員限定です。<br>
-                閲覧するにはFCログインが必要です。
-            </p>
-            <div class="dialog-buttons">
-                <button class="dialog-btn dialog-btn-primary" onclick="goToFCLogin()">ログインページへ</button>
-                <button class="dialog-btn dialog-btn-secondary" onclick="closeDialog()">閉じる</button>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        function showFCDialog() {
-            const isLoggedIn = localStorage.getItem('fcLoggedIn') === 'true';
-            if (isLoggedIn) {
-                // ログイン済みならFC記事へ
-                window.location.href = '../../blog_ex/rin.html';
-            } else {
-                // 未ログインならダイアログ表示
-                document.getElementById('fcDialog').classList.add('active');
-            }
-        }
-        
-        function closeDialog() {
-            document.getElementById('fcDialog').classList.remove('active');
-        }
-        
-        function goToFCLogin() {
-            window.location.href = '../../pages/fc.html';
-        }
-    </script>
 </body>
 </html>
