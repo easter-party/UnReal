@@ -268,22 +268,8 @@
     
     <script>
         function goToBlog(member) {
-            // ページ番号に基づいてブログへ遷移
-            const blogPages = {
-                'rin': 18,
-                'yuno': 19,
-                'aki': 20,
-                'mirei': 21,
-                'iroha': 22,
-                'ran': 23,
-                'nagisa': 24
-            };
-            
-            const pageNo = blogPages[member];
-            if (pageNo) {
-                // 検索機能を通じて遷移
-                window.location.href = '../index.html?search=' + pageNo;
-            }
+            // 直接ブログページへ遷移
+            window.location.href = '../blog/' + member + '/index.html';
         }
     </script>
 </body>
