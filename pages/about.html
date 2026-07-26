@@ -3,49 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABOUT - UnReal</title>
+    <title>PRODUCTION - UnReal</title>
     <style>
         body {
-            background: #1a1a1a;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            padding: 40px;
+            background: #ffffff;
+            color: #333;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            padding: 40px 20px;
             min-height: 100vh;
+            margin: 0;
         }
         .page-number {
             position: fixed;
-            top: 20px;
+            bottom: 20px;
             right: 20px;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
             color: #666;
+            z-index: 100;
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
         h1 {
             color: #667eea;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            font-size: 36px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 18px;
         }
         .content {
-            background: rgba(255,255,255,0.1);
-            padding: 30px;
+            background: #f8f8f8;
+            padding: 40px;
             border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        a {
+        .company-info {
+            margin-bottom: 40px;
+        }
+        .company-info h2 {
+            color: #667eea;
+            font-size: 24px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        .info-table tr {
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .info-table tr:last-child {
+            border-bottom: none;
+        }
+        .info-table th {
+            text-align: left;
+            padding: 15px;
+            background: rgba(102, 126, 234, 0.05);
+            color: #667eea;
+            font-weight: 600;
+            width: 30%;
+            vertical-align: top;
+        }
+        .info-table td {
+            padding: 15px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
             color: #667eea;
             text-decoration: none;
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            background: #667eea;
+            color: #fff;
+        }
+        .link-container {
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .content {
+                padding: 25px;
+            }
+            .info-table th {
+                width: 35%;
+            }
+            .info-table th,
+            .info-table td {
+                padding: 12px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="page-number">7/50</div>
     <div class="container">
-        <h1>ABOUT</h1>
+        <h1>PRODUCTION</h1>
+        <p class="subtitle">所属事務所</p>
+        
         <div class="content">
-            <p>会社概要（仮）</p>
-            <p style="margin-top: 30px;">
-                <a href="../index.html">← TOPに戻る</a>
-            </p>
+            <div class="company-info">
+                <h2>株式会社 Easter Production</h2>
+                <p style="color: #666; margin-bottom: 25px; font-size: 16px;">イースタープロダクション</p>
+                
+                <table class="info-table">
+                    <tr>
+                        <th>設立</th>
+                        <td>1999年4月1日</td>
+                    </tr>
+                    <tr>
+                        <th>代表者</th>
+                        <td>代表取締役　黒沢宏一</td>
+                    </tr>
+                    <tr>
+                        <th>業務内容</th>
+                        <td>
+                            • アイドル・タレント・俳優などのマネジメント<br>
+                            • イベントや番組の企画及び制作<br>
+                            • 俳優・アイドル等の教育及び育成<br>
+                            • 音楽事業
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>資本金</th>
+                        <td>1,000,000円</td>
+                    </tr>
+                    <tr>
+                        <th>所在地</th>
+                        <td>
+                            〒160-0000<br>
+                            東京都新宿区XX 1-12-5 エイプリルビル
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="link-container">
+                <a href="../index.html" class="back-link">← TOPに戻る</a>
+            </div>
         </div>
     </div>
 </body>
