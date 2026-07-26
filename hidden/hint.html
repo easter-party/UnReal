@@ -3,153 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>なぎさの調査メモ - UnReal</title>
+    <title>なぎさの調査メモ</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'Hiragino Sans', sans-serif;
-            color: #333;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #fff;
             min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .hint-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hint-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .hint-title {
+            font-size: 36px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .hint-subtitle {
+            color: #999;
+            font-size: 18px;
+        }
+        
+        .accordion-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .accordion-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+        
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+            user-select: none;
+        }
+        
+        .accordion-header:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .accordion-toggle {
+            width: 30px;
+            height: 30px;
+            border: 2px solid #667eea;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            margin-right: 15px;
+            transition: all 0.3s;
+            position: relative;
         }
-
-        .hint-container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 800px;
-            width: 100%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 0.5s ease;
+        
+        .accordion-toggle::before,
+        .accordion-toggle::after {
+            content: '';
+            position: absolute;
+            background: #667eea;
+            transition: all 0.3s;
         }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        .accordion-toggle::before {
+            width: 14px;
+            height: 2px;
         }
-
-        .hint-header {
-            text-align: center;
-            margin-bottom: 30px;
+        
+        .accordion-toggle::after {
+            width: 2px;
+            height: 14px;
         }
-
-        .hint-title {
-            font-size: 28px;
-            font-weight: bold;
+        
+        .accordion-item.active .accordion-toggle {
+            transform: rotate(45deg);
+            background: rgba(102, 126, 234, 0.2);
+        }
+        
+        .accordion-item.active .accordion-toggle::after {
+            height: 0;
+        }
+        
+        .page-number-label {
+            font-size: 18px;
             color: #667eea;
-            margin-bottom: 10px;
+            margin-right: 15px;
+            min-width: 80px;
         }
-
-        .hint-subtitle {
-            font-size: 14px;
-            color: #666;
+        
+        .page-title {
+            flex: 1;
+            font-size: 16px;
+            color: #ddd;
         }
-
-        .hint-section {
-            margin-bottom: 30px;
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: rgba(0, 0, 0, 0.3);
         }
-
-        .hint-section-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #333;
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+        
+        .hint-content {
+            padding: 20px 30px;
+        }
+        
+        .hint-text {
+            line-height: 1.8;
             margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e0e0e0;
+            color: #ccc;
         }
-
-        .hint-list {
-            list-style: none;
-        }
-
-        .hint-item {
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            transition: transform 0.2s ease;
-        }
-
-        .hint-item:hover {
-            transform: translateX(5px);
-            background: #f0f2ff;
-        }
-
+        
         .hint-keyword {
             display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 15px;
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin: 5px 5px 5px 0;
             font-size: 14px;
-            font-weight: 500;
-            margin-right: 10px;
         }
-
-        .hint-description {
-            color: #555;
-            line-height: 1.6;
-            margin-top: 8px;
-        }
-
-        .important-note {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-
-        .important-note strong {
-            color: #856404;
-        }
-
+        
         .back-link {
             display: inline-block;
-            margin-top: 30px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            margin-top: 40px;
+            color: #667eea;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border: 1px solid #667eea;
+            border-radius: 20px;
+            transition: all 0.3s;
         }
-
+        
         .back-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            background: #667eea;
+            color: #fff;
         }
-
-        .progress-indicator {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #666;
-        }
-
+        
         @media (max-width: 768px) {
             .hint-container {
-                padding: 30px 20px;
+                padding: 10px;
             }
-
+            
             .hint-title {
-                font-size: 24px;
+                font-size: 28px;
+            }
+            
+            .page-number-label {
+                min-width: 60px;
+                font-size: 16px;
+            }
+            
+            .page-title {
+                font-size: 14px;
             }
         }
     </style>
@@ -160,78 +196,216 @@
             <h1 class="hint-title">なぎさの調査メモ</h1>
             <p class="hint-subtitle">@fortune_ngs</p>
         </div>
-
-        <div class="hint-section">
-            <h2 class="hint-section-title">🔍 重要なキーワード</h2>
-            <ul class="hint-list">
-                <li class="hint-item">
-                    <span class="hint-keyword">失踪</span>
-                    <span class="hint-keyword">活動休止</span>
-                    <div class="hint-description">りんの状況について、事務所から正式な発表がありました。</div>
-                </li>
-                <li class="hint-item">
-                    <span class="hint-keyword">灰谷</span>
-                    <div class="hint-description">私たちのマネージャー。何か知っているかもしれません。</div>
-                </li>
-                <li class="hint-item">
-                    <span class="hint-keyword">週刊ライク</span>
-                    <div class="hint-description">最近、事務所についてのリーク記事を掲載した週刊誌です。</div>
-                </li>
-                <li class="hint-item">
-                    <span class="hint-keyword">Signal</span>
-                    <div class="hint-description">私たちのデビューシングル。何か意味があるのかも...？</div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="hint-section">
-            <h2 class="hint-section-title">📝 調査のヒント</h2>
-            <ul class="hint-list">
-                <li class="hint-item">
-                    <div class="hint-description">
-                        メンバーのブログには会員限定記事があります。<br>
-                        FCログインすることで、隠された情報が見られるかもしれません。
-                    </div>
-                </li>
-                <li class="hint-item">
-                    <div class="hint-description">
-                        各ページには番号が振られています（1/50のような形式）。<br>
-                        すべてのページを見つけることが、真実への鍵となるでしょう。
-                    </div>
-                </li>
-                <li class="hint-item">
-                    <div class="hint-description">
-                        人物の名前や企業名で検索すると、新しい情報が見つかることがあります。
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="important-note">
-            <strong>⚠️ 注意：</strong>
-            調査を進める際は、見つけたキーワードをメモしておくことをお勧めします。
-            後で必要になることがあります。
-        </div>
-
-        <div class="progress-indicator">
-            <p>現在の調査進捗をローカルストレージに保存しています</p>
-        </div>
-
-        <a href="../index.html" class="back-link">サイトに戻る →</a>
-    </div>
-
-    <script>
-        // 調査進捗を記録
-        const currentPage = localStorage.getItem('currentLogPage') || '0';
-        const visitedPages = JSON.parse(localStorage.getItem('visitedPages') || '[]');
         
+        <div class="accordion-container">
+            <!-- ページ2: NEWS -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-toggle"></div>
+                    <span class="page-number-label">No.2</span>
+                    <span class="page-title">ニュース記事の中に...</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="hint-content">
+                        <p class="hint-text">ニュースの見出しに注目してください。りんちゃんの状況について書かれた記事と、ある週刊誌の名前が隠されています。</p>
+                        <div class="hint-keyword">休止に関するワード</div>
+                        <div class="hint-keyword">週刊○○○</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ページ4: DISCOGRAPHY -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-toggle"></div>
+                    <span class="page-number-label">No.4</span>
+                    <span class="page-title">デビュー曲のタイトル</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="hint-content">
+                        <p class="hint-text">私たちのデビューシングル。通信や合図を意味する英単語です。</p>
+                        <div class="hint-keyword">S○○○○○</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ページ7: ABOUT -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-toggle"></div>
+                    <span class="page-number-label">No.7</span>
+                    <span class="page-title">代表の名前</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="hint-content">
+                        <p class="hint-text">事務所の代表取締役の名前。色を表す漢字が入った苗字です。</p>
+                        <div class="hint-keyword">○沢○一</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ページ9: メッセージログ -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-toggle"></div>
+                    <span class="page-number-label">No.9</span>
+                    <span class="page-title">マネージャーの名前</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="hint-content">
+                        <p class="hint-text">私たちのマネージャー。灰色の谷...という意味の苗字です。</p>
+                        <div class="hint-keyword">○谷</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ページ10: 履歴書 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-toggle"></div>
+                    <span class="page-number-label">No.10</span>
+                    <span class="page-title">前職の会社名</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="hint-content">
+                        <p class="hint-text">履歴書に記載された前職。ケーキの名前みたいなカタカナ会社名です。</p>
+                        <div class="hint-keyword">○○○○カンパニー</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ページ15: 週刊誌 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-toggle"></div>
+                    <span class="page-number-label">No.15</span>
+                    <span class="page-title">アカデミーの名前</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="hint-content">
+                        <p class="hint-text">タレント育成機関の名前。卵を意味する英語から来ています。</p>
+                        <div class="hint-keyword">○○○○アカデミー</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ページ29: パスワード -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-toggle"></div>
+                    <span class="page-number-label">No.29</span>
+                    <span class="page-title">重要な番号</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="hint-content">
+                        <p class="hint-text">りんちゃんのカルテに記載されている患者ID。Uから始まる9文字です。</p>
+                        <div class="hint-keyword">U○○○○○○○○</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ページ33: みれいBLOG_EX -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-toggle"></div>
+                    <span class="page-number-label">No.33</span>
+                    <span class="page-title">非公開記事へのキー</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="hint-content">
+                        <p class="hint-text">みれいちゃんの秘密のブログ。まだ公開されていない状態を表す言葉。</p>
+                        <div class="hint-keyword">○書き</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ページ35: らんBLOG_EX -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-toggle"></div>
+                    <span class="page-number-label">No.35</span>
+                    <span class="page-title">らんちゃんのソロ曲</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="hint-content">
+                        <p class="hint-text">らんちゃんのソロ曲タイトル。神秘的という意味の英単語です。</p>
+                        <div class="hint-keyword">M○○○○○</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ページ41: パスワード入力 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-toggle"></div>
+                    <span class="page-number-label">No.41</span>
+                    <span class="page-title">大切な日付</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="hint-content">
+                        <p class="hint-text">誰かの誕生日かもしれません。2006年7月の日付を8桁で。</p>
+                        <div class="hint-keyword">2006○○○○</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ページ42: りんのカルテ -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-toggle"></div>
+                    <span class="page-number-label">No.42</span>
+                    <span class="page-title">最重要キーワード</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="hint-content">
+                        <p class="hint-text">りんちゃんの本当の名前。明石鈴の「鈴」を別の読み方で。</p>
+                        <div class="hint-keyword">暁月○○</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ページ47: 会話ログ -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-toggle"></div>
+                    <span class="page-number-label">No.47</span>
+                    <span class="page-title">二人の会話</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="hint-content">
+                        <p class="hint-text">二人の名前を組み合わせた検索ワード。「○○と○○○」という形式で。</p>
+                        <div class="hint-keyword">○○と○○○</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <a href="../index.html" class="back-link">← TOPに戻る</a>
+    </div>
+    
+    <script>
+        // ページ訪問記録
+        const visitedPages = JSON.parse(localStorage.getItem('visitedPages') || '[]');
         if (!visitedPages.includes('hint')) {
             visitedPages.push('hint');
             localStorage.setItem('visitedPages', JSON.stringify(visitedPages));
         }
-
-        // ページ訪問をトラッキング
-        console.log(`ヒントページ訪問 - 現在の進捗: ${visitedPages.length}ページ`);
+        
+        // アコーディオン開閉
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const wasActive = item.classList.contains('active');
+            
+            // 他のアイテムを閉じる
+            document.querySelectorAll('.accordion-item').forEach(accItem => {
+                accItem.classList.remove('active');
+            });
+            
+            // クリックしたアイテムをトグル
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        }
     </script>
 </body>
 </html>

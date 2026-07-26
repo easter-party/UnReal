@@ -159,11 +159,11 @@
             const input = document.getElementById('passwordInput').value;
             const errorMsg = document.getElementById('errorMsg');
             
-            // パスワードチェック（Signal）
-            if (input === 'Signal' || input === 'signal' || input === 'SIGNAL') {
-                // 成功 - 次のページへ
+            // パスワードチェック（U81220401）
+            if (input === 'U81220401' || input === 'u81220401') {
+                // 成功 - 46番ページへ
                 localStorage.setItem('passwordCleared29', 'true');
-                window.location.href = '../pages/secret_29.html';
+                window.location.href = '../hidden/found_me.html';
             } else {
                 // エラー表示
                 errorMsg.style.display = 'block';

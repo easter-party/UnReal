@@ -178,6 +178,42 @@
         .contact-link:hover {
             text-decoration: underline;
         }
+        
+        .fc-content {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+        }
+        
+        .fc-content h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .blog-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .blog-link {
+            display: block;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .blog-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.3);
+        }
     </style>
 </head>
 <body>
@@ -209,6 +245,21 @@
         <div class="contact-btn" id="contactBtn">
             <a href="#" class="contact-link" onclick="goToContact()">→ CONTACT</a>
         </div>
+        
+        <div class="fc-content" id="fcContent">
+            <h2>🌟 FC会員限定コンテンツ</h2>
+            <p>ログインありがとうございます！</p>
+            <p>以下のメンバーの限定ブログをご覧いただけます：</p>
+            <div class="blog-links">
+                <a href="../blog_ex/rin.html" class="blog-link">りんの秘密</a>
+                <a href="../blog_ex/yuno.html" class="blog-link">ゆのの秘密</a>
+                <a href="../blog_ex/aki.html" class="blog-link">あきの秘密</a>
+                <a href="../blog_ex/mirei.html" class="blog-link">みれいの秘密</a>
+                <a href="../blog_ex/iroha.html" class="blog-link">いろはの秘密</a>
+                <a href="../blog_ex/ran.html" class="blog-link">らんの秘密</a>
+                <a href="../blog_ex/nagisa.html" class="blog-link">なぎさの秘密</a>
+            </div>
+        </div>
     </div>
     
     <a href="../index.html" class="back-link">← TOPに戻る</a>
@@ -222,13 +273,9 @@
             const password = document.getElementById('password').value.trim();
             const statusMsg = document.getElementById('statusMessage');
             
-            // 仮のログイン情報（2パターン）
+            // ログイン情報（1パターンのみ）
             const validLogins = [
-                { id: 'user1', pass: 'pass1' },
-                { id: 'user2', pass: 'pass2' },
-                // 実際のメンバー関連（例）
-                { id: 'fortune_ngs', pass: 'fortune' },
-                { id: 'nagisa', pass: 'Mystic' }
+                { id: 'user', pass: 'pass' }
             ];
             
             const isValid = validLogins.some(login => 
@@ -247,10 +294,8 @@
                 // CONTACTボタン表示
                 document.getElementById('contactBtn').style.display = 'block';
                 
-                setTimeout(() => {
-                    // ブログページにリダイレクト
-                    window.location.href = 'blog.html';
-                }, 2000);
+                // FCコンテンツを表示（ページ遷移なし）
+                showFCContent();
             } else {
                 // ログイン失敗
                 statusMsg.className = 'status-message error';
@@ -263,6 +308,12 @@
             }
         });
         
+        // FCコンテンツ表示
+        function showFCContent() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('fcContent').style.display = 'block';
+        }
+        
         // CONTACTページへ（ゴール）
         function goToContact() {
             // CONTACTページへ遷移（クリア画面）
@@ -273,6 +324,7 @@
         window.addEventListener('load', function() {
             if (localStorage.getItem('fcLoggedIn') === 'true') {
                 document.getElementById('contactBtn').style.display = 'block';
+                showFCContent();
             }
         });
     </script>
