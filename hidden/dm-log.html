@@ -581,7 +581,7 @@
                 messageContainer.scrollTop = messageContainer.scrollHeight;
                 
                 currentMessageIndex++;
-                setTimeout(showNextMessage, messageData.delay);
+                setTimeout(() => showNextMessage(), messageData.delay);
             }, messageData.sender === 'fortune' ? 1500 : 500);
         }
 
@@ -590,7 +590,7 @@
             console.log('startMessageSequence関数が実行されました');
             console.log('メッセージ数:', messages.length);
             console.log('messageContainer:', messageContainer);
-            setTimeout(showNextMessage, 1000);
+            setTimeout(() => showNextMessage(), 1000);
         }
     </script>
 </body>
