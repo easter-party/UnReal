@@ -428,8 +428,11 @@
             
             if (hasVisited === 'true') {
                 // 既に訪問済みの場合
+                console.log('リピーター訪問検出');
                 userName = localStorage.getItem('playerName') || 'ゲスト';
+                console.log('ユーザー名:', userName);
                 nameInputScreen.style.display = 'none';
+                console.log('メッセージシーケンス開始');
                 startMessageSequence();
             } else {
                 // 初回訪問の場合、イベントリスナーを設定
@@ -554,7 +557,9 @@
         }
 
         function showNextMessage() {
+            console.log('showNextMessage実行 - インデックス:', currentMessageIndex);
             if (currentMessageIndex >= messages.length) {
+                console.log('全メッセージ表示完了');
                 typingIndicator.classList.remove('show');
                 continueBtn.classList.add('show');
                 return;
@@ -582,6 +587,9 @@
 
         // メッセージ表示を開始
         function startMessageSequence() {
+            console.log('startMessageSequence関数が実行されました');
+            console.log('メッセージ数:', messages.length);
+            console.log('messageContainer:', messageContainer);
             setTimeout(showNextMessage, 1000);
         }
     </script>
