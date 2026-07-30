@@ -2,8 +2,8 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message - fortune</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>DM - なぎさ</title>
     <style>
         * {
             margin: 0;
@@ -24,13 +24,13 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
+            z-index: 1000;
             transition: opacity 0.5s ease;
         }
 
@@ -38,33 +38,32 @@
             background: white;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             text-align: center;
             max-width: 400px;
             width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .name-input-title {
             font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
             color: #333;
+            margin-bottom: 10px;
         }
 
         .name-input-subtitle {
-            font-size: 14px;
             color: #666;
             margin-bottom: 30px;
+            font-size: 14px;
         }
 
         .name-input-field {
             width: 100%;
             padding: 15px;
-            font-size: 16px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
+            font-size: 16px;
             margin-bottom: 20px;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s;
         }
 
         .name-input-field:focus {
@@ -72,31 +71,31 @@
             border-color: #667eea;
         }
 
-        .name-input-button {
+        .start-chat-btn {
             width: 100%;
             padding: 15px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            font-size: 16px;
-            font-weight: bold;
             border: none;
             border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: opacity 0.3s;
         }
 
-        .name-input-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .name-input-button:disabled {
+        .start-chat-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
 
-        /* メインのDM画面 */
+        .start-chat-btn:not(:disabled):hover {
+            opacity: 0.9;
+        }
+
+        /* DM画面 */
         .dm-container {
+            position: relative;
             max-width: 500px;
             height: 100vh;
             margin: 0 auto;
@@ -121,13 +120,11 @@
             font-size: 20px;
             margin-right: 15px;
             cursor: pointer;
-            text-decoration: none;
-        }
-
-        .profile-section {
             display: flex;
             align-items: center;
-            flex: 1;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
         }
 
         .profile-pic {
@@ -169,20 +166,14 @@
         }
 
         .dm-messages::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .dm-messages::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .dm-messages::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 3px;
+            width: 0;
+            display: none;
         }
 
         .message {
-            margin-bottom: 8px;
+            display: flex;
+            margin-bottom: 16px;
+            align-items: flex-end;
             animation: fadeIn 0.3s ease-in;
             opacity: 0;
             animation-fill-mode: forwards;
@@ -199,112 +190,88 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .message-bubble {
-            max-width: 65%;
-            min-width: fit-content;
+            max-width: 70%;
             padding: 10px 14px;
             border-radius: 18px;
             font-size: 15px;
             line-height: 1.4;
-            word-wrap: break-word;
-            word-break: keep-all;
-            white-space: nowrap;
             position: relative;
-            display: inline-block;
-        }
-        
-        .message-bubble.wrapped {
+            word-wrap: break-word;
             white-space: pre-wrap;
-            word-break: break-word;
+        }
+
+        .message-bubble.wrapped {
+            white-space: normal;
         }
 
         .message.fortune .message-bubble {
-            background-color: #e0e0e0;
+            background-color: #f0f0f0;
             color: #333333;
-            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
         }
 
         .message.player .message-bubble {
-            background-color: #7C3AED;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
         }
 
         .message-time {
             font-size: 11px;
-            color: rgba(0, 0, 0, 0.5);
-            margin-top: 3px;
-            padding: 0 5px;
-        }
-
-        .message.fortune .message-time {
-            text-align: left;
-        }
-
-        .message.player .message-time {
-            text-align: right;
+            color: #999999;
+            margin-top: 4px;
+            padding: 0 4px;
         }
 
         .message-image {
-            margin-top: 8px;
-            max-width: 100%;
+            width: 100%;
+            max-width: 300px;
             border-radius: 12px;
-            display: block;
+            margin-top: 8px;
         }
 
         .typing-indicator {
             display: none;
-            padding: 10px 14px;
-            background: #e0e0e0;
-            border-radius: 18px;
-            border-top-left-radius: 4px;
-            width: fit-content;
-            margin-bottom: 8px;
+            padding: 16px 14px;
+            opacity: 0;
+            animation: fadeIn 0.3s ease-in forwards;
         }
 
         .typing-indicator.show {
-            display: inline-block;
+            display: block;
         }
 
         .typing-dots {
             display: flex;
+            align-items: center;
             gap: 4px;
         }
 
         .typing-dot {
             width: 8px;
             height: 8px;
-            background: #999;
+            background-color: #999999;
             border-radius: 50%;
-            animation: typing 1.4s infinite;
+            animation: typingDot 1.4s infinite;
         }
 
-        .typing-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
+        .typing-dot:nth-child(1) { animation-delay: 0s; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
 
-        .typing-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes typing {
+        @keyframes typingDot {
             0%, 60%, 100% {
-                opacity: 0.3;
                 transform: translateY(0);
+                opacity: 0.5;
             }
             30% {
-                opacity: 1;
                 transform: translateY(-10px);
+                opacity: 1;
             }
         }
 
@@ -314,25 +281,29 @@
             right: 30px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
+            padding: 15px 30px;
+            border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: bold;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s ease;
+            opacity: 0;
             display: none;
-            animation: slideIn 0.5s ease;
-            z-index: 200;
+            transition: all 0.3s ease;
+        }
+
+        .continue-btn.show {
+            display: inline-block;
+            animation: slideIn 0.5s ease forwards;
         }
 
         @keyframes slideIn {
             from {
-                transform: translateX(100px);
                 opacity: 0;
+                transform: translateY(20px);
             }
             to {
-                transform: translateX(0);
                 opacity: 1;
+                transform: translateY(0);
             }
         }
 
@@ -341,22 +312,16 @@
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
         }
 
-        .continue-btn.show {
-            display: block;
-        }
-
-        @media (max-width: 768px) {
+        @media screen and (max-width: 500px) {
             .dm-container {
                 max-width: 100%;
             }
-
+            
             .continue-btn {
                 bottom: 20px;
                 right: 20px;
-            }
-
-            .message-bubble {
-                max-width: 80%;
+                left: 20px;
+                text-align: center;
             }
         }
     </style>
@@ -365,28 +330,25 @@
     <!-- 名前入力画面 -->
     <div class="name-input-screen" id="nameInputScreen">
         <div class="name-input-container">
-            <h1 class="name-input-title">あなたの名前を教えてください</h1>
-            <p class="name-input-subtitle">メッセージで表示される名前を入力してください</p>
-            <input type="text" class="name-input-field" id="userNameInput" placeholder="名前を入力" maxlength="20">
-            <button class="name-input-button" id="startChatBtn" disabled>チャットを開始</button>
+            <h2 class="name-input-title">ようこそ</h2>
+            <p class="name-input-subtitle">あなたの名前を教えてください</p>
+            <input type="text" class="name-input-field" id="userNameInput" placeholder="名前を入力">
+            <button class="start-chat-btn" id="startChatBtn" disabled>会話を始める</button>
         </div>
     </div>
 
-    <!-- メインのDM画面 -->
-    <div class="dm-container">
+    <!-- DM画面 -->
+    <div class="dm-container" id="dmContainer">
         <div class="dm-header">
-            <a href="../index.html" class="back-btn">←</a>
-            <div class="profile-section">
-                <div class="profile-pic">👤</div>
-                <div class="profile-name-container">
-                    <div class="profile-name">fortune</div>
-                    <div class="profile-username">@fortune_ngs</div>
-                </div>
+            <div class="back-btn">←</div>
+            <div class="profile-pic">💜</div>
+            <div class="profile-name-container">
+                <div class="profile-name">詩藤なぎさ</div>
+                <div class="profile-username">@fortune_ngs</div>
             </div>
         </div>
 
         <div class="dm-messages" id="messageContainer">
-            <!-- メッセージがJavaScriptで動的に追加される -->
         </div>
 
         <div class="typing-indicator" id="typingIndicator">
@@ -403,49 +365,12 @@
     </div>
 
     <script>
-        // 初回訪問チェック
-        const hasVisited = localStorage.getItem('hasVisitedDM');
-        const currentPage = localStorage.getItem('currentLogPage') || '0';
-        
-        // 名前入力処理
-        const userNameInput = document.getElementById('userNameInput');
-        const startChatBtn = document.getElementById('startChatBtn');
-        const nameInputScreen = document.getElementById('nameInputScreen');
+        // グローバル変数
         let userName = '';
-
-        // リピーター（2回目以降の訪問）の場合
-        if (hasVisited === 'true') {
-            userName = localStorage.getItem('playerName') || 'ゲスト';
-            nameInputScreen.style.display = 'none';
-            // DOMが読み込まれてから実行
-            window.addEventListener('DOMContentLoaded', function() {
-                startMessageSequence();
-            });
-        } else {
-            // 初回訪問の場合
-            userNameInput.addEventListener('input', function() {
-                startChatBtn.disabled = this.value.trim().length === 0;
-            });
-
-            userNameInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' && this.value.trim().length > 0) {
-                    startChat();
-                }
-            });
-
-            startChatBtn.addEventListener('click', startChat);
-        }
-
-        function startChat() {
-            userName = userNameInput.value.trim();
-            localStorage.setItem('hasVisitedDM', 'true');
-            localStorage.setItem('playerName', userName);
-            nameInputScreen.style.opacity = '0';
-            setTimeout(() => {
-                nameInputScreen.style.display = 'none';
-                startMessageSequence();
-            }, 500);
-        }
+        let currentMessageIndex = 0;
+        let messageContainer;
+        let typingIndicator;
+        let continueBtn;
 
         // メッセージのデータ
         const messages = [
@@ -487,10 +412,58 @@
             { sender: 'fortune', text: 'それでは、よろしくお願いします。りんのこと、必ず見つけましょう。', delay: 2500 }
         ];
 
-        let currentMessageIndex = 0;
-        const messageContainer = document.getElementById('messageContainer');
-        const typingIndicator = document.getElementById('typingIndicator');
-        const continueBtn = document.getElementById('continueBtn');
+        // DOM読み込み完了後に実行
+        window.addEventListener('DOMContentLoaded', function() {
+            // DOM要素を取得
+            messageContainer = document.getElementById('messageContainer');
+            typingIndicator = document.getElementById('typingIndicator');
+            continueBtn = document.getElementById('continueBtn');
+            const nameInputScreen = document.getElementById('nameInputScreen');
+            const userNameInput = document.getElementById('userNameInput');
+            const startChatBtn = document.getElementById('startChatBtn');
+            
+            // 初回訪問チェック
+            const hasVisited = localStorage.getItem('hasVisitedDM');
+            
+            if (hasVisited === 'true') {
+                // 既に訪問済みの場合
+                userName = localStorage.getItem('playerName') || 'ゲスト';
+                nameInputScreen.style.display = 'none';
+                // DOM要素が確実に設定された後に開始
+                setTimeout(() => {
+                    if (messageContainer && typingIndicator && continueBtn) {
+                        startMessageSequence();
+                    }
+                }, 100);
+            } else {
+                // 初回訪問の場合、イベントリスナーを設定
+                userNameInput.addEventListener('input', function() {
+                    startChatBtn.disabled = this.value.trim().length === 0;
+                });
+
+                userNameInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && this.value.trim().length > 0) {
+                        startChat();
+                    }
+                });
+
+                startChatBtn.addEventListener('click', startChat);
+                
+                function startChat() {
+                    userName = userNameInput.value.trim();
+                    localStorage.setItem('hasVisitedDM', 'true');
+                    localStorage.setItem('playerName', userName);
+                    nameInputScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        nameInputScreen.style.display = 'none';
+                        // DOM要素が確実に設定されているか確認
+                        if (messageContainer && typingIndicator && continueBtn) {
+                            startMessageSequence();
+                        }
+                    }, 500);
+                }
+            }
+        });
 
         function createMessage(messageData) {
             const messageDiv = document.createElement('div');
@@ -500,12 +473,10 @@
             const bubbleDiv = document.createElement('div');
             bubbleDiv.className = 'message-bubble';
             
-            // プレイヤー名を表示
-            const displayName = messageData.sender === 'player' ? userName : 'なぎさ';
+            // テキスト設定
             bubbleDiv.textContent = messageData.text;
             
             // テキストの長さに応じて折り返しを制御
-            // 仮の要素で実際の幅を測定
             const tempSpan = document.createElement('span');
             tempSpan.style.cssText = 'visibility: hidden; position: absolute; font-size: 15px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; white-space: nowrap; padding: 10px 14px;';
             tempSpan.textContent = messageData.text;
@@ -513,11 +484,9 @@
             const textWidth = tempSpan.offsetWidth;
             document.body.removeChild(tempSpan);
             
-            // コンテナの幅の65%を計算
             const containerWidth = document.getElementById('dmContainer').offsetWidth;
             const maxWidth = containerWidth * 0.65;
             
-            // テキスト幅がmax-widthを超える場合のみ折り返しを有効にする
             if (textWidth > maxWidth) {
                 bubbleDiv.classList.add('wrapped');
             }
