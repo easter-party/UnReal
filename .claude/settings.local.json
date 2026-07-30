@@ -69,7 +69,8 @@
       "Bash(grep -n \"function showNextMessage\\|function startMessageSequence\" hidden/dm-log.html)",
       "Bash(git commit -m \"Fix DM conversation initialization with proper DOM element handling\n\n- Add safety checks to ensure DOM elements are loaded before starting conversation\n- Add 100ms delay for returning visitors to ensure DOM is ready\n- Add null checks before calling startMessageSequence\n- Ensure both first-time and returning visitors properly initialize DOM references\n\nRoot cause: Functions were defined outside DOMContentLoaded but relied on DOM elements that were only assigned inside the event handler, causing undefined references when called.\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
       "Bash(grep -A 20 \".message.player\" hidden/dm-log.html)",
-      "Bash(git commit -m \"DMページを初期の動作版に復元して会話を正常に開始できるよう修正\n\n- 名前入力画面を削除し、シンプルなDM表示に戻す\n- 変数の初期化を直接行うよう修正（DOMContentLoadedの外で）\n- showNextMessageを即座に開始するよう修正\n- Twitter/X風のダークテーマUIに復元\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
+      "Bash(git commit -m \"DMページを初期の動作版に復元して会話を正常に開始できるよう修正\n\n- 名前入力画面を削除し、シンプルなDM表示に戻す\n- 変数の初期化を直接行うよう修正（DOMContentLoadedの外で）\n- showNextMessageを即座に開始するよう修正\n- Twitter/X風のダークテーマUIに復元\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
+      "Bash(git commit -m \"DM画面に名前入力機能を追加（初回のみ表示、2回目以降はスキップ）\n\n- 初回訪問時は名前入力画面を表示\n- 名前を入力して会話開始ボタンで会話スタート\n- 2回目以降の訪問時は名前入力をスキップして即座に会話開始\n- localStorageで訪問履歴と名前を保存\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
     ],
     "deny": [],
     "ask": [],

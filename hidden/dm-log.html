@@ -19,6 +19,81 @@
             overflow: hidden;
         }
 
+        /* 名前入力画面 */
+        .name-input-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+
+        .name-input-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .name-input-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .name-input-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .name-input-field {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+            color: #333;
+        }
+
+        .name-input-field:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .start-chat-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .start-chat-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .start-chat-btn:not(:disabled):hover {
+            opacity: 0.9;
+        }
+
         .dm-container {
             max-width: 600px;
             height: 100vh;
@@ -285,6 +360,16 @@
     </style>
 </head>
 <body>
+    <!-- 名前入力画面 -->
+    <div class="name-input-screen" id="nameInputScreen">
+        <div class="name-input-container">
+            <h1 class="name-input-title">ようこそ</h1>
+            <p class="name-input-subtitle">あなたの名前を教えてください</p>
+            <input type="text" class="name-input-field" id="userNameInput" placeholder="名前を入力">
+            <button class="start-chat-btn" id="startChatBtn" disabled>会話を開始</button>
+        </div>
+    </div>
+
     <div class="dm-container">
         <div class="dm-header">
             <a href="../index.html" class="back-btn">←</a>
@@ -317,6 +402,48 @@
     </div>
 
     <script>
+        // 初回訪問チェック
+        window.addEventListener('DOMContentLoaded', function() {
+            const hasVisited = localStorage.getItem('hasVisitedDM');
+            const nameInputScreen = document.getElementById('nameInputScreen');
+            const userNameInput = document.getElementById('userNameInput');
+            const startChatBtn = document.getElementById('startChatBtn');
+            
+            if (hasVisited === 'true') {
+                // 2回目以降：名前入力をスキップして即座に会話開始
+                nameInputScreen.style.display = 'none';
+                startConversation();
+            } else {
+                // 初回：名前入力画面を表示
+                userNameInput.addEventListener('input', function() {
+                    startChatBtn.disabled = this.value.trim().length === 0;
+                });
+
+                userNameInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && this.value.trim().length > 0) {
+                        startChatProcess();
+                    }
+                });
+
+                startChatBtn.addEventListener('click', startChatProcess);
+            }
+            
+            function startChatProcess() {
+                const userName = userNameInput.value.trim();
+                if (userName) {
+                    localStorage.setItem('playerName', userName);
+                    localStorage.setItem('hasVisitedDM', 'true');
+                    
+                    // フェードアウト効果
+                    nameInputScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        nameInputScreen.style.display = 'none';
+                        startConversation();
+                    }, 500);
+                }
+            }
+        });
+
         const messages = [
             { sender: 'fortune', text: '突然のご連絡で申し訳ありません。', delay: 1000 },
             { sender: 'fortune', text: '私、UnRe:alというアイドルグループで活動している 詩藤なぎさ といいます。', delay: 2000 },
@@ -445,8 +572,10 @@
             }, messageData.sender === 'fortune' ? 1500 : 500);
         }
 
-        // メッセージの表示を開始
-        setTimeout(showNextMessage, 1000);
+        // 会話を開始する関数
+        function startConversation() {
+            setTimeout(showNextMessage, 1000);
+        }
     </script>
 </body>
 </html>
