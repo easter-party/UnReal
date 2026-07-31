@@ -6,8 +6,8 @@
 
 body {
     font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Yu Gothic', YuGothic, sans-serif;
-    background-color: #ffffff;
-    color: #d47b8e;
+    background-color: #722F37;
+    color: #ffffff;
     overflow-x: hidden;
     line-height: 1.6;
 }
@@ -23,7 +23,7 @@ body {
     position: relative;
     height: 100vh;
     min-height: 600px;
-    background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+    background: linear-gradient(135deg, #722F37 0%, #4A1F24 100%);
     overflow: hidden;
 }
 

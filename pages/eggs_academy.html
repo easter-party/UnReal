@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>エッグスアカデミー</title>
+    <title>EGGS ACADEMY</title>
     <style>
         * {
             margin: 0;
@@ -12,10 +12,11 @@
         }
         
         body {
-            background: #f8f8f8;
+            background: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'Hiragino Sans', sans-serif;
             color: #333;
             min-height: 100vh;
+            padding: 40px 20px;
         }
         
         .page-number {
@@ -24,47 +25,53 @@
             right: 20px;
             color: #999;
             font-size: 12px;
+            z-index: 100;
         }
         
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 60px 20px;
             text-align: center;
         }
         
         .logo {
-            font-size: 48px;
+            font-size: 60px;
             margin-bottom: 20px;
         }
         
         .company-name {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: bold;
             color: #ff9800;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 60px;
         }
         
         .news-section {
-            background: white;
+            background: #f9f9f9;
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            text-align: left;
         }
         
         .news-title {
-            font-size: 24px;
-            margin-bottom: 30px;
+            font-size: 20px;
             color: #ff9800;
-        }
-        
-        .news-list {
-            text-align: left;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
         }
         
         .news-item {
             padding: 20px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #e0e0e0;
         }
         
         .news-item:last-child {
@@ -72,31 +79,34 @@
         }
         
         .news-date {
-            font-size: 14px;
-            color: #999;
+            color: #ff9800;
+            font-size: 12px;
+            font-weight: bold;
             margin-bottom: 8px;
         }
         
         .news-content {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        
-        .news-content .highlight {
-            color: #ff9800;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .news-content .highlight:hover {
-            text-decoration: underline;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.8;
         }
         
         .footer {
             margin-top: 60px;
-            padding: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
             color: #999;
-            font-size: 14px;
+            font-size: 12px;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 30px;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -105,53 +115,58 @@
     
     <div class="container">
         <div class="logo">🥚</div>
-        <h1 class="company-name">エッグスアカデミー</h1>
+        <h1 class="company-name">EGGS ACADEMY</h1>
+        <p class="tagline">子役タレント育成アカデミー</p>
         
         <div class="news-section">
             <h2 class="news-title">NEWS</h2>
             
-            <div class="news-list">
-                <div class="news-item">
-                    <div class="news-date">2025.02.01</div>
-                    <div class="news-content">
-                        弊社所属の<span class="highlight" data-search="金城未怜">金城未怜</span>がEaster Productionへ移籍し、
-                        UnRe:alとしてデビューすることが決定しました。
-                    </div>
+            <div class="news-item">
+                <div class="news-date">2025.02.15</div>
+                <div class="news-content">
+                    新規生徒募集を一時停止いたします。再開時期は未定です。
                 </div>
-                
-                <div class="news-item">
-                    <div class="news-date">2025.01.15</div>
-                    <div class="news-content">
-                        春期オーディション開催決定！次世代スターを募集中です。
-                        詳細は公式サイトをご確認ください。
-                    </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">2025.02.01</div>
+                <div class="news-content">
+                    第3期生の卒業式を執り行いました。7名の生徒が無事に卒業し、提携事務所への所属が決定しました。
                 </div>
-                
-                <div class="news-item">
-                    <div class="news-date">2024.12.20</div>
-                    <div class="news-content">
-                        年末年始の営業についてのお知らせ
-                    </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">2025.01.15</div>
+                <div class="news-content">
+                    特別カリキュラム「表現力向上プログラム」を開始しました。優秀な生徒には特別な育成プランをご用意しています。
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">2024.12.20</div>
+                <div class="news-content">
+                    イースタープロダクションとの業務提携を発表。卒業生の進路がさらに充実します。
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">2024.11.30</div>
+                <div class="news-content">
+                    第4期生募集要項を公開しました。特別な素質をお持ちのお子様を募集しています。
                 </div>
             </div>
         </div>
         
+        <div class="warning">
+            ※ 当アカデミーへの入学には適性検査が必要です。詳細はお問い合わせください。
+        </div>
+        
         <div class="footer">
-            <p>© 2025 エッグスアカデミー</p>
-            <p>未来のスターを育てる養成所</p>
+            <p>&copy; 2025 EGGS ACADEMY - All Rights Reserved</p>
+            <p style="margin-top: 10px; font-size: 10px; opacity: 0.5;">
+                提携：イースタープロダクション
+            </p>
         </div>
     </div>
-    
-    <script>
-        // ハイライトされた名前クリックで検索
-        document.querySelectorAll('.highlight').forEach(item => {
-            item.addEventListener('click', function() {
-                const keyword = this.dataset.search;
-                if (keyword) {
-                    window.location.href = '../index.html?search=' + encodeURIComponent(keyword);
-                }
-            });
-        });
-    </script>
 </body>
 </html>

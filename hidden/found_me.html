@@ -102,24 +102,20 @@
             font-size: 16px;
         }
 
-        .important-text {
-            color: #ffff00;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
-        .terminal-section {
-            background: #000;
-            border: 2px solid #00ff00;
+        .terminal-input {
+            background: rgba(0, 20, 0, 0.9);
+            border: 1px solid #00ff00;
             border-radius: 5px;
             padding: 20px;
-            margin-top: 30px;
-            font-family: 'Courier New', monospace;
+            margin-top: 40px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
         }
 
-        .terminal-prompt {
+        .terminal-label {
             color: #00ff00;
             margin-bottom: 10px;
+            font-size: 14px;
+            display: block;
         }
 
         .keyword-input {
@@ -127,72 +123,53 @@
             background: #000;
             border: 1px solid #00ff00;
             color: #00ff00;
-            padding: 10px;
-            font-size: 16px;
+            padding: 15px;
             font-family: 'Courier New', monospace;
-            margin-bottom: 20px;
+            font-size: 16px;
+            border-radius: 3px;
+            margin-bottom: 15px;
         }
 
         .keyword-input:focus {
             outline: none;
-            border-color: #00ff00;
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
 
         .submit-btn {
-            background: #00ff00;
+            background: linear-gradient(135deg, #00cc00, #00ff00);
             color: #000;
             border: none;
-            padding: 12px 30px;
+            padding: 15px 30px;
             font-size: 16px;
             font-weight: bold;
+            border-radius: 5px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
+            transition: all 0.3s;
+            width: 100%;
         }
 
         .submit-btn:hover {
-            background: #000;
-            color: #00ff00;
-            border: 2px solid #00ff00;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 0, 0.5);
         }
 
         .error-message {
             color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
             margin-top: 10px;
             display: none;
-            animation: blink 0.5s ease-in-out;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        .glitch-text {
+            animation: textGlitch 0.5s infinite;
         }
 
-
-        .back-link {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            color: #00ff00;
-            text-decoration: none;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-
-        .back-link:hover {
-            opacity: 1;
-        }
-
-        @media (max-width: 768px) {
-            .log-title {
-                font-size: 24px;
-            }
-            
-            .log-content {
-                padding: 20px;
-            }
+        @keyframes textGlitch {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-2px); }
+            40% { transform: translateX(2px); }
+            60% { transform: translateX(-1px); }
+            80% { transform: translateX(1px); }
         }
     </style>
 </head>
@@ -201,94 +178,62 @@
         <div class="page-number">46/50</div>
         
         <div class="log-header">
-            <h1 class="log-title">調査ログ No.46</h1>
-            <p class="log-subtitle">最終確認フェーズ</p>
+            <h1 class="log-title">FOUND ME</h1>
+            <p class="log-subtitle">最終確認システム</p>
         </div>
-
+        
         <div class="log-content">
             <div class="log-text">
-                <p>あなたはついに真実に辿り着いた。</p>
+                <p>よくここまで辿り着きました。</p>
+                <p>あなたが真実に到達したことを確認します。</p>
                 <br>
-                <p>暁月りんの失踪、そして<span class="important-text">イースターの闇</span>。</p>
-                <p>すべての証拠は揃った。</p>
+                <p>この先に進むには、あなたが本当に全てを理解したか確認する必要があります。</p>
                 <br>
-                <p>事務所が隠し続けてきた秘密、それは...</p>
-                <p>メンバー全員が<span class="important-text">実験体</span>として利用されていたという事実。</p>
+                <p class="glitch-text">「彼女たちの本当の名前を知っていますか？」</p>
                 <br>
-                <p>りんは真実を知り、それを世に公表しようとした。</p>
-                <p>しかし、事務所はそれを許さなかった。</p>
-                <br>
-                <p>今、あなたの選択が物語の結末を決める。</p>
-            </div>
-
-            <div class="terminal-section">
-                <div class="terminal-prompt">&gt; システムメッセージ</div>
-                <p style="color: #00ff00; margin-bottom: 20px;">
-                    最終確認を行います。<br>
-                    真実を公表するためのキーワードを入力してください。
-                </p>
-                
-                <input type="text" class="keyword-input" id="keywordInput" placeholder="キーワードを入力...">
-                <button class="submit-btn" onclick="checkKeyword()">送信</button>
-                
-                <div class="error-message" id="errorMessage">
-                    不正解です。バッドエンドへ...
-                </div>
+                <p>正しいキーワードを入力してください。</p>
+                <p>答えは一つではありません。</p>
             </div>
         </div>
 
-        <a href="../index.html" class="back-link">← TOPに戻る</a>
+        <div class="terminal-input">
+            <label class="terminal-label">KEYWORD INPUT &gt;</label>
+            <input type="text" class="keyword-input" id="keywordInput" placeholder="キーワードを入力..." autocomplete="off">
+            <button class="submit-btn" onclick="checkKeyword()">送信</button>
+            <div class="error-message" id="errorMessage">不正解です。もう一度調査してください。</div>
+        </div>
     </div>
 
     <script>
-        // ページ訪問記録
-        const visitedPages = JSON.parse(localStorage.getItem('visitedPages') || '[]');
-        if (!visitedPages.includes('46')) {
-            visitedPages.push('46');
-            localStorage.setItem('visitedPages', JSON.stringify(visitedPages));
-        }
-        localStorage.setItem('currentLogPage', '46');
-
         function checkKeyword() {
-            const input = document.getElementById('keywordInput').value.trim();
+            const input = document.getElementById('keywordInput').value.trim().toLowerCase();
             const errorMsg = document.getElementById('errorMessage');
             
-            // 正解キーワードのチェック
-            if (input === '正解キーワード1') {
-                // 7人エンディング（準真エンド）
+            // 7人エンド（真エンドではないがバッドエンドでもない）
+            if (input === 'unreal' || input === 'アンリアル') {
                 localStorage.setItem('endingType', 'seven');
-                localStorage.setItem('endingReached', 'true');
                 window.location.href = 'ending_seven.html';
-            } else if (input === '正解キーワード2') {
-                // 8人真エンディング（No.49経由）
+            }
+            // 8人真エンディング（ページ49からのパスワード）
+            else if (input === 'easter' || input === 'イースター') {
                 localStorage.setItem('endingType', 'eight');
-                localStorage.setItem('shouldGoTo49', 'true');
-                window.location.href = 'log_49.html';
-            } else {
-                // バッドエンド
+                window.location.href = 'ending_eight.html';
+            }
+            // バッドエンド
+            else {
                 errorMsg.style.display = 'block';
                 setTimeout(() => {
                     localStorage.setItem('endingType', 'bad');
-                    localStorage.setItem('endingReached', 'true');
                     window.location.href = 'ending_bad.html';
                 }, 2000);
             }
         }
 
-        // Enterキーでも送信可能
+        // Enterキーで送信
         document.getElementById('keywordInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 checkKeyword();
             }
-        });
-
-        // タイピングエフェクト
-        const input = document.getElementById('keywordInput');
-        input.addEventListener('input', function() {
-            this.style.textShadow = '0 0 5px #00ff00';
-            setTimeout(() => {
-                this.style.textShadow = 'none';
-            }, 100);
         });
     </script>
 </body>
