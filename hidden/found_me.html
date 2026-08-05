@@ -210,12 +210,12 @@
             const errorMsg = document.getElementById('errorMessage');
             
             // 7人エンド（真エンドではないがバッドエンドでもない）
-            if (input === 'unreal' || input === 'アンリアル') {
+            if (input === 'unreal') {
                 localStorage.setItem('endingType', 'seven');
                 window.location.href = 'ending_seven.html';
             }
             // 8人真エンディング（ページ49からのパスワード）
-            else if (input === 'easter' || input === 'イースター') {
+            else if (input === 'easter') {
                 localStorage.setItem('endingType', 'eight');
                 window.location.href = 'ending_eight.html';
             }

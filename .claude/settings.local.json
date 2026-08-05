@@ -74,7 +74,8 @@
       "Bash(git commit -m \"DMページをホワイトテーマに変更し、UI改善\n\n- 背景を白に変更（ダークモードから変更）\n- 相手のメッセージを薄いグレー、自分のメッセージを紫色に\n- ユーザー名を@fortune_ngsに変更\n- アイコンを初期アイコン（👤）に変更\n- ヒントメッセージを追加（@fortune_ngsで検索）\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
       "Bash(touch hidden/ending_bad.html hidden/ending_seven.html hidden/ending_eight.html)",
       "Bash(touch pages/log_list.html)",
-      "Bash(git commit -m \"未実装機能を全て実装完了\n\n- ページ46にテキストフィールド追加、キーワード入力でエンディング分岐\n- 3つのエンディング実装（バッド/7人/8人真エンド）\n- ログ一覧ページで到達済みページを表示\n- 背景色をボルドー色に変更\n- エッグスアカデミーページを簡略化（ロゴとニュースのみ）\n- DMページのUI改善（ホワイトテーマ、@fortune_ngs表示）\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
+      "Bash(git commit -m \"未実装機能を全て実装完了\n\n- ページ46にテキストフィールド追加、キーワード入力でエンディング分岐\n- 3つのエンディング実装（バッド/7人/8人真エンド）\n- ログ一覧ページで到達済みページを表示\n- 背景色をボルドー色に変更\n- エッグスアカデミーページを簡略化（ロゴとニュースのみ）\n- DMページのUI改善（ホワイトテーマ、@fortune_ngs表示）\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
+      "Bash(git commit -m \"ページ46のキーワードからカタカナを削除\n\n- 7人エンド: ''unreal''のみ（''アンリアル''削除）\n- 8人真エンド: ''easter''のみ（''イースター''削除）\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
     ],
     "deny": [],
     "ask": [],
