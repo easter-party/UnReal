@@ -187,10 +187,18 @@
         .message {
             margin-bottom: 20px;
             display: flex;
-            gap: 12px;
             animation: fadeIn 0.5s ease-in;
             opacity: 0;
             animation-fill-mode: forwards;
+        }
+
+        /* 相手（なぎさ）は左、自分（プレイヤー）は右に寄せる */
+        .message.fortune {
+            justify-content: flex-start;
+        }
+
+        .message.player {
+            justify-content: flex-end;
         }
 
         @keyframes fadeIn {
@@ -204,33 +212,8 @@
             }
         }
 
-        .message-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .message-avatar.fortune {
-            background: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: #666;
-        }
-
-        .message-avatar.player {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-        }
-
         .message-content {
-            flex: 1;
+            max-width: 75%;
         }
 
         .message-header {
@@ -238,6 +221,11 @@
             align-items: baseline;
             gap: 8px;
             margin-bottom: 4px;
+        }
+
+        /* 自分の発言はヘッダーも右揃えにする */
+        .message.player .message-header {
+            justify-content: flex-end;
         }
 
         .message-name {
@@ -255,10 +243,27 @@
             font-size: 13px;
         }
 
+        /* 吹き出し本体 */
         .message-text {
             font-size: 15px;
-            line-height: 1.4;
+            line-height: 1.5;
+            padding: 10px 14px;
+            border-radius: 18px;
+            width: fit-content;
+            word-break: break-word;
+        }
+
+        .message.fortune .message-text {
+            background: #f0f0f0;
             color: #333;
+            border-top-left-radius: 4px;
+        }
+
+        .message.player .message-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border-top-right-radius: 4px;
+            margin-left: auto;
         }
 
         .message-image {
@@ -274,7 +279,6 @@
             background: #f0f0f0;
             border-radius: 20px;
             width: fit-content;
-            margin-left: 52px;
         }
 
         .typing-indicator.show {
@@ -492,12 +496,9 @@
 
         function createMessage(messageData) {
             const messageDiv = document.createElement('div');
-            messageDiv.className = 'message';
+            // 送信者に応じて左右の寄せ方を切り替える
+            messageDiv.className = `message ${messageData.sender}`;
             messageDiv.style.animationDelay = '0s';
-
-            const avatarDiv = document.createElement('div');
-            avatarDiv.className = `message-avatar ${messageData.sender}`;
-            avatarDiv.textContent = messageData.sender === 'fortune' ? '👤' : '👤';
 
             const contentDiv = document.createElement('div');
             contentDiv.className = 'message-content';
@@ -539,11 +540,11 @@
             if (messageData.hasScreenshot) {
                 const img = document.createElement('img');
                 img.className = 'message-image';
-                img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%231a1a1a" width="400" height="300"/%3E%3Ctext x="200" y="150" font-family="Arial" font-size="16" fill="%2371767b" text-anchor="middle"%3E[りんとのメッセージログ]%3C/text%3E%3C/svg%3E';
+                img.src = '../images/docs/dm_rin_nagisa.jpg';
+                img.alt = '失踪当日に暁月りんから詩藤なぎさへ送られたメッセージのログ';
                 contentDiv.appendChild(img);
             }
 
-            messageDiv.appendChild(avatarDiv);
             messageDiv.appendChild(contentDiv);
 
             return messageDiv;
