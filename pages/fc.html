@@ -229,12 +229,12 @@
         <form id="loginForm">
             <div class="form-group">
                 <label class="form-label">ユーザーID</label>
-                <input type="text" class="form-input" id="userId" placeholder="IDを入力">
+                <input type="text" class="form-input" id="userId" placeholder="フルネーム英字">
             </div>
             
             <div class="form-group">
                 <label class="form-label">パスワード</label>
-                <input type="password" class="form-input" id="password" placeholder="パスワードを入力">
+                <input type="password" class="form-input" id="password" placeholder="英字8桁">
             </div>
             
             <button type="submit" class="login-btn">ログイン</button>
@@ -273,9 +273,10 @@
             const password = document.getElementById('password').value.trim();
             const statusMsg = document.getElementById('statusMessage');
             
-            // ログイン情報（1パターンのみ）
+            // ログイン情報（IDは姓名・名姓どちらの並びでも通す）
             const validLogins = [
-                { id: 'user', pass: 'pass' }
+                { id: 'kinjomirei', pass: 'Stargaze' },
+                { id: 'mireikinjo', pass: 'Stargaze' }
             ];
             
             const isValid = validLogins.some(login => 
