@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st Album「Re:alize」発売決定！ - UnReal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .article-date {
+            color: #667eea;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .article-title {
+            font-size: 32px;
+            line-height: 1.4;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .article-body p {
+            color: #ddd;
+            line-height: 2;
+            margin-bottom: 24px;
+        }
+
+        .album-name {
+            font-size: 24px;
+            text-align: center;
+            margin: 40px 0 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .release-info {
+            text-align: center;
+            color: #ddd;
+            line-height: 1.9;
+            margin-bottom: 32px;
+        }
+
+        .tracklist {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 24px 28px;
+            margin-bottom: 40px;
+            list-style: none;
+            counter-reset: track;
+        }
+
+        .tracklist li {
+            counter-increment: track;
+            color: #ddd;
+            line-height: 1.8;
+            padding: 10px 0;
+        }
+
+        .tracklist li + li {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .tracklist li::before {
+            content: counter(track, decimal-leading-zero) ".";
+            color: #667eea;
+            margin-right: 12px;
+        }
+
+        .track-artist {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .article-sign {
+            margin-top: 48px;
+            text-align: right;
+            color: #999;
+        }
+
+        .link-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+
+        .back-link {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="article-date">2026.08.10</div>
+        <h1 class="article-title">1st Album「Re:alize」発売決定！</h1>
+
+        <div class="article-body">
+            <p>いつもUnRe:alを応援いただき、誠にありがとうございます。</p>
+
+            <p>このたび、UnRe:al初となるアルバム「Re:alize」の発売が決定いたしました！</p>
+
+            <p>メンバー7名それぞれの個性が詰まったソロ楽曲7曲に加え、グループ新曲3曲、これまでの代表曲2曲を収録した全12曲のアルバムとなります。</p>
+
+            <div class="album-name">UnRe:al 1st Album「Re:alize」</div>
+
+            <div class="release-info">
+                発売日：2026年10月21日（水）<br>
+                収録曲：全12曲
+            </div>
+
+            <ol class="tracklist">
+                <li>タイトル未定<span class="track-artist">（新曲）</span></li>
+                <li>Signal</li>
+                <li>Sparkling Fiction</li>
+                <li>EVE<span class="track-artist">（暁月りん ソロ曲）</span></li>
+                <li>Sweetest Sugar<span class="track-artist">（百瀬ゆの ソロ曲）</span></li>
+                <li>Light It Up!<span class="track-artist">（燈真あき ソロ曲）</span></li>
+                <li>Stargaze<span class="track-artist">（城崎みれい ソロ曲）</span></li>
+                <li>Blooming Love<span class="track-artist">（桧翠いろは ソロ曲）</span></li>
+                <li>My Cinderella<span class="track-artist">（星名らん ソロ曲）</span></li>
+                <li>Hide and Seek<span class="track-artist">（詩藤なぎさ ソロ曲）</span></li>
+                <li>タイトル未定<span class="track-artist">（新曲）</span></li>
+                <li>タイトル未定<span class="track-artist">（新曲）</span></li>
+            </ol>
+
+            <p>UnRe:alの「これまで」と「これから」を詰め込んだ、特別な一枚をお届けします。</p>
+
+            <p>収録曲や商品仕様、販売情報などの詳細は、決まり次第お知らせいたします。</p>
+
+            <p>どうぞ楽しみにお待ちください。</p>
+
+            <p class="article-sign">Easter Production</p>
+        </div>
+
+        <div class="link-group">
+            <a href="../news.html" class="back-link">NEWS一覧へ</a>
+            <a href="../../index.html" class="back-link">TOPに戻る</a>
+        </div>
+    </div>
+</body>
+</html>

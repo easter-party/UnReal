@@ -10,14 +10,14 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             color: #fff;
             min-height: 100vh;
         }
-        
+
         .page-number {
             position: fixed;
             top: 20px;
@@ -25,13 +25,13 @@
             color: #666;
             font-size: 14px;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
-        
+
         .page-title {
             font-size: 48px;
             text-align: center;
@@ -40,13 +40,13 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         .news-list {
             display: flex;
             flex-direction: column;
             gap: 30px;
         }
-        
+
         .news-item {
             background: rgba(255, 255, 255, 0.1);
             padding: 30px;
@@ -54,36 +54,41 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-        
+
         .news-item:hover {
             background: rgba(255, 255, 255, 0.15);
             transform: translateX(10px);
         }
-        
+
         .news-date {
             color: #667eea;
             font-size: 14px;
             margin-bottom: 10px;
         }
-        
+
         .news-title {
             font-size: 24px;
             margin-bottom: 15px;
         }
-        
+
         .news-excerpt {
             color: #ccc;
             line-height: 1.6;
         }
-        
+
         .news-link {
             display: inline-block;
             margin-top: 15px;
             color: #667eea;
             text-decoration: none;
         }
-        
-        
+
+        /* クリア前は非表示。解放時にJSでこのクラスを外す */
+        .is-locked {
+            display: none;
+        }
+
+
         .back-link {
             display: inline-block;
             margin-top: 30px;
@@ -94,7 +99,7 @@
             border-radius: 20px;
             transition: all 0.3s;
         }
-        
+
         .back-link:hover {
             background: #fff;
             color: #000;
@@ -103,62 +108,118 @@
 </head>
 <body>
     <div class="page-number">2/50</div>
-    
+
     <div class="container">
         <h1 class="page-title">NEWS</h1>
-        
-        <div class="news-list">
-            <div class="news-item" data-keyword="活動休止">
-                <div class="news-date">2025.02.14</div>
-                <h2 class="news-title">暁月りん 活動休止のお知らせ</h2>
+
+        <!-- ニュースは日付の降順（新しい順）で並べる -->
+        <!-- data-reveal 付きの項目はクリア後に解放される（初期状態は非表示） -->
+        <div class="news-list" id="newsList">
+            <div class="news-item is-locked" data-reveal="true-end" data-detail="news/fuka_join.html">
+                <div class="news-date">2027.02.01</div>
+                <h2 class="news-title">白鳥ふうか 加入のお知らせ</h2>
                 <p class="news-excerpt">
-                    UnRe:alのセンター・暁月りんが体調不良のため、しばらくの間活動を休止することをお知らせいたします。
-                    復帰時期については改めてご案内いたします。
+                    この度、私たちUnRe:alは、新たなメンバーとして白鳥ふうかを迎え入れることが決定しました！
+                    新たな仲間とともに、これからは8人でUnRe:alとして活動していきます。
                 </p>
-                <a href="#" class="news-link">詳細を見る →</a>
+                <a href="news/fuka_join.html" class="news-link">詳細を見る →</a>
             </div>
-            
-            <div class="news-item" data-keyword="週刊ライク">
-                <div class="news-date">2025.02.10</div>
-                <h2 class="news-title">週刊誌報道について</h2>
+
+            <div class="news-item is-locked" data-reveal="cleared" data-detail="news/agency_notice.html">
+                <div class="news-date">2027.02.01</div>
+                <h2 class="news-title">弊社代表取締役社長 黒澤宏一に関しまして</h2>
                 <p class="news-excerpt">
-                    一部週刊誌にて報道された内容について、事実と異なる部分が多く含まれております。
-                    詳細については後日正式に発表させていただきます。
+                    この度、弊社代表取締役社長に関し、書類送検されたことを受け、皆様にご報告申し上げます。
+                    UnRe:alにつきましては、現在予定されているライブツアーをもちまして、メンバー全員がEaster Productionを退所することとなりました。
                 </p>
-                <a href="#" class="news-link">詳細を見る →</a>
+                <a href="news/agency_notice.html" class="news-link">詳細を見る →</a>
             </div>
-            
-            <div class="news-item">
-                <div class="news-date">2025.02.01</div>
-                <h2 class="news-title">ワンマンライブ開催決定！</h2>
+
+            <div class="news-item" data-detail="news/renewal.html">
+                <div class="news-date">2026.08.17</div>
+                <h2 class="news-title">公式サイトリニューアルのお知らせ</h2>
                 <p class="news-excerpt">
-                    3月2日、東京ドームにて初のワンマンライブ「UnReal World」を開催することが決定しました！
-                    チケット情報は近日公開予定です。
+                    このたびUnRe:al公式サイトをリニューアルいたしました。
+                    プロフィールやブログをより見やすく再構成し、最新情報をお届けしやすい構成に変更しております。
                 </p>
-                <a href="#" class="news-link">詳細を見る →</a>
+                <a href="news/renewal.html" class="news-link">詳細を見る →</a>
             </div>
-            
-            <div class="news-item">
-                <div class="news-date">2025.01.15</div>
-                <h2 class="news-title">3rdシングル「Signal」リリース</h2>
+
+            <div class="news-item" data-detail="news/album_realize.html">
+                <div class="news-date">2026.08.10</div>
+                <h2 class="news-title">1st Album「Re:alize」発売決定！</h2>
                 <p class="news-excerpt">
-                    新曲「Signal」が各種配信サイトにてリリースされました。
-                    今作は暁月りんがセンターを務める楽曲となっております。
+                    UnRe:al初となるアルバム「Re:alize」の発売が決定いたしました。
+                    メンバー7名それぞれのソロ楽曲7曲に加え、グループ新曲3曲、代表曲2曲を収録した全12曲のアルバムとなります。
                 </p>
-                <a href="#" class="news-link">詳細を見る →</a>
+                <a href="news/album_realize.html" class="news-link">詳細を見る →</a>
+            </div>
+
+            <div class="news-item" data-detail="news/live_tour.html">
+                <div class="news-date">2026.06.18</div>
+                <h2 class="news-title">UnRe:al ワンマンライブツアー開催決定！</h2>
+                <p class="news-excerpt">
+                    UnRe:al史上過去最大規模となるワンマンライブツアーの開催が決定いたしました。
+                    2027年2月21日（日）から3月2日（火）にかけて、大阪・福岡・東京の全3都市を巡ります。
+                </p>
+                <a href="news/live_tour.html" class="news-link">詳細を見る →</a>
+            </div>
+
+            <div class="news-item" data-detail="news/rin_hiatus.html" data-keyword="活動休止">
+                <div class="news-date">2026.02.01</div>
+                <h2 class="news-title">暁月りん活動休止に関するお知らせ</h2>
+                <p class="news-excerpt">
+                    UnRe:al所属の暁月りんにつきまして、体調不良のため、当面の間、活動を休止させていただくこととなりました。
+                    復帰時期につきましては、現時点では未定となっております。
+                </p>
+                <a href="news/rin_hiatus.html" class="news-link">詳細を見る →</a>
             </div>
         </div>
-        
+
         <a href="../index.html" class="back-link">TOPに戻る</a>
     </div>
-    
+
     <script>
-        // ニュースアイテムクリックで検索
+        // クリア状況に応じてニュースを解放する
+        // endingType: 'eight'=8人真エンド（正規ルート） / 'seven'=7人エンド / 'bad'=バッドエンド
+        (function revealClearedNews() {
+            const endingType = localStorage.getItem('endingType');
+            if (!endingType) {
+                return;
+            }
+
+            document.querySelectorAll('.news-item[data-reveal]').forEach(item => {
+                const condition = item.dataset.reveal;
+                // 'cleared' はどのルートでもクリア済みなら解放
+                // 'true-end' は正規ルート（8人真エンド）のみ解放
+                const shouldReveal = condition === 'cleared'
+                    || (condition === 'true-end' && endingType === 'eight');
+
+                if (shouldReveal) {
+                    item.classList.remove('is-locked');
+                }
+            });
+        })();
+
+        // 「詳細を見る」は記事ページへ遷移（親のクリック処理を止める）
+        document.querySelectorAll('.news-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+
+        // ニュースアイテム本体のクリック
+        // data-keyword があるものは検索へ誘導、それ以外は記事ページへ
         document.querySelectorAll('.news-item').forEach(item => {
             item.addEventListener('click', function() {
                 const keyword = this.dataset.keyword;
                 if (keyword) {
                     window.location.href = '../index.html?search=' + encodeURIComponent(keyword);
+                    return;
+                }
+                const detail = this.dataset.detail;
+                if (detail) {
+                    window.location.href = detail;
                 }
             });
         });
