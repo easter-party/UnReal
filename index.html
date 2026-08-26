@@ -91,6 +91,9 @@
         <div class="container">
             <div class="footer-content">
                 <p class="copyright">&copy; 2025 イースタッグ</p>
+                <button type="button" class="cache-clear-btn" onclick="clearSiteData()">
+                    キャッシュクリア
+                </button>
             </div>
         </div>
     </footer>
@@ -121,18 +124,20 @@
             });
         });
 
+        // 保存された進行状況（検索履歴・訪問記録など）を初期化する
+        function clearSiteData() {
+            if (!confirm('本当にキャッシュクリアして検索履歴などを初期化しますか？')) {
+                return;
+            }
+
+            localStorage.clear();
+            sessionStorage.clear();
+            location.reload();
+        }
+
         // 検索機能（隠しページへの導線）
         function performSearch() {
             const searchTerm = document.getElementById('searchBox').value.trim();
-            
-            // キャッシュクリア機能
-            if (searchTerm === 'CC' || searchTerm === 'cc') {
-                localStorage.clear();
-                sessionStorage.clear();
-                alert('キャッシュをクリアしました。ページを再読み込みします。');
-                location.reload();
-                return;
-            }
 
             // CSVに基づくページマッピング
             const pageRoutes = {

@@ -516,6 +516,27 @@ body {
     font-weight: 300;
 }
 
+/* 進行状況の初期化ボタン */
+.cache-clear-btn {
+    margin-top: 24px;
+    padding: 10px 24px;
+    border: 1px solid #d47b8e;
+    border-radius: 20px;
+    background: transparent;
+    color: #d47b8e;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cache-clear-btn:hover {
+    background: #d47b8e;
+    color: #fff;
+}
+
 /* モバイル専用要素 */
 .mobile-only {
     display: none;

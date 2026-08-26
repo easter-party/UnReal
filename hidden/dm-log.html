@@ -184,6 +184,29 @@
             margin: 20px 0;
         }
 
+        /* デバッグ用スキップボタン（テスト段階のみ設置） */
+        .skip-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 100;
+            padding: 10px 16px;
+            border: 1px dashed #999;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #666;
+            font-size: 13px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .skip-btn:hover {
+            background: #666;
+            color: #fff;
+            border-color: #666;
+        }
+
         .message {
             margin-bottom: 20px;
             display: flex;
@@ -407,6 +430,11 @@
         </a>
     </div>
 
+    <!-- デバッグ用：導入会話を最後まで飛ばす（テスト段階のみ） -->
+    <button type="button" class="skip-btn" id="skipBtn" onclick="skipConversation()">
+        DEBUG: 会話をスキップ ⏭
+    </button>
+
     <script>
         // 初回訪問チェック
         window.addEventListener('DOMContentLoaded', function() {
@@ -550,15 +578,28 @@
             return messageDiv;
         }
 
+        // スキップ済みフラグと進行中タイマー（スキップ時に停止するため保持する）
+        let isSkipped = false;
+        let messageTimer = null;
+
+        function finishConversation() {
+            typingIndicator.classList.remove('show');
+            continueBtn.classList.add('show');
+            document.getElementById('skipBtn').style.display = 'none';
+        }
+
         function showNextMessage() {
+            if (isSkipped) {
+                return;
+            }
+
             if (currentMessageIndex >= messages.length) {
-                typingIndicator.classList.remove('show');
-                continueBtn.classList.add('show');
+                finishConversation();
                 return;
             }
 
             const messageData = messages[currentMessageIndex];
-            
+
             // タイピングインジケーターを表示
             if (messageData.sender === 'fortune') {
                 typingIndicator.classList.add('show');
@@ -566,20 +607,42 @@
                 messageContainer.scrollTop = messageContainer.scrollHeight;
             }
 
-            setTimeout(() => {
+            messageTimer = setTimeout(() => {
+                if (isSkipped) {
+                    return;
+                }
+
                 typingIndicator.classList.remove('show');
                 const messageElement = createMessage(messageData);
                 messageContainer.appendChild(messageElement);
                 messageContainer.scrollTop = messageContainer.scrollHeight;
-                
+
                 currentMessageIndex++;
-                setTimeout(showNextMessage, messageData.delay);
+                messageTimer = setTimeout(showNextMessage, messageData.delay);
             }, messageData.sender === 'fortune' ? 1500 : 500);
+        }
+
+        // デバッグ用：残りの会話を一気に表示して終端まで飛ばす
+        function skipConversation() {
+            isSkipped = true;
+            clearTimeout(messageTimer);
+            typingIndicator.classList.remove('show');
+
+            while (currentMessageIndex < messages.length) {
+                const messageElement = createMessage(messages[currentMessageIndex]);
+                messageElement.style.animation = 'none';
+                messageElement.style.opacity = '1';
+                messageContainer.appendChild(messageElement);
+                currentMessageIndex++;
+            }
+
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+            finishConversation();
         }
 
         // 会話を開始する関数
         function startConversation() {
-            setTimeout(showNextMessage, 1000);
+            messageTimer = setTimeout(showNextMessage, 1000);
         }
     </script>
 </body>
