@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnReal - Official Website</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/logo/unreal.png">
 </head>
 <body>
     <div class="hero-section">
@@ -57,21 +58,21 @@
         <div class="container">
             <h2 class="section-title">Latest News</h2>
             <div class="news-grid">
-                <article class="news-item">
-                    <span class="news-date">2025.02.01</span>
-                    <h3 class="news-title">重要なお知らせ</h3>
-                    <p class="news-excerpt">メンバーより皆様へお伝えしたいことがございます。</p>
-                </article>
-                <article class="news-item">
-                    <span class="news-date">2025.01.28</span>
-                    <h3 class="news-title">ワンマンライブ開催決定！</h3>
-                    <p class="news-excerpt">3月2日、東京ドームにて初のワンマンライブを開催いたします。</p>
-                </article>
-                <article class="news-item">
-                    <span class="news-date">2025.01.15</span>
-                    <h3 class="news-title">新曲「Phantom」リリース</h3>
-                    <p class="news-excerpt">7人の想いが込められた新曲を配信開始しました。</p>
-                </article>
+                <a href="pages/news.html" class="news-item">
+                    <span class="news-date">2027.01.25</span>
+                    <h3 class="news-title">暁月りん 活動休止に関するお知らせ</h3>
+                    <p class="news-excerpt">UnRe:al所属メンバー 暁月りんにつきまして、体調不良のため、当面の間、活動を休止させていただくこととなりました。</p>
+                </a>
+                <a href="pages/news.html" class="news-item">
+                    <span class="news-date">2026.08.17</span>
+                    <h3 class="news-title">公式サイトリニューアルのお知らせ</h3>
+                    <p class="news-excerpt">このたびUnRe:al公式サイトをリニューアルいたしました。</p>
+                </a>
+                <a href="pages/news.html" class="news-item">
+                    <span class="news-date">2026.08.10</span>
+                    <h3 class="news-title">1st Album「Re:alize」発売決定！</h3>
+                    <p class="news-excerpt">UnRe:al初となるアルバム「Re:alize」の発売が決定いたしました。</p>
+                </a>
             </div>
         </div>
     </section>
@@ -90,7 +91,6 @@
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
-                <p class="copyright">&copy; 2025 イースタッグ</p>
                 <button type="button" class="cache-clear-btn" onclick="clearSiteData()">
                     キャッシュクリア
                 </button>
@@ -139,7 +139,8 @@
         function performSearch() {
             const searchTerm = document.getElementById('searchBox').value.trim();
 
-            // CSVに基づくページマッピング
+            // CSV(UnRe_al.csv)の体系に基づくページマッピング
+            // キーはすべて小文字で保持し、検索語も小文字化して照合する
             const pageRoutes = {
                 // ページ番号でのルーティング
                 '0': 'hidden/dm-log.html',
@@ -160,18 +161,18 @@
                 '15': 'c_doc/like.html',
                 '16': 'pages/eggs_academy.html',
                 '17': 'medical_record/mirei.html',
-                '18': 'blog/rin/index.html',
-                '19': 'blog/yuno/index.html',
-                '20': 'blog/aki/index.html',
-                '21': 'blog/mirei/index.html',
-                '22': 'blog/iroha/index.html',
-                '23': 'blog/ran/index.html',
-                '24': 'blog/nagisa/index.html',
-                '25': 'pages/clonedeal.html',
-                '26': 'pages/clone_n005.html',
-                '27': 'medical_record/iroha.html',
-                '28': 'pages/test_report_iroha.html',
-                '29': 'passcode/r.html',
+                '18': 'c_doc/cpm.html',
+                '19': 'blog/rin/index.html',
+                '20': 'blog/yuno/index.html',
+                '21': 'blog/aki/index.html',
+                '22': 'blog/mirei/index.html',
+                '23': 'blog/iroha/index.html',
+                '24': 'blog/ran/index.html',
+                '25': 'blog/nagisa/index.html',
+                '26': 'pages/clonedeal.html',
+                '27': 'pages/clone_n005.html',
+                '28': 'medical_record/iroha.html',
+                '29': 'pages/test_report_iroha.html',
                 '30': 'blog_ex/rin.html',
                 '31': 'blog_ex/yuno.html',
                 '32': 'blog_ex/aki.html',
@@ -181,54 +182,77 @@
                 '36': 'blog_ex/nagisa.html',
                 '37': 'c_doc/aki.html',
                 '38': 'medical_record/aki.html',
-                '39': 'medical_record/nagisa.html',
-                '40': 'c_doc/experiment.html',
-                '41': 'blog_ex/mirei/draft.html',
-                '42': 'medical_record/rin.html',
-                '43': 'c_doc/rn016.html',
-                '44': 'medical_record/fuka.html',
-                '45': 'pages/map_laboratory.html',
-                '46': 'hidden/found_me.html',
-                '47': 'pages/r_n/log.html',
-                '48': 'c_doc/fuka_report.html',
-                '49': 'pages/log_49.html',
+                '39': 'c_doc/rfx.html',
+                '40': 'medical_record/nagisa.html',
+                '41': 'c_doc/experiment.html',
+                '42': 'passcode/m.html',
+                '43': 'medical_record/rin.html',
+                '44': 'c_doc/adaptation.html',
+                '45': 'c_doc/report_r2_full.html',
+                '46': 'c_doc/nxa.html',
+                '47': 'passcode/r.html',
+                '48': 'hidden/found_me.html',
+                '49': 'pages/r_n/log.html',
+                '50': 'medical_record/fuka.html',
+                '51': 'c_doc/rn016.html',
+                '52': 'c_doc/fuka_report.html',
+                '53': 'pages/map_laboratory.html',
+                '55': 'pages/log_49.html',
                 // キーワード検索
-                'DM': 'hidden/dm-log.html',
                 'dm': 'hidden/dm-log.html',
                 '@fortune_ngs': 'hidden/hint.html',
                 'fortune_ngs': 'hidden/hint.html',
                 '失踪': 'pages/message_log.html',
                 '活動休止': 'pages/message_log.html',
                 '灰谷': 'pages/haitani_resume.html',
-                'シムネルカンパニー': 'medical_record/template.html',
-                '一ノ瀬': 'pages/agreement_ichinose.html',
-                'reportR2': 'pages/report_r2.html',
+                'シムネルカンパニー': 'medical_record/index.html',
+                '一ノ瀬': 'c_doc/agreement_ichinose.html',
+                'reportr2': 'c_doc/report_r2.html',
                 '週刊ライク': 'c_doc/like.html',
                 'エッグスアカデミー': 'pages/eggs_academy.html',
                 '金城未怜': 'medical_record/mirei.html',
+                'βcpm': 'c_doc/cpm.html',
                 '黒澤宏一': 'pages/clonedeal.html',
+                'n002': 'pages/clone_n005.html',
                 'n005': 'pages/clone_n005.html',
                 '翠彩葉': 'medical_record/iroha.html',
                 '最終試験': 'pages/test_report_iroha.html',
-                'Signal': 'passcode/r.html',
+                'signal': 'passcode/r.html',
                 '三月の秘密': 'c_doc/aki.html',
                 '新生総合病院': 'medical_record/aki.html',
-                'Mystic': 'medical_record/nagisa.html',
+                'rfx': 'c_doc/rfx.html',
+                'mystic': 'medical_record/nagisa.html',
                 '藤野凪紗': 'c_doc/experiment.html',
                 '下書き': 'passcode/m.html',
                 '20060719': 'blog_ex/mirei/draft.html',
+                '暁月りん': 'medical_record/rin.html',
+                '適応': 'c_doc/adaptation.html',
+                '鑑定結果': 'c_doc/report_r2_full.html',
+                'nxa-r': 'c_doc/nxa.html',
+                'u81220401': 'hidden/found_me.html',
+                'n001': 'medical_record/fuka.html',
                 '風香': 'medical_record/fuka.html',
-                '暁月りん': 'c_doc/rn016.html',
-                'U81220401': 'hidden/found_me.html',
+                '仕様書': 'c_doc/rn016.html',
                 '研究所': 'pages/map_laboratory.html',
+                '白鳥風香': 'pages/log_49.html',
                 '会話ログ': 'pages/r_n/log.html',
-                'りんとなぎさ': 'pages/r_n/log.html',
-                '灰谷': 'pages/haitani_resume.html'
+                'りんとなぎさ': 'pages/r_n/log.html'
             };
 
-            // まず完全一致を確認
-            if (pageRoutes[searchTerm]) {
-                window.location.href = pageRoutes[searchTerm];
+            // 大文字小文字を区別せずに照合する
+            const routeKey = searchTerm.toLowerCase();
+
+            if (pageRoutes[routeKey]) {
+                const destination = pageRoutes[routeKey];
+
+                // ヒントページは調査を中断させないよう別タブで開く
+                if (destination === 'hidden/hint.html') {
+                    window.open(destination, '_blank');
+                    document.getElementById('searchBox').value = '';
+                    return;
+                }
+
+                window.location.href = destination;
             } else if (searchTerm) {
                 // 404ページへ遷移
                 window.location.href = 'hidden/notfound.html';
@@ -271,5 +295,9 @@
         // window.addEventListener('load', startSlideshow);
 
     </script>
+    <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
+        <p>&copy;2027 イースターパーティー</p>
+        <p>このWebサイトの内容は全てフィクションです。実在する人物･事件･団体とは一切関係ありません。</p>
+    </footer>
 </body>
 </html>

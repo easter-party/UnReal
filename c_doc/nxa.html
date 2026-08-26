@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鑑定結果報告書（一部破損） - UnReal</title>
+    <title>能力値上昇促進剤「Nxa」薬品概要 - UnReal</title>
     <style>
         * {
             margin: 0;
@@ -44,10 +44,6 @@
             margin-bottom: 10px;
         }
 
-        .meta {
-            margin-bottom: 6px;
-        }
-
         .document-content section {
             margin-bottom: 30px;
         }
@@ -57,22 +53,32 @@
             margin-bottom: 10px;
         }
 
-        /* 破損して読み取れない箇所 */
-        .redacted {
-            background: #00ff00;
-            color: #00ff00;
+        .document-content ul {
+            margin-left: 20px;
         }
 
-        .data-error {
+        .meta {
+            margin-bottom: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #00ff00;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .note {
             margin-top: 40px;
-            padding: 16px;
-            border: 1px solid #ff0000;
-            color: #ff0000;
-        }
-
-        .data-error strong {
-            display: block;
-            margin-bottom: 8px;
+            padding-top: 20px;
+            border-top: 1px dashed #00ff00;
+            opacity: 0.8;
+            font-size: 14px;
         }
 
         .search-field {
@@ -100,43 +106,57 @@
     <link rel="icon" href="../images/logo/unreal.png">
 </head>
 <body>
-    <div class="page-number">14/55</div>
+    <div class="page-number">46/55</div>
 
     <div class="container">
         <div class="document-header">
-            <h1 class="document-title"><span class="redacted">███</span>鑑定結果報告書</h1>
-            <div class="meta">状態：一部破損</div>
-            <div class="meta">資料番号：c_doc-reportR2</div>
-            <div class="meta">対象者：<span class="redacted">██</span> 凛／<span class="redacted">██</span> 蘭</div>
+            <h1 class="document-title">能力値上昇促進剤「Nxa」薬品概要</h1>
+            <div class="meta">製品名：能力値上昇促進剤</div>
+            <div class="meta">読み：ネクシア（Nxa）</div>
         </div>
 
         <div class="document-content">
             <section>
-                <h2>1. 鑑定結果</h2>
-                <p>対象者2名より採取した検体について<span class="redacted">███</span>鑑定を実施した結果、両者の<span class="redacted">████</span>は極めて<span class="redacted">█████</span>を示した。</p>
-                <p>以上の結果から、対象者2名は<span class="redacted">██████</span>であると確定する。</p>
+                <h2>【概要】</h2>
+                <p>クローン開発において要求される各分野の能力値を、設定された上限値まで引き上げることを目的とした能力値上昇促進剤。</p>
+                <p>対象となる能力に応じて各種薬剤を使用し、対象個体の能力発現を補助する。</p>
             </section>
 
             <section>
-                <h2>2. 次段階調査</h2>
-                <p>本鑑定結果に基づき、次段階の調査へ移行する。</p>
-                <p>対象者2名に対して実施された各種試験結果を比較し、<span class="redacted">██████</span>が試験結果および適合性に及ぼす影響について検証する。</p>
-                <p>また、一方の対象者に生じた実験反応が、もう一方の対象者に<span class="redacted">██</span>または<span class="redacted">█████</span>で発現する可能性についても継続的に観察し、<span class="redacted">████████</span>個体間における相互作用の有無を確認する。</p>
+                <h2>【作用】</h2>
+                <p>対象となる能力の発現を促進し、通常時における能力値を一時的に上昇させる。</p>
+                <p>ただし、対象個体の本来の能力限界を超えた発現を強制するため、身体への負荷および副作用が生じる場合がある。</p>
             </section>
 
             <section>
-                <h2>3. 調査目的</h2>
-                <p>上記の結果をもとに、<span class="redacted">██████</span>と実験結果との関連性を明らかにし、今後の<span class="redacted">███</span>向上および<span class="redacted">████</span>を利用した開発研究への応用可能性を検討する。</p>
-                <p>調査結果については、<span class="redacted">████</span>終了後、別途報告書にて記録するものとする。</p>
+                <h2>【副作用】</h2>
+                <ul>
+                    <li>微熱</li>
+                    <li>軽度の酸欠</li>
+                </ul>
+                <p>※副作用の程度には個体差がある。</p>
             </section>
 
-            <p>以上</p>
+            <section>
+                <h2>【薬剤区分】</h2>
+                <table>
+                    <tr><th>薬剤コード</th><th>対象能力</th></tr>
+                    <tr><td>Nxa-R</td><td>回復力</td></tr>
+                    <tr><td>Nxa-W</td><td>精神力</td></tr>
+                    <tr><td>Nxa-P</td><td>体力</td></tr>
+                    <tr><td>Nxa-I</td><td>知力</td></tr>
+                    <tr><td>Nxa-M</td><td>記憶力</td></tr>
+                </table>
+            </section>
+
+            <section>
+                <div class="meta">担当：灰谷</div>
+                <div class="meta">取扱区分：研究開発用・関係者限定</div>
+            </section>
         </div>
 
-        <div class="data-error">
-            <strong>DATA ERROR</strong>
-            <p>当該ファイルは一部データが破損しています。現在、正常な内容を表示することができません。</p>
-            <p>復元処理を実施してください。</p>
+        <div class="note">
+            <p>※本薬品に関する情報および使用記録は、指定された機密アーカイブに保存すること。</p>
         </div>
 
         <div class="search-field">

@@ -241,6 +241,7 @@
             }
         }
     </style>
+    <link rel="icon" href="../images/logo/unreal.png">
 </head>
 <body>
     <header class="header">
@@ -319,46 +320,51 @@
         const memberData = {
             rin: {
                 name: '暁月 りん（あかつき りん）',
+                romaji: 'Akatsuki Rin',
                 emoji: '❤️',
                 color: '#ff0000',
                 birthday: '2001年8月1日（25歳）',
                 height: '161cm',
-                memberColor: '赤色',
+                memberColor: 'レッド',
                 hobby: 'ダンス、ドライブ',
                 blog: '../blog/rin'
             },
             yuno: {
                 name: '百瀬 ゆの（ももせ ゆの）',
+                romaji: 'Momose Yuno',
                 emoji: '🩷',
                 color: '#ff69b4',
                 birthday: '2005年2月20日（22歳）',
                 height: '155cm',
-                memberColor: 'ピンク色',
+                memberColor: 'ピンク',
                 hobby: 'ぬいぐるみ作り、お菓子作り',
                 blog: '../blog/yuno'
             },
             aki: {
                 name: '燈真 あき（とうま あき）',
+                romaji: 'Toma Aki',
                 emoji: '🧡',
                 color: '#ff8c00',
-                birthday: '2004年3月2日（22歳）',
+                birthday: '2004年3月8日（22歳）',
                 height: '163cm',
-                memberColor: 'オレンジ色',
+                memberColor: 'オレンジ',
                 hobby: 'アウトドア、作曲',
                 blog: '../blog/aki'
             },
             mirei: {
                 name: '城崎 みれい（きさき みれい）',
+                romaji: 'Kisaki Mirei',
                 emoji: '💛',
                 color: '#ffd700',
                 birthday: '2006年7月19日（20歳）',
                 height: '152cm',
-                memberColor: '黄色',
+                memberColor: 'イエロー',
                 hobby: '料理、イラスト、演技',
                 blog: '../blog/mirei'
             },
             iroha: {
                 name: '桧翠 いろは（ひすい いろは）',
+                romaji: 'Hisui Iroha',
                 emoji: '💚',
                 color: '#00ced1',
                 birthday: '2002年11月16日（24歳）',
@@ -369,6 +375,7 @@
             },
             ran: {
                 name: '星名 らん（せいな らん）',
+                romaji: 'Seina Ran',
                 emoji: '💙',
                 color: '#4169e1',
                 birthday: '2001年8月6日（25歳）',
@@ -379,6 +386,7 @@
             },
             nagisa: {
                 name: '詩藤 なぎさ（しどう なぎさ）',
+                romaji: 'Shido Nagisa',
                 emoji: '💜',
                 color: '#9370db',
                 birthday: '2003年12月3日（23歳）',
@@ -397,6 +405,7 @@
             document.getElementById('modalName').textContent = member.name;
             
             const details = `
+                <dt>ローマ字</dt><dd>${member.romaji}</dd>
                 <dt>生年月日</dt><dd>${member.birthday}</dd>
                 <dt>身長</dt><dd>${member.height}</dd>
                 <dt>メンバーカラー</dt><dd>${member.memberColor}</dd>
@@ -419,5 +428,9 @@
             }
         });
     </script>
+    <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
+        <p>&copy;2027 イースターパーティー</p>
+        <p>このWebサイトの内容は全てフィクションです。実在する人物･事件･団体とは一切関係ありません。</p>
+    </footer>
 </body>
 </html>

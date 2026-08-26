@@ -3,25 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星名らん - カルテ</title>
+    <title>被験体管理記録 - UnReal</title>
     <style>
-        body { background: #f0f5ff; font-family: serif; padding: 40px 20px; }
-        .page-number { position: fixed; top: 20px; right: 20px; opacity: 0.5; }
-        .medical-record { max-width: 700px; margin: 0 auto; background: white; padding: 30px; border: 2px solid #4169e1; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #2b2b2b;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif;
+            color: #ddd;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .page-number {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* カルテ本体（画像） */
+        .record-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            background: #fff;
+            box-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
     </style>
+    <link rel="icon" href="../images/logo/unreal.png">
 </head>
 <body>
-    <div class="page-number">12/50</div>
-    <div class="medical-record">
-        <h1>診療記録</h1>
-        <p>氏名: 星名らん</p>
-        <p>ID: R-002</p>
-        <p>備考: reportR2参照</p>
-        
-        <div style="background: rgba(65, 105, 225, 0.1); padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 3px solid #4169e1;">
-            <p style="margin: 0; font-size: 14px; color: #666;">配置されたワード：</p>
-            <p style="margin: 5px 0; font-size: 18px; color: #4169e1; font-weight: bold;">reportR2</p>
-        </div>
+    <div class="page-number">12/55</div>
+
+    <div class="container">
+        <img src="../images/records/ran.jpg" alt="星名らんの被験体管理記録" class="record-image">
+        <a href="../index.html" class="back-link">← TOPに戻る</a>
     </div>
+    <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
+        <p>&copy;2027 イースターパーティー</p>
+        <p>このWebサイトの内容は全てフィクションです。実在する人物･事件･団体とは一切関係ありません。</p>
+    </footer>
 </body>
 </html>

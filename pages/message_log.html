@@ -35,18 +35,60 @@
             color: #667eea;
             text-decoration: none;
         }
+        /* チャットログの発言 */
+        .chat-line {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            line-height: 1.8;
+        }
+        .chat-line:last-child {
+            border-bottom: none;
+        }
+        .chat-name {
+            display: inline-block;
+            min-width: 4em;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+        .chat-line.kurosawa .chat-name {
+            color: #e57373;
+        }
+        .chat-line.haitani .chat-name {
+            color: #64b5f6;
+        }
+        /* 黒塗り部分 */
+        .redacted {
+            background: #000;
+            color: #000;
+        }
     </style>
+    <link rel="icon" href="../images/logo/unreal.png">
 </head>
 <body>
-    <div class="page-number">9/50</div>
+    <div class="page-number">9/55</div>
     <div class="container">
         <h1>メッセージログ</h1>
         <div class="content">
-            <p>失踪に関するメッセージ（仮）</p>
-            <p style="margin-top: 30px;">
-                <a href="../index.html">← TOPに戻る</a>
-            </p>
+            <div class="chat-line kurosawa"><span class="chat-name">黒澤</span>暁月の件だが、情報は入ったか。</div>
+            <div class="chat-line haitani"><span class="chat-name">灰谷</span>申し訳ございません。まだ見つかっておりません。</div>
+            <div class="chat-line kurosawa"><span class="chat-name">黒澤</span>捜索状況は？</div>
+            <div class="chat-line haitani"><span class="chat-name">灰谷</span>本人の端末は電源が切られています。追跡も解除されたようで、正直手詰まりといった状態です。</div>
+            <div class="chat-line kurosawa"><span class="chat-name">黒澤</span>そうか。お前は分かっていると思うが、このことは絶対に外部に漏らすな。</div>
+            <div class="chat-line haitani"><span class="chat-name">灰谷</span>もちろん、承知しております。</div>
+            <div class="chat-line kurosawa"><span class="chat-name">黒澤</span>それから、暁月の失踪直前に<span class="redacted">████</span>への不正アクセス履歴があった。恐らく暁月だオル。だとすると暁月はすでに<span class="redacted">████</span>のことを知っていることになる。</div>
+            <div class="chat-line kurosawa"><span class="chat-name">黒澤</span>情報が知られた以上、あまり時間をかけてはいられない。どんな手を使ってでも連れ戻せ。</div>
+            <div class="chat-line haitani"><span class="chat-name">灰谷</span>はい。</div>
+            <div class="chat-line kurosawa"><span class="chat-name">黒澤</span>暁月は活動休止ということで処理をしておけ。メンバーにも同じように説明しろ。絶対にこれ以上勘付かれるなよ</div>
+            <div class="chat-line haitani"><span class="chat-name">灰谷</span>かしこまりました。</div>
         </div>
+
+        <p style="margin-top: 30px;">
+            <a href="../index.html">← TOPに戻る</a>
+        </p>
     </div>
+    <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
+        <p>&copy;2027 イースターパーティー</p>
+        <p>このWebサイトの内容は全てフィクションです。実在する人物･事件･団体とは一切関係ありません。</p>
+    </footer>
 </body>
 </html>

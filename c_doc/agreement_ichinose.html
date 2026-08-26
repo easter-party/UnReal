@@ -15,17 +15,49 @@
         .container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
         h1 { text-align: center; border-bottom: 3px double #000; padding-bottom: 20px; }
         .stamp { float: right; width: 100px; height: 100px; border: 2px solid red; border-radius: 50%; text-align: center; line-height: 100px; color: red; font-weight: bold; }
+        h2 { font-size: 16px; margin-top: 28px; margin-bottom: 8px; }
+        .signature { margin-top: 40px; }
+        .signature p { margin-bottom: 6px; }
+        /* 伏せられた日付 */
+        .redacted { background: #000; color: #000; }
+        /* 契約書の枠外に記載された注記 */
+        .outside-note { max-width: 800px; margin: 24px auto 0; font-size: 13px; line-height: 1.9; opacity: 0.7; }
     </style>
+    <link rel="icon" href="../images/logo/unreal.png">
 </head>
 <body>
-    <div class="page-number">13/50</div>
+    <div class="page-number">13/55</div>
     <div class="container">
         <div class="stamp">契約済</div>
-        <h1>業務委託契約書</h1>
-        <p>Easter Production（以下「甲」）と一ノ瀬家（以下「乙」）は、以下の通り契約を締結する。</p>
-        <h2>第1条（目的）</h2>
-        <p>本契約は、甲と乙との間における特別な業務提携に関する...</p>
-        <p style="background: #000; color: #000;">████████████████████</p>
+        <h1>研究開発資金援助契約書</h1>
+        <p>一ノ瀬 正孝（以下「甲」という。）と黒澤 宏一（以下「乙」という。）は、乙が行う研究開発事業について、以下のとおり契約を締結する。</p>
+
+        <h2>第1条（資金援助）</h2>
+        <p>甲は、乙が行う研究および開発事業に対し、必要な資金を援助するものとする。</p>
+
+        <h2>第2条（成果情報の共有）</h2>
+        <p>乙は、甲からの資金援助を受ける対価として、研究および試験、開発によって得られたデータ・成果の一部を甲に共有するものとする。</p>
+
+        <h2>第3条（秘密保持）</h2>
+        <p>甲および乙は、本契約に基づき知り得た研究内容、試験結果、開発データその他の機密情報を、相手方の承諾なく第三者に開示してはならない。</p>
+
+        <h2>第4条（協議）</h2>
+        <p>本契約に定めのない事項については、甲乙双方の協議により決定するものとする。</p>
+
+        <div class="signature">
+            <p>契約締結日：2024年<span class="redacted">█</span>月<span class="redacted">█</span>日</p>
+            <p>甲 氏名：一ノ瀬 正孝</p>
+            <p>乙 氏名：黒澤 宏一</p>
+        </div>
     </div>
+
+    <div class="outside-note">
+        <p>本書類は情報流出防止のため、書面での保存を行わず、機密情報アーカイブに保存するものとする。</p>
+        <p>当該アーカイブへのアクセス権限は、甲乙が指定した関係者のみに限るものとし、無断での複製、転載、外部への持ち出しを禁止する。</p>
+    </div>
+    <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
+        <p>&copy;2027 イースターパーティー</p>
+        <p>このWebサイトの内容は全てフィクションです。実在する人物･事件･団体とは一切関係ありません。</p>
+    </footer>
 </body>
 </html>

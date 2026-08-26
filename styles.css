@@ -327,6 +327,13 @@ body {
     position: relative;
 }
 
+/* ニュース項目をNEWSページへのリンクにする */
+a.news-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
 .news-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);

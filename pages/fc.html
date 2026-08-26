@@ -215,9 +215,10 @@
             box-shadow: 0 5px 15px rgba(102,126,234,0.3);
         }
     </style>
+    <link rel="icon" href="../images/logo/unreal.png">
 </head>
 <body>
-    <div class="page-number">8/50</div>
+    <div class="page-number">8/55</div>
     
     <div class="login-container">
         <div class="login-header">
@@ -279,8 +280,10 @@
                 { id: 'mireikinjo', pass: 'Stargaze' }
             ];
             
-            const isValid = validLogins.some(login => 
-                login.id === userId && login.pass === password
+            // 大文字小文字は区別しない
+            const isValid = validLogins.some(login =>
+                login.id.toLowerCase() === userId.toLowerCase()
+                && login.pass.toLowerCase() === password.toLowerCase()
             );
             
             if (isValid) {
@@ -329,5 +332,9 @@
             }
         });
     </script>
+    <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
+        <p>&copy;2027 イースターパーティー</p>
+        <p>このWebサイトの内容は全てフィクションです。実在する人物･事件･団体とは一切関係ありません。</p>
+    </footer>
 </body>
 </html>

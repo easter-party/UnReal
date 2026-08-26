@@ -35,18 +35,105 @@
             color: #667eea;
             text-decoration: none;
         }
+        /* 各作品 */
+        .release + .release {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .release-title {
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+        .release-date {
+            color: #667eea;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+        .tracklist {
+            list-style: none;
+            counter-reset: track;
+        }
+        .tracklist li {
+            counter-increment: track;
+            padding: 6px 0;
+            color: #ddd;
+        }
+        .tracklist li::before {
+            content: counter(track) ".";
+            display: inline-block;
+            min-width: 2em;
+            color: #667eea;
+        }
+        .solo {
+            color: #999;
+            font-size: 13px;
+        }
     </style>
+    <link rel="icon" href="../images/logo/unreal.png">
 </head>
 <body>
-    <div class="page-number">4/50</div>
+    <div class="page-number">4/55</div>
     <div class="container">
         <h1>DISCOGRAPHY</h1>
         <div class="content">
-            <p>ディスコグラフィーページ（仮）</p>
-            <p style="margin-top: 30px;">
-                <a href="../index.html">← TOPに戻る</a>
-            </p>
+            <div class="release">
+                <h2 class="release-title">Single「OVERTURE」</h2>
+                <div class="release-date">2025.2.19 release</div>
+                <ol class="tracklist">
+                    <li>Sparkling Fiction</li>
+                    <li>白昼夢</li>
+                    <li>Sparkling Fiction -Instrumental-</li>
+                    <li>白昼夢 -Instrumental-</li>
+                </ol>
+            </div>
+
+            <div class="release">
+                <h2 class="release-title">Single「Signal」</h2>
+                <div class="release-date">2025.12.8 release</div>
+                <ol class="tracklist">
+                    <li>Signal</li>
+                    <li>ambiguous</li>
+                    <li>Signal -Instrumental-</li>
+                    <li>ambiguous -Instrumental-</li>
+                </ol>
+            </div>
+
+            <div class="release">
+                <h2 class="release-title">Digital Single「サマー・タイム・リープ」</h2>
+                <div class="release-date">2026.6.3 release</div>
+                <ol class="tracklist">
+                    <li>サマー・タイム・リープ</li>
+                </ol>
+            </div>
+
+            <div class="release">
+                <h2 class="release-title">Album「Re:alize」</h2>
+                <div class="release-date">2026.10.21 release</div>
+                <ol class="tracklist">
+                    <li>Signal</li>
+                    <li>夜光</li>
+                    <li>Sparkling Fiction</li>
+                    <li>EVE <span class="solo">(Rin solo)</span></li>
+                    <li>Sweetest Sugar <span class="solo">(Yuno solo)</span></li>
+                    <li>Light It Up! <span class="solo">(Aki solo)</span></li>
+                    <li>Stargaze <span class="solo">(Mirei solo)</span></li>
+                    <li>Blooming Love <span class="solo">(Iroha solo)</span></li>
+                    <li>My Cinderella <span class="solo">(Ran solo)</span></li>
+                    <li>Hide &amp; Seek <span class="solo">(Nagisa solo)</span></li>
+                    <li>Made to be</li>
+                    <li>ふゆどなり</li>
+                </ol>
+            </div>
         </div>
+
+        <p style="margin-top: 30px;">
+            <a href="../index.html">← TOPに戻る</a>
+        </p>
     </div>
+    <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
+        <p>&copy;2027 イースターパーティー</p>
+        <p>このWebサイトの内容は全てフィクションです。実在する人物･事件･団体とは一切関係ありません。</p>
+    </footer>
 </body>
 </html>

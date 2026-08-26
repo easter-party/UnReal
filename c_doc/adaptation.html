@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>適応区分及び管理基準 - UnReal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-number {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: #00ff00;
+            opacity: 0.7;
+        }
+
+        .document-header {
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .document-title {
+            font-size: 22px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .meta {
+            margin-bottom: 6px;
+        }
+
+        .lead {
+            margin-bottom: 30px;
+        }
+
+        .grade {
+            margin-bottom: 26px;
+            padding-left: 14px;
+            border-left: 2px solid #00ff00;
+        }
+
+        .grade h2 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .redacted {
+            background: #00ff00;
+            color: #00ff00;
+        }
+
+        .note {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #00ff00;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .search-field {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #000;
+            border: 1px solid #00ff00;
+            padding: 10px;
+            color: #00ff00;
+        }
+
+        .search-field input {
+            background: transparent;
+            border: none;
+            color: #00ff00;
+            outline: none;
+            width: 200px;
+        }
+
+        a {
+            color: #00ff00;
+        }
+    </style>
+    <link rel="icon" href="../images/logo/unreal.png">
+</head>
+<body>
+    <div class="page-number">44/55</div>
+
+    <div class="container">
+        <div class="document-header">
+            <h1 class="document-title">クローン開発対象個体の能力値到達状況に基づく適応区分及び管理基準</h1>
+            <div class="meta">資料区分：個体管理・適応判定関連資料</div>
+            <div class="meta">取扱区分：機密／関係者限定</div>
+        </div>
+
+        <p class="lead">対象個体の能力値、投薬可否および試験状況等を総合的に評価し、以下の基準に基づき適応区分を決定する。</p>
+
+        <div class="grade">
+            <h2>■ Grade-S｜試験移行段階</h2>
+            <p>必要とされる能力値への到達が確認された個体。</p>
+            <p>クローン試験への移行が可能と判断された場合に付与する。</p>
+        </div>
+
+        <div class="grade">
+            <h2>■ Completed｜試験済み</h2>
+            <p>クローン開発工程を完了した個体に付与する。</p>
+            <p>開発後の経過については、別途定められた基準に従い管理する。</p>
+        </div>
+
+        <div class="grade">
+            <h2>■ Grade-A｜早期生育段階</h2>
+            <p>必要能力値には未達であるものの、投薬による能力値の向上が可能と判断された個体。</p>
+            <p>適切な投薬および生育管理を行い、早期の能力値到達を目指す。</p>
+        </div>
+
+        <div class="grade">
+            <h2>■ Grade-B｜経過観察段階</h2>
+            <p>必要能力値には未達であり、投薬による能力値向上が困難と判断された個体。</p>
+            <p>投薬を行わず、経過観察および通常の生活管理を継続する。</p>
+        </div>
+
+        <div class="grade">
+            <h2>■ Grade-X｜異常・試験個体</h2>
+            <p>能力値、身体状態等に何らかの異常が認められた個体、または通常の開発工程とは異なる試験・研究に使用されている個体に付与する。</p>
+        </div>
+
+        <div class="grade">
+            <h2>■ Grade-F｜不適合</h2>
+            <p>能力値の著しい低下、身体状態の変化、その他の理由により、クローン開発における適合性が認められなくなった個体に付与する。</p>
+        </div>
+
+        <p>※判定区分は個体の状態および研究進行状況に応じて変更される場合がある。</p>
+
+        <p class="meta" style="margin-top: 24px;">担当：<span class="redacted">██</span></p>
+
+        <div class="note">
+            <p>※本資料は、指定された機密アーカイブに保存すること。</p>
+        </div>
+
+        <div class="search-field">
+            <label>検索: </label>
+            <input type="text" id="searchInput" placeholder="キーワード入力...">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const keyword = this.value.trim();
+                if (keyword) {
+                    window.location.href = '../index.html?search=' + encodeURIComponent(keyword);
+                }
+            }
+        });
+    </script>
+    <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
+        <p>&copy;2027 イースターパーティー</p>
+        <p>このWebサイトの内容は全てフィクションです。実在する人物･事件･団体とは一切関係ありません。</p>
+    </footer>
+</body>
+</html>

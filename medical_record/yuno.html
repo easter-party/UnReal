@@ -3,27 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>百瀬ゆの - カルテ</title>
+    <title>被験体管理記録 - UnReal</title>
     <style>
-        body { background: #fff0f7; font-family: serif; padding: 40px 20px; }
-        .page-number { position: fixed; top: 20px; right: 20px; opacity: 0.5; }
-        .medical-record { max-width: 700px; margin: 0 auto; background: white; padding: 30px; border: 2px solid #ff69b4; }
-        .photo { width: 100px; height: 100px; background: #ff69b4; float: right; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #2b2b2b;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif;
+            color: #ddd;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .page-number {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* カルテ本体（画像） */
+        .record-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            background: #fff;
+            box-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
     </style>
+    <link rel="icon" href="../images/logo/unreal.png">
 </head>
 <body>
-    <div class="page-number">11/50</div>
-    <div class="medical-record">
-        <div class="photo"></div>
-        <h1>診療記録</h1>
-        <p>氏名: 百瀬ゆの</p>
-        <p>ID: Y-002</p>
-        <p>特記事項: 一ノ瀬関連</p>
-        
-        <div style="background: rgba(255, 105, 180, 0.1); padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 3px solid #ff69b4;">
-            <p style="margin: 0; font-size: 14px; color: #666;">配置されたワード：</p>
-            <p style="margin: 5px 0; font-size: 18px; color: #ff1493; font-weight: bold;">一ノ瀬</p>
-        </div>
+    <div class="page-number">11/55</div>
+
+    <div class="container">
+        <img src="../images/records/yuno.jpg" alt="百瀬ゆのの被験体管理記録" class="record-image">
+        <a href="../index.html" class="back-link">← TOPに戻る</a>
     </div>
+    <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
+        <p>&copy;2027 イースターパーティー</p>
+        <p>このWebサイトの内容は全てフィクションです。実在する人物･事件･団体とは一切関係ありません。</p>
+    </footer>
 </body>
 </html>
