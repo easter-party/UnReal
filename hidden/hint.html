@@ -3,190 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>なぎさの調査メモ</title>
+    <title>なぎさの調査ログ - UnReal</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif;
             color: #fff;
             min-height: 100vh;
-            padding: 20px;
+            padding: 40px 20px;
         }
-        
+
         .hint-container {
-            max-width: 900px;
+            max-width: 760px;
             margin: 0 auto;
-            padding: 20px;
         }
-        
+
         .hint-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 24px;
         }
-        
+
         .hint-title {
-            font-size: 36px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-size: 32px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #9370db, #667eea);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
         }
-        
+
         .hint-subtitle {
-            color: #999;
-            font-size: 18px;
+            color: #9370db;
+            font-size: 14px;
         }
-        
-        .accordion-container {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+
+        .hint-lead {
+            background: rgba(147, 112, 219, 0.12);
+            border-left: 3px solid #9370db;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.9;
+            color: #ddd;
+            margin-bottom: 32px;
+        }
+
+        /* ページ単位のアコーディオン */
+        .accordion-item {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            margin-bottom: 10px;
             overflow: hidden;
         }
-        
-        .accordion-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .accordion-item:last-child {
-            border-bottom: none;
-        }
-        
+
         .accordion-header {
             display: flex;
             align-items: center;
-            padding: 20px;
+            gap: 12px;
+            padding: 16px 20px;
             cursor: pointer;
-            transition: background 0.3s;
-            user-select: none;
+            transition: background 0.2s;
         }
-        
+
         .accordion-header:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
         }
-        
+
         .accordion-toggle {
-            width: 30px;
-            height: 30px;
-            border: 2px solid #667eea;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            transition: all 0.3s;
-            position: relative;
+            color: #9370db;
+            font-size: 12px;
+            transition: transform 0.2s;
         }
-        
-        .accordion-toggle::before,
-        .accordion-toggle::after {
-            content: '';
-            position: absolute;
-            background: #667eea;
-            transition: all 0.3s;
+
+        .accordion-item.open .accordion-toggle {
+            transform: rotate(90deg);
         }
-        
-        .accordion-toggle::before {
-            width: 14px;
-            height: 2px;
-        }
-        
-        .accordion-toggle::after {
-            width: 2px;
-            height: 14px;
-        }
-        
-        .accordion-item.active .accordion-toggle {
-            transform: rotate(45deg);
-            background: rgba(102, 126, 234, 0.2);
-        }
-        
-        .accordion-item.active .accordion-toggle::after {
-            height: 0;
-        }
-        
+
         .page-number-label {
-            font-size: 18px;
-            color: #667eea;
-            margin-right: 15px;
-            min-width: 80px;
+            color: #9370db;
+            font-size: 13px;
+            min-width: 58px;
         }
-        
+
         .page-title {
-            flex: 1;
-            font-size: 16px;
-            color: #ddd;
+            font-size: 15px;
         }
-        
+
         .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background: rgba(0, 0, 0, 0.3);
+            display: none;
+            padding: 0 20px 18px;
         }
-        
-        .accordion-item.active .accordion-content {
-            max-height: 500px;
+
+        .accordion-item.open .accordion-content {
+            display: block;
         }
-        
-        .hint-content {
-            padding: 20px 30px;
+
+        /* 段階的に開くヒント */
+        details {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 6px;
+            margin-bottom: 8px;
         }
-        
-        .hint-text {
-            line-height: 1.8;
-            margin-bottom: 15px;
-            color: #ccc;
+
+        details summary {
+            padding: 12px 16px;
+            cursor: pointer;
+            color: #aaa;
+            font-size: 14px;
+            list-style: none;
         }
-        
-        .hint-keyword {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.2);
-            color: #667eea;
-            padding: 4px 12px;
-            border-radius: 20px;
-            margin: 5px 5px 5px 0;
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary::before {
+            content: '▸ ';
+            color: #9370db;
+        }
+
+        details[open] summary::before {
+            content: '▾ ';
+        }
+
+        details p {
+            padding: 0 16px 14px;
+            line-height: 1.9;
+            color: #ddd;
             font-size: 14px;
         }
-        
+
+        details.answer summary {
+            color: #ffd700;
+        }
+
+        details.answer summary::before {
+            color: #ffd700;
+        }
+
+        details.answer p {
+            color: #ffd700;
+        }
+
+        .note-only {
+            line-height: 1.9;
+            color: #ddd;
+            font-size: 14px;
+        }
+
         .back-link {
             display: inline-block;
-            margin-top: 40px;
-            color: #667eea;
-            text-decoration: none;
+            margin-top: 30px;
             padding: 10px 20px;
-            border: 1px solid #667eea;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
             border-radius: 20px;
             transition: all 0.3s;
         }
-        
+
         .back-link:hover {
-            background: #667eea;
-            color: #fff;
-        }
-        
-        @media (max-width: 768px) {
-            .hint-container {
-                padding: 10px;
-            }
-            
-            .hint-title {
-                font-size: 28px;
-            }
-            
-            .page-number-label {
-                min-width: 60px;
-                font-size: 16px;
-            }
-            
-            .page-title {
-                font-size: 14px;
-            }
+            background: #fff;
+            color: #000;
         }
     </style>
     <link rel="icon" href="../images/logo/unreal.png">
@@ -194,218 +176,338 @@
 <body>
     <div class="hint-container">
         <div class="hint-header">
-            <h1 class="hint-title">なぎさの調査メモ</h1>
+            <h1 class="hint-title">なぎさの調査ログ</h1>
             <p class="hint-subtitle">@fortune_ngs</p>
         </div>
-        
-        <div class="accordion-container">
-            <!-- ページ2: NEWS -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-toggle"></div>
-                    <span class="page-number-label">No.2</span>
-                    <span class="page-title">ニュース記事の中に...</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="hint-content">
-                        <p class="hint-text">ニュースの見出しに注目してください。りんちゃんの状況について書かれた記事と、ある週刊誌の名前が隠されています。</p>
-                        <div class="hint-keyword">休止に関するワード</div>
-                        <div class="hint-keyword">週刊○○○</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ページ4: DISCOGRAPHY -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-toggle"></div>
-                    <span class="page-number-label">No.4</span>
-                    <span class="page-title">デビュー曲のタイトル</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="hint-content">
-                        <p class="hint-text">私たちのデビューシングル。通信や合図を意味する英単語です。</p>
-                        <div class="hint-keyword">S○○○○○</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ページ7: ABOUT -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-toggle"></div>
-                    <span class="page-number-label">No.7</span>
-                    <span class="page-title">代表の名前</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="hint-content">
-                        <p class="hint-text">事務所の代表取締役の名前。色を表す漢字が入った苗字です。</p>
-                        <div class="hint-keyword">○沢○一</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ページ9: メッセージログ -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-toggle"></div>
-                    <span class="page-number-label">No.9</span>
-                    <span class="page-title">マネージャーの名前</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="hint-content">
-                        <p class="hint-text">私たちのマネージャー。灰色の谷...という意味の苗字です。</p>
-                        <div class="hint-keyword">○谷</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ページ10: 履歴書 -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-toggle"></div>
-                    <span class="page-number-label">No.10</span>
-                    <span class="page-title">前職の会社名</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="hint-content">
-                        <p class="hint-text">履歴書に記載された前職。ケーキの名前みたいなカタカナ会社名です。</p>
-                        <div class="hint-keyword">○○○○カンパニー</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ページ15: 週刊誌 -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-toggle"></div>
-                    <span class="page-number-label">No.15</span>
-                    <span class="page-title">アカデミーの名前</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="hint-content">
-                        <p class="hint-text">タレント育成機関の名前。卵を意味する英語から来ています。</p>
-                        <div class="hint-keyword">○○○○アカデミー</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ページ29: パスワード -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-toggle"></div>
-                    <span class="page-number-label">No.29</span>
-                    <span class="page-title">重要な番号</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="hint-content">
-                        <p class="hint-text">りんちゃんのカルテに記載されている患者ID。Uから始まる9文字です。</p>
-                        <div class="hint-keyword">U○○○○○○○○</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ページ33: みれいBLOG_EX -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-toggle"></div>
-                    <span class="page-number-label">No.33</span>
-                    <span class="page-title">非公開記事へのキー</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="hint-content">
-                        <p class="hint-text">みれいちゃんの秘密のブログ。まだ公開されていない状態を表す言葉。</p>
-                        <div class="hint-keyword">○書き</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ページ35: らんBLOG_EX -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-toggle"></div>
-                    <span class="page-number-label">No.35</span>
-                    <span class="page-title">らんちゃんのソロ曲</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="hint-content">
-                        <p class="hint-text">らんちゃんのソロ曲タイトル。神秘的という意味の英単語です。</p>
-                        <div class="hint-keyword">M○○○○○</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ページ41: パスワード入力 -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-toggle"></div>
-                    <span class="page-number-label">No.41</span>
-                    <span class="page-title">大切な日付</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="hint-content">
-                        <p class="hint-text">誰かの誕生日かもしれません。2006年7月の日付を8桁で。</p>
-                        <div class="hint-keyword">2006○○○○</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ページ42: りんのカルテ -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-toggle"></div>
-                    <span class="page-number-label">No.42</span>
-                    <span class="page-title">最重要キーワード</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="hint-content">
-                        <p class="hint-text">りんちゃんの本当の名前。明石鈴の「鈴」を別の読み方で。</p>
-                        <div class="hint-keyword">暁月○○</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ページ47: 会話ログ -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-toggle"></div>
-                    <span class="page-number-label">No.47</span>
-                    <span class="page-title">二人の会話</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="hint-content">
-                        <p class="hint-text">二人の名前を組み合わせた検索ワード。「○○と○○○」という形式で。</p>
-                        <div class="hint-keyword">○○と○○○</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <a href="../index.html" class="back-link">← TOPに戻る</a>
+
+        <p class="hint-lead">
+            「私が見つけた手がかりを示します。調査に行き詰まった時は見てみてください。参考になるかもしれません。」
+        </p>
+
+        <div class="accordion-container" id="accordionContainer"></div>
+
+        <a href="../index.html" class="back-link">TOPに戻る</a>
     </div>
-    
+
     <script>
-        // ページ訪問記録
+        // ページごとのヒント。hints は段階的に開く手がかり、answer は答え
+        const hintData = [
+            { no: '1〜7', title: 'サイト内をひととおり見る', note: '最初から見られるみたいですね。隅々まで見てみましょう。' },
+            {
+                no: 'No.8', title: 'FC LOGIN',
+                hints: [
+                    '最初から見られますが、ログインが必要みたいです。まずは他のページを確認して手がかりを集めましょう。',
+                    'パスワードは8文字の英語…どこかになかったでしょうか。',
+                    '曲のタイトルはどうでしょうか。該当するものを探してみましょう。',
+                    'みれいのソロ曲が当てはまりそうです。ということはユーザー名は…',
+                    'kisakimireiでは無いようですね。どこかに別の名前がありませんでしたか？まだ見つかっていないなら、まずはそれを先に探しましょう。'
+                ],
+                answer: 'ID：kinjomirei、pass：Stargaze'
+            },
+            {
+                no: 'No.9', title: 'メッセージログ',
+                hints: [
+                    'NEWSに気になる文がありませんでしたか？',
+                    'そもそもこの調査に至ったきっかけは…'
+                ],
+                answer: '「活動休止」を検索'
+            },
+            {
+                no: 'No.10', title: '灰谷の履歴書',
+                hints: ['9のページに新しい名前がありましたね。'],
+                answer: '「灰谷」を検索'
+            },
+            {
+                no: 'No.11・12', title: 'ゆの／らんのカルテ',
+                hints: ['10の中に見たことのない企業名がありますね。'],
+                answer: '「シムネルカンパニー」を検索'
+            },
+            {
+                no: 'No.13', title: '契約書',
+                hints: [
+                    '11と12をよく見比べてみましょう。12では特に記載のない内容が、11ではあえて言及されているようです。',
+                    '備考欄に気になる一文はありませんか？'
+                ],
+                answer: '「一ノ瀬」を検索'
+            },
+            {
+                no: 'No.14', title: '鑑定結果',
+                hints: [
+                    '12をよく読んでみましょう。',
+                    '一部が隠されていますが、別の資料にもらんに関する記述があるようですね。'
+                ],
+                answer: '「reportR2」を検索'
+            },
+            {
+                no: 'No.15', title: 'リーク記事',
+                hints: [
+                    'NEWSを全て確認してみましょう。',
+                    '2025年5月17日の記事を確認しましょう。何かあったようです。',
+                    '週刊誌に事務所に関する内容が掲載されたみたいですね。当時の記事を確認することはできないでしょうか。'
+                ],
+                answer: '「週刊ライク」を検索'
+            },
+            {
+                no: 'No.16', title: 'エッグスアカデミーのHP',
+                hints: ['週刊ライクの記事にまたみたことのない企業名が記載されていますね。'],
+                answer: '「エッグスアカデミー」を検索'
+            },
+            {
+                no: 'No.17', title: 'みれいのカルテ',
+                hints: [
+                    '16はエッグスアカデミーという芸能事務所のHPのようです。隅々まで見てみましょう。',
+                    'NEWSにどこか聞き覚えのある名前がありますね。'
+                ],
+                answer: '「金城未怜」を検索'
+            },
+            {
+                no: 'No.18', title: 'βCPM資料',
+                hints: ['17の中に怪しげな単語がありますね。'],
+                answer: '「βCPM」を検索'
+            },
+            { no: 'No.19〜25', title: '各メンバーのBLOG', note: 'BLOGページから各メンバーのブログに飛べるようです。' },
+            {
+                no: 'No.26', title: 'クローン取引証明書',
+                hints: [
+                    '7のページをよく見てみましょう。',
+                    '新しい名前が出てきましたね。検索してみましょう。'
+                ],
+                answer: '「黒澤宏一」を検索'
+            },
+            {
+                no: 'No.27', title: 'クローン資料',
+                hints: ['社長はどうやらクローンを作る実験をしているみたいです。すでに作成された個体があるようですが…'],
+                answer: '「n002」を検索'
+            },
+            {
+                no: 'No.28', title: 'いろはのカルテ',
+                hints: ['27はクローン「n002」に関する資料のようです。ここにもどこか聞き覚えのある名前がありますが…'],
+                answer: '「翠彩葉」を検索'
+            },
+            {
+                no: 'No.29', title: '翠彩葉 最終試験結果',
+                hints: [
+                    '今度はいろはのカルテが出てきました。しっかり見てみましょう。',
+                    'いろははなぜクローン作成の被験体に選ばれたんでしょう。'
+                ],
+                answer: '「最終試験」を検索'
+            },
+            {
+                no: 'No.30〜36', title: '各メンバーのBLOG_EX',
+                hints: ['FCページに入ることができましたね。ログイン後に何かが見られるようになったみたいです。探してみましょう。'],
+                answer: 'それぞれのブログに会員限定の記事が追加されている'
+            },
+            {
+                no: 'No.37', title: 'ニュース記事',
+                hints: [
+                    '会員限定の記事は読みましたか？気になるワードがあれば検索してみましょう。',
+                    'あきの記事をよく読んでみましょう。あきはアイドルになる前は何をしていたんでしょうか？',
+                    'あきは女優の活動をしていたみたいです。なぜやめてしまったんでしょう。',
+                    '主演舞台の記事の後、しばらくブログの更新が途切れています。何かあったんでしょうか？調べてみましょう。'
+                ],
+                answer: '「三月の秘密」を検索'
+            },
+            {
+                no: 'No.38', title: 'あきのカルテ',
+                hints: [
+                    'あきの主演舞台に関する記事が出てきましたね。気になるワードはありませんか？',
+                    'あきは怪我の後どこに運ばれたんでしょうか。'
+                ],
+                answer: '「新生総合病院」を検索'
+            },
+            {
+                no: 'No.39', title: '治療薬RFXに関する資料',
+                hints: [
+                    'あきのカルテですね。よく読んでみましょう。',
+                    'あきは過去に治療を受けているようです。どんな治療でしょうか。'
+                ],
+                answer: '「RFX」を検索'
+            },
+            {
+                no: 'No.40', title: 'なぎさのカルテ',
+                hints: [
+                    '私のブログは読んでくれましたか？実は私もこのグループに入る前は別の活動をしていました。',
+                    '私は以前、同じ事務所の別のグループで活動していました。'
+                ],
+                answer: '「Mystic」を検索'
+            },
+            {
+                no: 'No.41', title: '脳機能解放実験に関する資料',
+                hints: [
+                    '私のカルテ…ですね。普段隠している右目が唯一見えている写真なのですが、このために撮られたんですね。',
+                    'カルテの中にはめぼしいワードはないようです。ページの隅々まで確認しましょう。',
+                    'カルテの下に文章がありますね。',
+                    '私の右目がこうなった理由が書かれた資料の名前が分かりましたね。'
+                ],
+                answer: '「RM2-5013」を検索'
+            },
+            {
+                no: 'No.42-1', title: 'パスワード入力画面',
+                hints: [
+                    'みれいの記事をよく読んでみましょう。みれいは何かを知っているようですが…',
+                    'みれいは記事には記録を残していないようですね。どこにあるんでしょう。'
+                ],
+                answer: '「下書き」を検索'
+            },
+            {
+                no: 'No.42-2', title: 'りんちゃんのこと',
+                hints: [
+                    '下書きを見るにはパスワードが必要みたいです。みれいの生年月日が分かる資料はなかったでしょうか？',
+                    'カルテに生年月日が記載されていましたね。17をもう一度確認してみましょう。'
+                ],
+                answer: '「20060719」を入力'
+            },
+            {
+                no: 'No.43', title: 'りんのカルテ',
+                hints: [
+                    '42は読めましたか？',
+                    'みれいはりんについて知っていることがあるみたいですね。',
+                    '「りんちゃんもみんなと同じ」とは、どういうことなんでしょう？',
+                    'りんのカルテがまだ見つかっていませんね。みれいの言葉と添付されている画像を元に探してみましょう。',
+                    'みれいのメモに書かれた「medical_record/XXX」はカルテの保存場所みたいですね。他のメンバーのカルテの保存場所を確認してみてください。',
+                    'XXXにはそれぞれ名前が入っているみたいです。ということは…りんのカルテも見つけられそうですね。'
+                ],
+                answer: 'アドレスバーに「https://easter-party.github.io/UnReal/medical_record/rin.html」を入力する'
+            },
+            {
+                no: 'No.44', title: '適応に関する資料',
+                hints: ['メンバーのカルテに気になる項目はありませんか？検索してみましょう。'],
+                answer: '「適応」を検索'
+            },
+            {
+                no: 'No.45', title: '鑑定結果（完全版）',
+                hints: [
+                    'りんのカルテが出てきましたね。隅々まで確認してみましょう。',
+                    'りんとらんは関係があるとのことですが、どういった関係なんでしょうか…。調べてみましょう。'
+                ],
+                answer: '「鑑定結果」を検索'
+            },
+            {
+                no: 'No.46', title: 'Nxaに関する資料',
+                hints: [
+                    'りんのカルテからまだ調べられることがありそうです。',
+                    '備考欄に気になる文字がありますね…。何かの薬品でしょうか？'
+                ],
+                answer: '「Nxa-R」を検索'
+            },
+            {
+                no: 'No.47', title: 'パスワード入力画面',
+                hints: [
+                    'だいぶ情報が集まってきましたね。ここからはりんの居場所を探しましょう。どこかにりんからのメッセージがありませんでしたか？',
+                    'りんのブログを読み返してみましょう。一つだけ不自然な記事がありますね。',
+                    '1月15日の記事、改行が不自然ですね…。',
+                    '一番左の文字を読んでいくと「一曲めの信ごう」になりますね。一曲目、信号というと…あのアルバムのあの曲のことでしょうか？確認してみましょう。'
+                ],
+                answer: '「Signal」を検索'
+            },
+            {
+                no: 'No.48', title: '調査ページ',
+                hints: [
+                    'りんが残してくれた記録に辿り着きましたね。でもパスワードが必要みたいです。',
+                    'このページの背景にうっすらと見えているのはジャケット画像でしょうか？もっとしっかり見てみたら分かることがあるかもしれません。Discographyページに戻ってみましょう。',
+                    '画像をクリックすると大きな画面で表示できるみたいですね。ジャケット画像に何か隠されているかもしれません。',
+                    'りんが持っている旗に「My management number」と書かれていますね。「management number」が分からない方は外部サイトで検索してみましょう。',
+                    'りんのカルテに管理番号が書いてありましたね。これを使えばいいみたいです。'
+                ],
+                answer: 'パスワード入力欄に「U81220401」を入力し、認証ボタンを押す'
+            },
+            {
+                no: 'No.49', title: 'りんとなぎさの会話ログ',
+                note: 'りんが調べたことをまとめた調査ページみたいです。一番下まで確認してください。私たちの真実が明らかになりましたね。\n…ずっと騙していて、ごめんなさい。\nここまでの調査お疲れ様でした。ですが、TRUE ENDに到達するためにはまだ知らなくてはいけない情報があるみたいです。'
+            },
+            {
+                no: 'No.50', title: 'n001型完成報告書',
+                hints: [
+                    '私たちはクローンの研究に使われていたそうですが、実際にクローンの元として使用されていたのは誰でしたか？',
+                    'いろはのカルテをもう一度確認してみましょう。いろはの適応は「Complete」…つまり、試験済み。他にも試験済みの人がいた気が…',
+                    'りんとらんのステータスも、いろはと同じ「Complete」になっていましたね。ということは、りんとらんから作成されたクローンがいるはずです。',
+                    'いろはのクローン番号はいくつだったでしょうか。',
+                    'いろはのクローン番号は「n002」。ということは…'
+                ],
+                answer: '「n001」を検索'
+            },
+            {
+                no: 'No.51', title: 'RN016仕様書',
+                hints: ['りんとらんから作成されたクローンの報告書のようですね。このクローンのもっと詳細な情報を得られないでしょうか。'],
+                answer: '「仕様書」で検索'
+            },
+            {
+                no: 'No.52', title: 'RN016実験報告書',
+                hints: ['n002の仕様書が出てきましたね。今は実用化に向けて別の名前で呼ばれているそうですが…'],
+                answer: '「RN016」を検索'
+            },
+            {
+                no: 'No.53', title: '研究施設概要',
+                hints: [
+                    '「RN016」の実験報告書が出てきました。このクローンは実用化に向けて実験が進められているみたいです。',
+                    'このクローンは今どこにあるんでしょうか。'
+                ],
+                answer: '「研究所」を検索'
+            },
+            {
+                no: 'No.54', title: '生活適応室内実験報告書',
+                hints: [
+                    '研究所の地図が出てきましたね。気になる部屋はありませんか。',
+                    '普通の研究室実験室の中に明らかにおかしな部屋がありますね。'
+                ],
+                answer: '「生活適応室」を検索'
+            },
+            {
+                no: 'No.55', title: '調査ログex',
+                hints: ['生活適応室にいるクローンのことが書いてありますね。このクローン…いえ、彼女は、もうクローンとしてではなく、人間としての名前が付けられているみたいです。'],
+                answer: '「白鳥風香」を検索'
+            }
+        ];
+
+        // ヒント一覧を組み立てる
+        const container = document.getElementById('accordionContainer');
+
+        hintData.forEach(data => {
+            const item = document.createElement('div');
+            item.className = 'accordion-item';
+
+            const header = document.createElement('div');
+            header.className = 'accordion-header';
+            header.innerHTML =
+                '<span class="accordion-toggle">▶</span>'
+                + `<span class="page-number-label">${data.no}</span>`
+                + `<span class="page-title">${data.title}</span>`;
+            header.addEventListener('click', () => item.classList.toggle('open'));
+
+            const content = document.createElement('div');
+            content.className = 'accordion-content';
+
+            if (data.note) {
+                const p = document.createElement('p');
+                p.className = 'note-only';
+                p.textContent = data.note;
+                p.style.whiteSpace = 'pre-line';
+                content.appendChild(p);
+            }
+
+            (data.hints || []).forEach((text, i) => {
+                const d = document.createElement('details');
+                d.innerHTML = `<summary>ヒント${i + 1}</summary><p>${text}</p>`;
+                content.appendChild(d);
+            });
+
+            if (data.answer) {
+                const d = document.createElement('details');
+                d.className = 'answer';
+                d.innerHTML = `<summary>答え</summary><p>${data.answer}</p>`;
+                content.appendChild(d);
+            }
+
+            item.appendChild(header);
+            item.appendChild(content);
+            container.appendChild(item);
+        });
+
+        // 訪問記録（既存の仕様を維持）
         const visitedPages = JSON.parse(localStorage.getItem('visitedPages') || '[]');
         if (!visitedPages.includes('hint')) {
             visitedPages.push('hint');
             localStorage.setItem('visitedPages', JSON.stringify(visitedPages));
-        }
-        
-        // アコーディオン開閉
-        function toggleAccordion(header) {
-            const item = header.parentElement;
-            const wasActive = item.classList.contains('active');
-            
-            // 他のアイテムを閉じる
-            document.querySelectorAll('.accordion-item').forEach(accItem => {
-                accItem.classList.remove('active');
-            });
-            
-            // クリックしたアイテムをトグル
-            if (!wasActive) {
-                item.classList.add('active');
-            }
         }
     </script>
     <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">

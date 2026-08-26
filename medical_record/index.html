@@ -3,66 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カルテ一覧 - UnReal</title>
+    <title>検索結果 - UnReal</title>
     <style>
-        body {
-            background: #1a1a1a;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            padding: 40px;
-            min-height: 100vh;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            background: #f7f7f7;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif;
+            color: #222;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
         .container {
-            max-width: 800px;
+            max-width: 720px;
             margin: 0 auto;
         }
-        h1 {
-            color: #667eea;
-            margin-bottom: 30px;
+
+        .result-summary {
+            color: #666;
+            font-size: 13px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 8px;
         }
-        .content {
-            background: rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 10px;
+
+        .result-summary strong {
+            color: #222;
         }
-        .links {
-            margin: 20px 0;
-        }
-        .links a {
+
+        /* 検索結果の各項目 */
+        .result-item {
             display: block;
-            color: #667eea;
+            padding: 22px 4px;
+            border-bottom: 1px solid #e5e5e5;
             text-decoration: none;
-            padding: 10px;
-            margin: 10px 0;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 5px;
-            transition: background 0.3s;
+            color: inherit;
+            transition: background 0.2s;
         }
-        .links a:hover {
-            background: rgba(102, 126, 234, 0.2);
+
+        .result-item:hover {
+            background: #fff;
         }
-        a {
-            color: #667eea;
+
+        .result-url {
+            color: #3a7d3a;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .result-title {
+            color: #1a4fb4;
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .result-item:hover .result-title {
+            text-decoration: underline;
+        }
+
+        .result-snippet {
+            color: #555;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #666;
             text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #222;
         }
     </style>
     <link rel="icon" href="../images/logo/unreal.png">
 </head>
 <body>
     <div class="container">
-        <h1>カルテ一覧</h1>
-        <div class="content">
-            <p>メンバーのカルテ一覧</p>
-            
-            <div class="links">
-                <a href="yuno.html">→ ゆののカルテ</a>
-                <a href="ran.html">→ らんのカルテ</a>
-            </div>
-            
-            <p style="margin-top: 30px;">
-                <a href="../index.html">← TOPに戻る</a>
+        <p class="result-summary"><strong>「シムネルカンパニー」</strong>に関連する文書が 2 件見つかりました</p>
+
+        <a href="yuno.html" class="result-item">
+            <div class="result-url">medical_record/yuno.html</div>
+            <h2 class="result-title">被験体管理記録 ／ 百瀬ゆの</h2>
+            <p class="result-snippet">
+                管理番号・適応区分・能力値推移を含む被験体管理記録。保護管轄および既往歴の記載あり。
             </p>
-        </div>
+        </a>
+
+        <a href="ran.html" class="result-item">
+            <div class="result-url">medical_record/ran.html</div>
+            <h2 class="result-title">被験体管理記録 ／ 星名らん</h2>
+            <p class="result-snippet">
+                管理番号・適応区分・能力値推移を含む被験体管理記録。備考欄に別途資料への参照あり。
+            </p>
+        </a>
+
+        <a href="../index.html" class="back-link">← TOPに戻る</a>
     </div>
     <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
         <p>&copy;2027 イースターパーティー</p>

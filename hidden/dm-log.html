@@ -184,6 +184,36 @@
             margin: 20px 0;
         }
 
+        /* 選択肢 */
+        .choice-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .choice-btn {
+            max-width: 80%;
+            padding: 12px 18px;
+            border: 1px solid #667eea;
+            border-radius: 18px;
+            background: #fff;
+            color: #667eea;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .choice-btn:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border-color: transparent;
+        }
+
         /* デバッグ用スキップボタン（テスト段階のみ設置） */
         .skip-btn {
             position: fixed;
@@ -494,11 +524,28 @@
             { sender: 'player', text: '言いましたけど……その話随分前にした話なのに、覚えててくれたんですね。', delay: 2500 },
             { sender: 'fortune', text: '記憶力はいい方なんです。って、そんなことは良くて。', delay: 2000 },
             { sender: 'fortune', text: '正直、あまり表立って言えない内容なんですが……お話だけでも聞いて頂けませんか？', delay: 2500 },
-            { sender: 'player', text: '分かりました。依頼とはなんでしょうか？', delay: 2000 },
-            { sender: 'fortune', text: '私たちのファンでいて下さっているあなたには少しショッキングかもしれないんですが……', delay: 2500 },
+            { sender: 'player', text: '分かりました。', delay: 2000 },
+            {
+                type: 'choice',
+                options: [
+                    {
+                        text: 'でも、もし私が本物の探偵じゃなかったらどうするんです？',
+                        reply: '貴方が本物の探偵の方だということは事前にこちらで調査させて頂いたうえでご連絡してますので、大丈夫です。'
+                    },
+                    {
+                        text: '依頼とはなんでしょうか？',
+                        reply: '私たちのファンでいて下さっているあなたには少しショッキングかもしれないんですが……'
+                    }
+                ]
+            },
             { sender: 'fortune', text: '実は、センターの 暁月りん が突然失踪したんです。ワンマンも迫ってきていますし、りんを探す手伝いをして頂きたくて。', delay: 3000 },
-            { sender: 'player', text: 'りんちゃんが……？', delay: 1500 },
-            { sender: 'fortune', text: 'そうなんです。', delay: 1500 },
+            {
+                type: 'choice',
+                options: [
+                    { text: 'え、本当なんですか！？', reply: '私達も信じたくないんですけど……。' },
+                    { text: 'りんちゃんが……？', reply: 'そうなんです。' }
+                ]
+            },
             { sender: 'fortune', text: 'メンバー全員でのミーティングがあるはずだった日の朝、突然私にメッセージが送られてきたんです。そのメッセージがとても意味深だったので慌てて連絡したんですけど、そこから音信不通で。', delay: 3500 },
             { sender: 'fortune', text: 'あまりに突然ですし、危ないことに巻き込まれているのかもしれないと思ったので私たちも探したいと申し出たんですが、どういうわけか事務所は今回の件について警察への通報も、私たちの関与も認めないとの一点張りで。', delay: 4000 },
             { sender: 'fortune', text: '手の打ちようが無くなっていたところで貴方のことを思い出したんです。事務所に止められている以上公には出来ないので、私が単独で動くしかないと思って。ですから あなたに依頼したことはメンバーにも伝えていません。', delay: 4000 },
@@ -590,6 +637,42 @@
             document.getElementById('skipBtn').style.display = 'none';
         }
 
+        // 選択肢を表示して、選ばれるまで進行を止める
+        function showChoices(messageData) {
+            const group = document.createElement('div');
+            group.className = 'choice-group';
+
+            messageData.options.forEach(option => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'choice-btn';
+                btn.textContent = option.text;
+
+                btn.addEventListener('click', function() {
+                    group.remove();
+                    currentMessageIndex++;
+
+                    // 選んだ内容を自分の発言として表示する
+                    messageContainer.appendChild(createMessage({ sender: 'player', text: option.text }));
+                    messageContainer.scrollTop = messageContainer.scrollHeight;
+
+                    // 選択に応じた返答を次のメッセージとして差し込む
+                    messages.splice(currentMessageIndex, 0, {
+                        sender: 'fortune',
+                        text: option.reply,
+                        delay: 2500
+                    });
+
+                    messageTimer = setTimeout(showNextMessage, 800);
+                });
+
+                group.appendChild(btn);
+            });
+
+            messageContainer.appendChild(group);
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        }
+
         function showNextMessage() {
             if (isSkipped) {
                 return;
@@ -601,6 +684,13 @@
             }
 
             const messageData = messages[currentMessageIndex];
+
+            // 選択肢は入力待ちにする
+            if (messageData.type === 'choice') {
+                typingIndicator.classList.remove('show');
+                showChoices(messageData);
+                return;
+            }
 
             // タイピングインジケーターを表示
             if (messageData.sender === 'fortune') {
@@ -630,11 +720,32 @@
             clearTimeout(messageTimer);
             typingIndicator.classList.remove('show');
 
+            // 表示中の選択肢は取り除く
+            const pendingChoice = messageContainer.querySelector('.choice-group');
+            if (pendingChoice) {
+                pendingChoice.remove();
+            }
+
+            const appendInstantly = data => {
+                const element = createMessage(data);
+                element.style.animation = 'none';
+                element.style.opacity = '1';
+                messageContainer.appendChild(element);
+            };
+
             while (currentMessageIndex < messages.length) {
-                const messageElement = createMessage(messages[currentMessageIndex]);
-                messageElement.style.animation = 'none';
-                messageElement.style.opacity = '1';
-                messageContainer.appendChild(messageElement);
+                const data = messages[currentMessageIndex];
+
+                // 未選択の選択肢は先頭の選択肢を選んだものとして流す
+                if (data.type === 'choice') {
+                    const option = data.options[0];
+                    appendInstantly({ sender: 'player', text: option.text });
+                    appendInstantly({ sender: 'fortune', text: option.reply });
+                    currentMessageIndex++;
+                    continue;
+                }
+
+                appendInstantly(data);
                 currentMessageIndex++;
             }
 
