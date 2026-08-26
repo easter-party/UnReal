@@ -73,6 +73,61 @@
         }
     </style>
     <link rel="icon" href="../../images/logo/unreal.png">
+    <style>
+        /* 全ページ共通の検索窓（配色はページの文字色を継承する） */
+        .site-search {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 300;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border: 1px solid currentColor;
+            border-radius: 20px;
+            background: rgba(128, 128, 128, 0.18);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+
+        .site-search:focus-within {
+            opacity: 1;
+        }
+
+        .site-search-input {
+            width: 150px;
+            border: none;
+            background: transparent;
+            color: inherit;
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .site-search-input::placeholder {
+            color: inherit;
+            opacity: 0.5;
+        }
+
+        .site-search-btn {
+            border: none;
+            background: transparent;
+            color: inherit;
+            font-size: 16px;
+            line-height: 1;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        @media (max-width: 480px) {
+            .site-search-input {
+                width: 110px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="page-number" style="position:fixed;top:20px;right:20px;font-size:12px;opacity:0.5;z-index:200;pointer-events:none;">-/55</div>
@@ -113,5 +168,28 @@
         <p>&copy;2027 イースターパーティー</p>
         <p>このWebサイトの内容は全てフィクションです。実在する人物･事件･団体とは一切関係ありません。</p>
     </footer>
+    <div class="site-search">
+        <input type="text" class="site-search-input" placeholder="SEARCH" aria-label="サイト内検索">
+        <button type="button" class="site-search-btn" aria-label="検索">&#9906;</button>
+    </div>
+    <script>
+        // どのページからでも検索できるようにする（トップの検索処理に渡す）
+        (function() {
+            const input = document.querySelector('.site-search-input');
+            const submit = function() {
+                const keyword = input.value.trim();
+                if (keyword) {
+                    window.location.href = '../../index.html?search=' + encodeURIComponent(keyword);
+                }
+            };
+
+            document.querySelector('.site-search-btn').addEventListener('click', submit);
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    submit();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
