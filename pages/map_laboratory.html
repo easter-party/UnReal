@@ -5,22 +5,176 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>研究施設概要 - UnReal</title>
     <style>
-        body { background: #001122; color: #00ff00; font-family: monospace; padding: 40px 20px; }
-        .page-number { position: fixed; top: 20px; right: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .map { border: 2px solid #00ff00; padding: 20px; margin: 20px 0; }
+        body {
+            background: #001122;
+            color: #00ff00;
+            font-family: monospace;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .page-number {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 16px;
+            margin: 32px 0 12px;
+        }
+
+        .floor-list {
+            border: 2px solid #00ff00;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* フロアマップ。線と文字はページの文字色を継承して発光する */
+        .map-frame {
+            border: 2px solid #00ff00;
+            padding: 16px;
+            overflow-x: auto;
+        }
+
+        .floor-map {
+            display: block;
+            width: 100%;
+            min-width: 640px;
+            height: auto;
+            color: #00ff00;
+            filter:
+                drop-shadow(0 0 2px rgba(0, 255, 0, 0.9))
+                drop-shadow(0 0 8px rgba(0, 255, 0, 0.55))
+                drop-shadow(0 0 18px rgba(0, 255, 0, 0.3));
+        }
+
+        .floor-map .wall {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 3;
+        }
+
+        .floor-map .room {
+            fill: rgba(0, 255, 0, 0.04);
+            stroke: currentColor;
+            stroke-width: 1.5;
+        }
+
+        .floor-map .corridor {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1;
+            stroke-dasharray: 6 6;
+            opacity: 0.6;
+        }
+
+        .floor-map text {
+            fill: currentColor;
+            font-family: monospace;
+            font-size: 15px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .floor-map .room-code {
+            font-size: 11px;
+            opacity: 0.65;
+        }
+
+        .floor-map .label {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .map-note {
+            margin-top: 16px;
+            font-size: 13px;
+            opacity: 0.75;
+        }
     </style>
     <link rel="icon" href="../images/logo/unreal.png">
 </head>
 <body>
     <div class="page-number">53/55</div>
+
     <div class="container">
-        <h1>地下研究施設マップ</h1>
-        <div class="map">
+        <h1>地下研究施設概要</h1>
+
+        <h2>■ フロア構成</h2>
+        <div class="floor-list">
             <p>B1F: 管理室</p>
             <p>B2F: 実験室A-E</p>
             <p>B3F: 保管庫</p>
             <p>B4F: [アクセス制限]</p>
+        </div>
+
+        <h2>■ B2F 平面図</h2>
+        <div class="map-frame">
+            <svg class="floor-map" viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" role="img"
+                 aria-label="地下2階の平面図。研究室、試験準備室、薬品室、実験室、資料保管庫、生活適応室が配置されている">
+
+                <!-- 外壁 -->
+                <rect class="wall" x="30" y="30" width="740" height="460"/>
+
+                <!-- 北側の部屋 -->
+                <rect class="room" x="50" y="50" width="170" height="150"/>
+                <text x="135" y="118">研究室1</text>
+                <text x="135" y="140" class="room-code">B2-101</text>
+
+                <rect class="room" x="230" y="50" width="170" height="150"/>
+                <text x="315" y="118">研究室2</text>
+                <text x="315" y="140" class="room-code">B2-102</text>
+
+                <rect class="room" x="410" y="50" width="170" height="150"/>
+                <text x="495" y="118">試験準備室</text>
+                <text x="495" y="140" class="room-code">B2-103</text>
+
+                <rect class="room" x="590" y="50" width="160" height="150"/>
+                <text x="670" y="118">薬品室</text>
+                <text x="670" y="140" class="room-code">B2-104</text>
+
+                <!-- 中央通路 -->
+                <line class="corridor" x1="50" y1="235" x2="750" y2="235"/>
+                <text x="400" y="235" class="label">― 中央通路 ―</text>
+
+                <!-- 南側の部屋 -->
+                <rect class="room" x="50" y="270" width="150" height="200"/>
+                <text x="125" y="358">昇降機</text>
+                <text x="125" y="380" class="room-code">EV / 階段</text>
+
+                <rect class="room" x="210" y="270" width="170" height="200"/>
+                <text x="295" y="358">資料保管庫</text>
+                <text x="295" y="380" class="room-code">B2-201</text>
+
+                <rect class="room" x="390" y="270" width="120" height="200"/>
+                <text x="450" y="358">実験室A</text>
+                <text x="450" y="380" class="room-code">B2-202</text>
+
+                <rect class="room" x="520" y="270" width="100" height="200"/>
+                <text x="570" y="358">実験室B</text>
+                <text x="570" y="380" class="room-code">B2-203</text>
+
+                <rect class="room" x="630" y="270" width="120" height="200"/>
+                <text x="690" y="358">生活適応室</text>
+                <text x="690" y="380" class="room-code">B2-204</text>
+
+                <!-- 方位 -->
+                <text x="755" y="510" class="label">N ↑</text>
+            </svg>
+
+            <p class="map-note">
+                ※ B2-204は通常の実験区画とは異なる仕様で設計されている。立入には別途許可を要する。
+            </p>
         </div>
     </div>
     <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
