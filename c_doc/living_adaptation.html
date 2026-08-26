@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生活適応室内実験報告書 - UnReal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-number {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: #00ff00;
+            opacity: 0.7;
+        }
+
+        .document-header {
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .document-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta {
+            margin-bottom: 6px;
+        }
+
+        .document-content section {
+            margin-bottom: 30px;
+        }
+
+        .document-content h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #00ff00;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .note {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #00ff00;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .search-field {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #000;
+            border: 1px solid #00ff00;
+            padding: 10px;
+            color: #00ff00;
+        }
+
+        .search-field input {
+            background: transparent;
+            border: none;
+            color: #00ff00;
+            outline: none;
+            width: 200px;
+        }
+
+        a {
+            color: #00ff00;
+        }
+    </style>
+    <link rel="icon" href="../images/logo/unreal.png">
+</head>
+<body>
+    <div class="page-number">54/55</div>
+
+    <div class="container">
+        <div class="document-header">
+            <h1 class="document-title">生活適応室内実験報告書</h1>
+            <div class="meta">資料区分：個体管理・適応試験関連資料</div>
+            <div class="meta">実施区画：B2-204（生活適応室）</div>
+            <div class="meta">対象個体：RN016</div>
+            <div class="meta">取扱区分：機密／関係者限定</div>
+        </div>
+
+        <div class="document-content">
+            <section>
+                <h2>1. 実験目的</h2>
+                <p>クローン開発工程を完了した個体について、研究施設外の一般環境における生活適応の可否を検証する。</p>
+                <p>本試験は、対象個体を居住環境を模した区画に一定期間滞在させ、日常生活動作および対人応答の観察を行うものである。</p>
+            </section>
+
+            <section>
+                <h2>2. 実施内容</h2>
+                <p>起床から就寝までの生活動作、食事、学習課題への取り組み、担当者との対話内容を記録する。</p>
+                <p>対象個体には試験である旨を伝えず、通常の生活として認識させた状態で観察を継続する。</p>
+            </section>
+
+            <section>
+                <h2>3. 経過</h2>
+                <p>生活動作および言語応答について、同年代の一般個体と比較して差異は認められない。</p>
+                <p>情緒反応についても安定しており、担当者に対する信頼形成が確認された。</p>
+                <p>試験の運用上、対象個体には管理番号に代わる呼称として「白鳥風香」を付与し、本人にも当該呼称を自身の名として認識させている。</p>
+            </section>
+
+            <section>
+                <h2>4. 所見</h2>
+                <table>
+                    <tr><th>評価項目</th><th>結果</th></tr>
+                    <tr><td>生活動作</td><td>問題なし</td></tr>
+                    <tr><td>対人応答</td><td>問題なし</td></tr>
+                    <tr><td>情緒安定性</td><td>問題なし</td></tr>
+                    <tr><td>自己認識</td><td>付与した呼称を自身の名として定着</td></tr>
+                </table>
+                <p style="margin-top: 12px;">以上の結果より、対象個体は一般環境への移行が可能な水準に達していると判断する。</p>
+            </section>
+
+            <p>以上</p>
+        </div>
+
+        <div class="note">
+            <p>※本資料は、指定された機密アーカイブに保存すること。</p>
+            <p>※対象個体の呼称および経過については、別途記録を継続すること。</p>
+        </div>
+
+        <div class="search-field">
+            <label>検索: </label>
+            <input type="text" id="searchInput" placeholder="キーワード入力...">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const keyword = this.value.trim();
+                if (keyword) {
+                    window.location.href = '../index.html?search=' + encodeURIComponent(keyword);
+                }
+            }
+        });
+    </script>
+    <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
+        <p>&copy;2027 イースターパーティー</p>
+        <p>このWebサイトの内容は全てフィクションです。実在する人物･事件･団体とは一切関係ありません。</p>
+    </footer>
+</body>
+</html>
