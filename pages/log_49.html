@@ -15,22 +15,39 @@
     </style>
     <link rel="icon" href="../images/logo/unreal.png">
     <style>
-        /* 全ページ共通の検索窓（配色はページの文字色を継承する） */
-        .site-search {
+        /* 全ページ共通ヘッダー。配色はページの文字色と背景に馴染ませる */
+        body {
+            padding-top: 68px;
+        }
+
+        .site-header {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 250;
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            background: rgba(128, 128, 128, 0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(128, 128, 128, 0.35);
+        }
+
+        /* ページ番号はヘッダーより前面に置く */
+        .page-number {
             z-index: 300;
+        }
+
+        .site-search {
             display: flex;
             align-items: center;
             gap: 6px;
-            padding: 8px 14px;
+            padding: 6px 14px;
             border: 1px solid currentColor;
             border-radius: 20px;
-            background: rgba(128, 128, 128, 0.18);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            opacity: 0.85;
+            opacity: 0.8;
             transition: opacity 0.2s;
         }
 
@@ -39,7 +56,7 @@
         }
 
         .site-search-input {
-            width: 150px;
+            width: 170px;
             border: none;
             background: transparent;
             color: inherit;
@@ -65,12 +82,18 @@
 
         @media (max-width: 480px) {
             .site-search-input {
-                width: 110px;
+                width: 120px;
             }
         }
     </style>
 </head>
 <body>
+    <header class="site-header">
+        <div class="site-search">
+            <input type="text" class="site-search-input" placeholder="SEARCH" aria-label="サイト内検索">
+            <button type="button" class="site-search-btn" aria-label="検索">&#9906;</button>
+        </div>
+    </header>
     <div class="page-number">55/55</div>
     <div class="container">
         <h1>真実の調査ログ</h1>
@@ -86,10 +109,6 @@
         <p>&copy;2027 イースターパーティー</p>
         <p>このWebサイトの内容は全てフィクションです。実在する人物･事件･団体とは一切関係ありません。</p>
     </footer>
-    <div class="site-search">
-        <input type="text" class="site-search-input" placeholder="SEARCH" aria-label="サイト内検索">
-        <button type="button" class="site-search-btn" aria-label="検索">&#9906;</button>
-    </div>
     <script>
         // どのページからでも検索できるようにする（トップの検索処理に渡す）
         (function() {
