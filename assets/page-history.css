@@ -1,0 +1,149 @@
+/* 閲覧履歴パネル（全ページ共通） */
+.ph-panel,
+.ph-badge {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif;
+    position: fixed;
+    right: 20px;
+    z-index: 400;
+}
+
+.ph-panel {
+    bottom: 20px;
+    width: 340px;
+    max-width: calc(100vw - 40px);
+    background: rgba(28, 28, 30, 0.96);
+    color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.ph-panel[hidden],
+.ph-badge[hidden] {
+    display: none;
+}
+
+.ph-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.ph-close {
+    border: none;
+    background: transparent;
+    color: #aaa;
+    font-size: 18px;
+    line-height: 1;
+    padding: 0 2px;
+    cursor: pointer;
+}
+
+.ph-close:hover {
+    color: #fff;
+}
+
+.ph-list {
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.ph-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ph-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 3px;
+}
+
+.ph-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ph-row:last-child {
+    border-bottom: none;
+}
+
+.ph-no {
+    color: #8e8e93;
+    font-size: 12px;
+    min-width: 30px;
+}
+
+.ph-mark {
+    min-width: 14px;
+    text-align: center;
+    color: #5ac8fa;
+}
+
+.ph-title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 未訪問の行は伏せる */
+.ph-row.is-unvisited .ph-mark {
+    color: #6e6e73;
+}
+
+.ph-row.is-unvisited .ph-title {
+    color: #6e6e73;
+    font-style: italic;
+}
+
+/* 現在表示中のページ */
+.ph-row.is-current {
+    background: rgba(90, 200, 250, 0.12);
+}
+
+.ph-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.ph-title a:hover {
+    text-decoration: underline;
+}
+
+/* 閉じているときに出る進捗バッジ */
+.ph-badge {
+    bottom: 20px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(28, 28, 30, 0.96);
+    color: #f2f2f2;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.ph-badge:hover {
+    background: rgba(58, 58, 60, 0.96);
+}
+
+@media (max-width: 480px) {
+    .ph-panel {
+        width: calc(100vw - 32px);
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .ph-list {
+        max-height: 240px;
+    }
+}
