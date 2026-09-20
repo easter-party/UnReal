@@ -11,6 +11,70 @@
     var STORAGE_KEY = 'unreal_visited_pages';
     var PANEL_STATE_KEY = 'unreal_history_open';
 
+    // currentScript はこの場で読まないと後から取得できない
+    var thisScript = document.currentScript;
+    var root = (thisScript && thisScript.getAttribute('data-root')) || '';
+
+    // 到達済みのページへ飛べるようにするためのリンク先
+    var PAGE_URLS = {
+        0: 'hidden/dm-log.html',
+        1: 'pages/top.html',
+        2: 'pages/news.html',
+        3: 'pages/profile.html',
+        4: 'pages/discography.html',
+        5: 'pages/blog.html',
+        6: 'pages/gallery.html',
+        7: 'pages/about.html',
+        8: 'pages/fc.html',
+        9: 'pages/message_log.html',
+        10: 'pages/haitani_resume.html',
+        11: 'medical_record/yuno.html',
+        12: 'medical_record/ran.html',
+        13: 'c_doc/agreement_ichinose.html',
+        14: 'c_doc/report_r2.html',
+        15: 'c_doc/like.html',
+        16: 'pages/eggs_academy.html',
+        17: 'medical_record/mirei.html',
+        18: 'c_doc/cpm.html',
+        19: 'blog/rin/index.html',
+        20: 'blog/yuno/index.html',
+        21: 'blog/aki/index.html',
+        22: 'blog/mirei/index.html',
+        23: 'blog/iroha/index.html',
+        24: 'blog/ran/index.html',
+        25: 'blog/nagisa/index.html',
+        26: 'pages/clonedeal.html',
+        27: 'pages/clone_n005.html',
+        28: 'medical_record/iroha.html',
+        29: 'pages/test_report_iroha.html',
+        30: 'blog_ex/rin.html',
+        31: 'blog_ex/yuno.html',
+        32: 'blog_ex/aki.html',
+        33: 'blog_ex/mirei.html',
+        34: 'blog_ex/iroha.html',
+        35: 'blog_ex/ran.html',
+        36: 'blog_ex/nagisa.html',
+        37: 'c_doc/aki.html',
+        38: 'medical_record/aki.html',
+        39: 'c_doc/rfx.html',
+        40: 'medical_record/nagisa.html',
+        41: 'c_doc/experiment.html',
+        42: 'passcode/m.html',
+        43: 'medical_record/rin.html',
+        44: 'c_doc/adaptation.html',
+        45: 'c_doc/report_r2_full.html',
+        46: 'c_doc/nxa.html',
+        47: 'passcode/r.html',
+        48: 'hidden/found_me.html',
+        49: 'pages/r_n/log.html',
+        50: 'medical_record/fuka.html',
+        51: 'c_doc/rn016.html',
+        52: 'c_doc/fuka_report.html',
+        53: 'pages/map_laboratory.html',
+        54: 'c_doc/living_adaptation.html',
+        55: 'pages/log_49.html'
+    };
+
     // CSV(UnRe_al.csv)の体系に基づくページ名
     var PAGE_TITLES = {
         0: 'DM',
@@ -141,10 +205,19 @@
                 + (no === currentNo ? ' is-current' : '');
 
             var label = ('0' + no).slice(-2);
+
+            // 到達済みのページはリンクにして飛べるようにする
+            var title = '???';
+            if (isVisited) {
+                title = PAGE_URLS[no]
+                    ? '<a href="' + root + PAGE_URLS[no] + '">' + PAGE_TITLES[no] + '</a>'
+                    : PAGE_TITLES[no];
+            }
+
             row.innerHTML =
                 '<span class="ph-no">#' + label + '</span>'
                 + '<span class="ph-mark">' + (isVisited ? '✓' : '○') + '</span>'
-                + '<span class="ph-title">' + (isVisited ? PAGE_TITLES[no] : '???') + '</span>';
+                + '<span class="ph-title">' + title + '</span>';
 
             list.appendChild(row);
         });
@@ -170,7 +243,18 @@
         }
 
         close.addEventListener('click', function () { setOpen(false); });
-        badge.addEventListener('click', function () { setOpen(true); });
+        badge.addEventListener('click', function (e) {
+            e.stopPropagation();
+            setOpen(true);
+        });
+
+        // パネルの外側をタップしたら閉じる
+        panel.addEventListener('click', function (e) { e.stopPropagation(); });
+        document.addEventListener('click', function () {
+            if (!panel.hidden) {
+                setOpen(false);
+            }
+        });
 
         setOpen(localStorage.getItem(PANEL_STATE_KEY) !== '0');
 

@@ -1,0 +1,291 @@
+/* TOPページと同じナビゲーション（styles.cssから抽出した共通部分）
+   NEWS・PROFILE などメニューに載っているページで読み込む */
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 15px 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.main-nav.scrolled {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+.nav-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: 4px;
+}
+
+.logo-text {
+    color: #d47b8e;
+    text-transform: uppercase;
+}
+
+/* グループロゴ画像 */
+.logo-image {
+    display: block;
+    height: 38px;
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .logo-image {
+        height: 30px;
+    }
+}
+
+/* ナビゲーションメニュー */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a {
+    color: #d47b8e;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    position: relative;
+    opacity: 0.7;
+}
+
+.nav-menu a:hover {
+    opacity: 1;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #d4af37;
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* 右側ナビゲーション */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* 検索ボックス */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-box {
+    width: 180px;
+    padding: 8px 35px 8px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.search-box:focus {
+    width: 250px;
+    border-color: #d4af37;
+    background: #ffffff;
+}
+
+.search-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.search-btn:hover {
+    color: #d4af37;
+}
+
+/* FCログインボタン */
+.fc-login-btn {
+    padding: 8px 20px;
+    border: 1px solid #d47b8e;
+    color: #d47b8e;
+    background: transparent;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.fc-login-btn:hover {
+    background: #d47b8e;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ハンバーガーメニュー */
+.mobile-menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+    position: absolute;
+    width: 28px;
+    height: 3px;
+    background-color: #d47b8e;
+    transition: all 0.3s ease;
+    left: 8px;
+}
+
+.mobile-menu-toggle span:nth-child(1) {
+    top: 12px;
+}
+
+.mobile-menu-toggle span:nth-child(2) {
+    top: 21px;
+}
+
+.mobile-menu-toggle span:nth-child(3) {
+    top: 30px;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 21px;
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 21px;
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 15px;
+        justify-content: space-between;
+        position: relative;
+        gap: 10px;
+        flex-wrap: nowrap;
+    }
+
+    .logo {
+        font-size: 18px;
+        flex-shrink: 0;
+        min-width: 80px;
+    }
+
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 30px;
+        gap: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu a {
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        text-align: left;
+    }
+
+    .nav-menu a:last-child {
+        border-bottom: none;
+    }
+
+    .search-container {
+        display: flex;
+        flex: 1;
+        max-width: 200px;
+        justify-content: center;
+    }
+    
+    .search-box {
+        width: 120px;
+        padding: 6px 30px 6px 12px;
+        font-size: 12px;
+    }
+    
+    .search-box:focus {
+        width: 150px;
+    }
+    
+    .search-btn {
+        right: 8px;
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+    }
+
+    .fc-login-btn {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        flex-shrink: 0;
+    }
+
+}
