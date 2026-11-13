@@ -34,6 +34,41 @@
             border-radius: 10px;
             line-height: 1.8;
         }
+        /* 記事。原稿の改行と空白をそのまま見せる */
+        .content + .content {
+            margin-top: 30px;
+        }
+        .post-date {
+            color: gold;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .post-title {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        .post-text {
+            white-space: pre-wrap;
+            margin: 0;
+        }
+        .post-text + .post-text,
+        .post-photo + .post-text,
+        .post-text + .post-photo {
+            margin-top: 16px;
+        }
+        /* 写真は別途差し替えるため枠だけ置く */
+        .post-photo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 4 / 3;
+            border: 2px dashed rgba(255,255,255,0.25);
+            border-radius: 8px;
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
+        }
         a {
             color: gold;
             text-decoration: none;
@@ -127,10 +162,28 @@
         <span class="fc-badge">FC会員限定</span>
         <h1>ranの秘密</h1>
         <div class="content">
-            <p>FC会員の皆様へ</p>
-            <p>いつも応援ありがとうございます。</p>
-            <p>この記事は特別な内容を含んでいます。</p>
-            
+            <div class="post-date">2026.3.6</div>
+            <h2 class="post-title">レコーディング🎧</h2>
+            <p class="post-text">やっほ～！らんだよ🙆🏻‍♀️💙
+
+今日はレコーディングしてきたよ～🎧✨
+今回もめためた良い曲なのでお楽しみに♡
+
+終わってお腹空いたなーと思ってたら帰りにマネがお菓子くれたの！🍬
+ラムネ？飴？？みたいなやつで、食べてみたら甘くておいしかった🥺🫶
+
+こういうお菓子ってついつい食べちゃうよね笑
+
+でも、あとから気になってパッケージを見てみたら、どこのお菓子なのかよく分からなくて🤔
+
+名前で検索してみたり、似たようなお菓子を探してみたりしたんだけど、結局見つけられませんでした😿ファンのみんなの中に知ってる人いるのかな？</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">マネに今度聞いてみよ～
+知ってる人いたらコメントで教えて🥺
+
+それじゃあ今日はこのへんで～！
+
+またね🍬</p>
         </div>
         <p style="margin-top: 30px;">
             <a href="../pages/blog.html">← ブログ一覧に戻る</a>

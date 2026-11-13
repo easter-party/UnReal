@@ -83,6 +83,33 @@
             line-height: 1.6;
         }
         
+        /* 記事本文。原稿の改行と空白をそのまま見せる */
+        .post-text {
+            white-space: pre-wrap;
+            line-height: 1.9;
+            color: #444;
+        }
+
+        .post-text + .post-text,
+        .post-photo + .post-text,
+        .post-text + .post-photo {
+            margin-top: 16px;
+        }
+
+        /* 写真は別途差し替えるため枠だけ置く */
+        .post-photo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 4 / 3;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            color: #bbb;
+            font-size: 13px;
+        }
+
         .back-link {
             display: inline-block;
             margin-top: 30px;
@@ -191,35 +218,106 @@
     
     <div class="container">
         <div class="blog-post">
-            <div class="post-date">2025.02.14</div>
-            <h2 class="post-title">最近のこと</h2>
-            <p class="post-excerpt">
-                みなさんこんにちは！みれいです。
-                最近はレッスンが続いていて、毎日充実しています。
-                応援いつもありがとうございます♪
-            </p>
+            <div class="post-date">2026.11.30</div>
+            <h2 class="post-title">さむい</h2>
+            <p class="post-text">さむい😭
+なんか急に寒くなった気がしてやばい、ふるえてしまう…🧊
+
+りんちゃんてばこんな寒いのにいつもアイスのドリンク飲んでてまじで意味がわからない！！なぎさんとふたりでありえないねって言ってた
+ぜったいホットしか勝たんよね☕️</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">りんちゃんが奢ってくれた♡ありがと🥺</p>
         </div>
-        
+
         <div class="blog-post">
-            <div class="post-date">2025.02.01</div>
-            <h2 class="post-title">新曲について</h2>
-            <p class="post-excerpt">
-                新曲「Signal」がリリースされました！
-                今回はメンバーみんなで一生懸命練習しました。
-                ぜひ聴いてくださいね。
-            </p>
+            <div class="post-date">2026.5.19</div>
+            <h2 class="post-title">ぽかぽか</h2>
+            <p class="post-text">ピクニック ᐕ)ﾉ</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">…じゃなくて、ピクニック風の撮影だったよ🍙
+これは載せていいよーって言ってもらったから載せちゃう！
+
+ゆのとふたりでマンネ組のおしごとでした🐰🐥
+
+ふわふわでレースとか沢山ついたらぶり～なお洋服着せてもらえて嬉しすぎた( ; ; )
+普段こういうの着ないから新鮮だったな～
+ゆのはさすがに似合ってた🐰🎀さいこう
+
+サンドイッチめちゃ美味しかったな💭
+またプライベートでも買いに行こ～</p>
         </div>
-        
+
         <div class="blog-post">
-            <div class="post-date">2025.01.20</div>
-            <h2 class="post-title">UnRe:alとして</h2>
-            <p class="post-excerpt">
-                UnRe:alのメンバーになれて本当に嬉しいです。
-                これからもみんなと一緒に頑張っていきます！
-                応援よろしくお願いします！
-            </p>
+            <div class="post-date">2026.2.15</div>
+            <h2 class="post-title">1周年！</h2>
+            <p class="post-text">デビュー1周年でした！！
+お祝いしてくれたみんなも、いつも見守ってくれてるみんなも、本当にありがとう♡</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">この1年、アイドルだけじゃなくて色んなお仕事させてもらって、本当に忙しくて目回りそうだったけど本当に楽しかったな～^-^
+
+まだまだずーっと走り続けていくから、ずーっと着いてきてね🤞🏻やくそく🤝🏻💛</p>
         </div>
-        
+
+        <div class="blog-post">
+            <div class="post-date">2025.10.29</div>
+            <h2 class="post-title">はろうぃん🎃</h2>
+            <p class="post-text">トリックオアトリート ᐕ)ﾉ
+すっかり街中ハロウィンムードだねぇ🎃
+
+私たちもお仕事で黒っぽい衣装用意してもらって、ケータリングもいつも以上にお菓子たっくさんで、ほんのりとハロウィン気分でした👻</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">衣装の写真はまだ見せられないんだけどいつもよりもかっこいい感じになってるから楽しみにしててね～🖤今回はばぶじゃないみれいを見せられているのでは…？</p>
+        </div>
+
+        <div class="blog-post">
+            <div class="post-date">2025.7.19</div>
+            <h2 class="post-title">バースデイ</h2>
+            <p class="post-text">みればぶ爆誕‼️というわけで誕生日でした！！</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">みんながケーキ買ってきてくれた😭😭ありがとう～～🥲
+めちゃうまだったしこのリボンのやつ、もちもちしてておいしかった🎀
+
+みんなからのお祝いもSNSとかで沢山見たよ～！可愛い祭壇作ってくれてたりケーキ食べさせてくれてたり、見てるだけでしあわせだった🥺ありがとう！
+
+今年のみれいさんもよろしくね🍼</p>
+        </div>
+
+        <div class="blog-post">
+            <div class="post-date">2025.4.6</div>
+            <h2 class="post-title">新生活</h2>
+            <p class="post-text">やほ ᐕ)ﾉ みれいだよ～
+
+今日から新生活の人も多かったかな？じつは私も、今日は大学の入学式がありました🎓
+
+実はみれいさん今年から大学生なの！！デビューのときにはもう進学先決まってたんだけどみんなを驚かせたくて黙ってたんだ😼😼ﾄﾞﾔ…✌🏻</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">これは大学の近くで咲いてた桜🌸
+
+プライベートではスーツ初めて着たんだけどなんかむずがゆかった…いつかお仕事で着る日が来たりもするのかな？
+
+新しい季節、みんなでがんばってこーね💪🏻</p>
+        </div>
+
+        <div class="blog-post">
+            <div class="post-date">2025.2.15</div>
+            <h2 class="post-title">みれいだよ🐥</h2>
+            <p class="post-text">はじめまして～！＆ 久しぶり ᐕ)ﾉ
+このたび、UnRe:alというグループでデビューさせていただくことになりました
+
+きさき みれい
+   城崎 みれい
+
+です！
+
+メンバーカラーは💛イエロー💛
+UnRe:alの最年少です🐥
+
+みんなからはみーたんとかみればぶとかいわれてます、ちょっと心外…😀たぶんそんなにばぶではありません🍼
+
+でもアイドルは正真正銘の1年生なのでがんばります👧🏻📛
+これからよろしくね\( 'ω')/</p>
+        </div>
+
         <a href="../../pages/blog.html" class="back-link">ブログ一覧に戻る</a>
     </div>
     <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
