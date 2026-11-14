@@ -646,10 +646,13 @@ a.news-item {
         display: flex;
     }
 
+    /* スマホでは押し間違えないよう文字を大きくし、行全体をタップ範囲にする */
     .nav-menu a {
+        display: block;
         padding: 15px 0;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         text-align: left;
+        font-size: 16px;
     }
 
     .nav-menu a:last-child {
