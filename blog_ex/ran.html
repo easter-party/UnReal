@@ -69,6 +69,18 @@
             color: rgba(255,255,255,0.4);
             font-size: 13px;
         }
+        /* 記事の写真 */
+        .post-image {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+        }
+        .post-text + .post-image,
+        .post-image + .post-text {
+            margin-top: 16px;
+        }
         a {
             color: gold;
             text-decoration: none;
@@ -177,7 +189,7 @@
 でも、あとから気になってパッケージを見てみたら、どこのお菓子なのかよく分からなくて🤔
 
 名前で検索してみたり、似たようなお菓子を探してみたりしたんだけど、結局見つけられませんでした😿ファンのみんなの中に知ってる人いるのかな？</p>
-            <div class="post-photo">写真</div>
+            <img class="post-image" src="../images/blog/ran/20260306.jpg" alt="マネージャーからもらったお菓子">
             <p class="post-text">マネに今度聞いてみよ～
 知ってる人いたらコメントで教えて🥺
 
