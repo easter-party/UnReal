@@ -229,7 +229,8 @@
         badge.type = 'button';
         badge.className = 'ph-badge';
         badge.id = 'phBadge';
-        badge.textContent = visited.length + ' / ' + TOTAL;
+        // 到達数ではなく、いま開いているページの番号を出す
+        badge.textContent = currentNo !== null ? currentNo + ' / ' + TOTAL : 'ページ一覧';
         badge.hidden = true;
 
         document.body.appendChild(panel);
