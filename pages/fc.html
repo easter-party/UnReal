@@ -17,6 +17,7 @@
             color: #ffffff;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
@@ -163,50 +164,55 @@
             color: #fff;
         }
         
-        .contact-btn {
-            text-align: center;
-            margin-top: 20px;
+        .fc-content {
             display: none;
+            text-align: center;
+            color: #333;
         }
         
-        .contact-link {
+        .fc-name {
+            font-size: 24px;
+            line-height: 1.4;
+            margin-bottom: 24px;
+        }
+        
+        .fc-name-sub {
+            display: block;
+            font-size: 30px;
             color: #667eea;
-            text-decoration: none;
+        }
+        
+        .fc-lead {
+            font-size: 15px;
             font-weight: bold;
         }
         
-        .contact-link:hover {
-            text-decoration: underline;
+        .fc-sub {
+            color: #666;
+            font-size: 13px;
+            margin-top: 4px;
         }
         
-        .fc-content {
-            display: none;
-            margin-top: 40px;
-            padding: 30px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-        }
-        
-        .fc-content h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-        }
-        
+        /* メンバーごとの丸ボタン。幅が足りなければ折り返す */
         .blog-links {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4px;
+            margin-top: 24px;
         }
         
         .blog-link {
-            display: block;
-            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             text-decoration: none;
-            border-radius: 10px;
-            text-align: center;
+            font-size: 12px;
             transition: all 0.3s;
         }
         
@@ -236,7 +242,6 @@
     
     <div class="login-container">
         <div class="login-header">
-            <div class="fc-logo">🌟</div>
             <h1 class="login-title">UnRe:al FC</h1>
             <p class="login-subtitle">ファンクラブ会員ログイン</p>
         </div>
@@ -257,22 +262,19 @@
         
         <div class="status-message" id="statusMessage"></div>
         
-        <div class="contact-btn" id="contactBtn">
-            <a href="#" class="contact-link" onclick="goToContact()">→ CONTACT</a>
-        </div>
         
         <div class="fc-content" id="fcContent">
-            <h2>🌟 FC会員限定コンテンツ</h2>
-            <p>ログインありがとうございます！</p>
-            <p>以下のメンバーの限定ブログをご覧いただけます：</p>
+            <h2 class="fc-name">UnRe:al official FC<span class="fc-name-sub">Re:alists</span></h2>
+            <p class="fc-lead">FC会員限定コンテンツ</p>
+            <p class="fc-sub">会員限定ブログラインナップ</p>
             <div class="blog-links">
-                <a href="../blog_ex/rin.html" class="blog-link">りんの秘密</a>
-                <a href="../blog_ex/yuno.html" class="blog-link">ゆのの秘密</a>
-                <a href="../blog_ex/aki.html" class="blog-link">あきの秘密</a>
-                <a href="../blog_ex/mirei.html" class="blog-link">みれいの秘密</a>
-                <a href="../blog_ex/iroha.html" class="blog-link">いろはの秘密</a>
-                <a href="../blog_ex/ran.html" class="blog-link">らんの秘密</a>
-                <a href="../blog_ex/nagisa.html" class="blog-link">なぎさの秘密</a>
+                <a href="../blog_ex/rin.html" class="blog-link">りん</a>
+                <a href="../blog_ex/yuno.html" class="blog-link">ゆの</a>
+                <a href="../blog_ex/aki.html" class="blog-link">あき</a>
+                <a href="../blog_ex/mirei.html" class="blog-link">みれい</a>
+                <a href="../blog_ex/iroha.html" class="blog-link">いろは</a>
+                <a href="../blog_ex/ran.html" class="blog-link">らん</a>
+                <a href="../blog_ex/nagisa.html" class="blog-link">なぎさ</a>
             </div>
         </div>
     </div>
@@ -309,9 +311,6 @@
                 statusMsg.textContent = 'ログインに成功しました！';
                 statusMsg.style.display = 'block';
                 
-                // CONTACTボタン表示
-                document.getElementById('contactBtn').style.display = 'block';
-                
                 // FCコンテンツを表示（ページ遷移なし）
                 showFCContent();
             } else {
@@ -328,20 +327,14 @@
         
         // FCコンテンツ表示
         function showFCContent() {
+            document.querySelector('.login-header').style.display = 'none';
             document.getElementById('loginForm').style.display = 'none';
             document.getElementById('fcContent').style.display = 'block';
-        }
-        
-        // CONTACTページへ（ゴール）
-        function goToContact() {
-            // CONTACTページへ遷移（クリア画面）
-            window.location.href = 'contact.html';
         }
         
         // ログイン状態確認
         window.addEventListener('load', function() {
             if (localStorage.getItem('fcLoggedIn') === 'true') {
-                document.getElementById('contactBtn').style.display = 'block';
                 showFCContent();
             }
         });
