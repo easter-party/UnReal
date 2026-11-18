@@ -83,6 +83,47 @@
             line-height: 1.6;
         }
         
+        /* 記事本文。原稿の改行と空白をそのまま見せる */
+        .post-text {
+            white-space: pre-wrap;
+            line-height: 1.9;
+            color: #444;
+        }
+
+        .post-text + .post-text,
+        .post-photo + .post-text,
+        .post-text + .post-photo {
+            margin-top: 16px;
+        }
+
+        /* 写真は別途差し替えるため枠だけ置く */
+        .post-photo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 4 / 3;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            color: #bbb;
+            font-size: 13px;
+        }
+
+        /* 記事の写真 */
+        .post-image {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .post-text + .post-image,
+        .post-image + .post-text {
+            margin-top: 16px;
+        }
+
         .back-link {
             display: inline-block;
             margin-top: 30px;
@@ -190,35 +231,112 @@
     
     <div class="container">
         <div class="blog-post">
-            <div class="post-date">2025.02.14</div>
-            <h2 class="post-title">最近のこと</h2>
-            <p class="post-excerpt">
-                みなさんこんにちは！ゆのです。
-                最近はレッスンが続いていて、毎日充実しています。
-                応援いつもありがとうございます♪
-            </p>
+            <div class="post-date">2027.1.29</div>
+            <h2 class="post-title">お知らせ</h2>
+            <p class="post-text">りんさんの活動休止が発表されました。
+
+ファンの皆さん、りんさん推しの方は特に不安でいっぱいだと思います。ご心配をおかけしてしまって申し訳ありません。
+
+私たちはりんさんの分まで精一杯やれることをやるだけだと思っています。
+りんさんが帰ってきたときにがっかりされないように頑張りますので、引き続き見守っていただけると嬉しいです。
+
+よろしくお願いします。</p>
         </div>
-        
+
         <div class="blog-post">
-            <div class="post-date">2025.02.01</div>
-            <h2 class="post-title">新曲について</h2>
-            <p class="post-excerpt">
-                新曲「Signal」がリリースされました！
-                今回はメンバーみんなで一生懸命練習しました。
-                ぜひ聴いてくださいね。
-            </p>
+            <div class="post-date">2026.7.4</div>
+            <p class="post-text">すっかりあつくなってきましたね( ×   ×꒦꒷ )
+
+いつもはふわふわのお洋服がすきなんですが、真夏はさすがにあつさにまけてしまってTシャツばっかりです( ¡ - ¡ )
+
+はやく涼しくなってほしいなぁ…
+
+夏といえば、夏衣装が解禁されましたね🎀
+グッズのTシャツのアレンジなので、みなさんもぜひおそろいにしてみてください♡
+
+いつもよりメンバーカラー感たっぷりでとってもかわいく仕上がってます🎀💗
+
+この夏たくさん着る予定なので見逃さないでくださいね🫶🏻🐰</p>
         </div>
-        
+
         <div class="blog-post">
-            <div class="post-date">2025.01.20</div>
-            <h2 class="post-title">UnRe:alとして</h2>
-            <p class="post-excerpt">
-                UnRe:alのメンバーになれて本当に嬉しいです。
-                これからもみんなと一緒に頑張っていきます！
-                応援よろしくお願いします！
-            </p>
+            <div class="post-date">2026.3.28</div>
+            <p class="post-text">さいきんヘアアレンジを練習してます！</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">この前なぎささんのヘアアレンジをさせてもらいました🪽
+なぎささん、髪がとってもサラサラツヤツヤでうらやましいですඉ  ඉ
+
+ヘアケア何してるんですか？って聞いたら、おすすめのヘアケア用品おしえてくれました！やさしいなぁ(ᴗ͈ˬᴗ͈⸝⸝)🎀
+
+だいすきです♡</p>
         </div>
-        
+
+        <div class="blog-post">
+            <div class="post-date">2025.12.1</div>
+            <h2 class="post-title">カヌレ</h2>
+            <div class="post-photo">写真</div>
+            <p class="post-text">最近カヌレ作りにはまってます♡
+
+このまえおしごと一緒だったらんさんにあげたら
+｢おいしすぎ～！！｣
+ってたくさん食べてくれてうれしかったなぁ⸝⸝&gt;   &lt;⸝⸝ᐡ♡
+
+らんさんは抹茶がすきみたいです🍵
+私のおきにいりはチョコレート生地にホワイトチョコをトッピングしたものです🍫💭
+
+また作ってほしいっていってもらえたので、今度は7人で集まったときに作りたいですね🍪🎀</p>
+        </div>
+
+        <div class="blog-post">
+            <div class="post-date">2025.8.20</div>
+            <h2 class="post-title">レッスン</h2>
+            <p class="post-text">まいにちとっても暑いですね😿
+みなさん体調は大丈夫ですか？
+
+私たちははじめてのツアーに向けて、まいにちレッスンです🎤
+あきさんといろはさんが書いてくれた新曲もあがってきて、みんなで振り入れしてます𐔌ᵔ ܸ&gt;⩊&lt;  𐦯♡</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">おふたりと🧡💚
+
+とってもすてきな曲なのではやく皆さんにお見せしたいです♡
+
+おたのしみに🎧🎀</p>
+        </div>
+
+        <div class="blog-post">
+            <div class="post-date">2025.6.6</div>
+            <h2 class="post-title">あめ</h2>
+            <p class="post-text">梅雨ですね…(´._.｀)
+雨がおおくて、なんだか心もじめーっとしちゃいます😿
+
+レッスン室でみーといっしょにじめーっとしてたら、いろはさんがおかしくれました！</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">いろはさん、
+｢みんなにピッタリだったから買っちゃった☺️｣
+って！と～ってもかわいいですよね🥺
+
+あまくておいしくてじめじめがふっとびました(*´˘`*)♡
+
+今度なにかつくっておかえししたいとおもいます🥣🍪</p>
+        </div>
+
+        <div class="blog-post">
+            <div class="post-date">2025.2.15</div>
+            <h2 class="post-title">🎀はじめまして🎀</h2>
+            <p class="post-text">みなさんはじめまして♡
+
+百瀬ゆの です🐰
+
+
+このたび、イースタープロダクションから新しくデビューするUnRe:alのメンバーになりました(⑉• •⑉)♡
+
+"ももせ"ということで、ももいろ担当🎀💗
+2月20日生まれです❄(もうすぐです…！)
+
+だいすきなメンバーたちと、UnRe:alを大きなグループにできるようにたくさんがんばります！
+これからよろしくおねがいします( ⑅ ᴗ͈ ᴗ͈)♡</p>
+        </div>
+
         <a href="../../pages/blog.html" class="back-link">ブログ一覧に戻る</a>
     </div>
     <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
