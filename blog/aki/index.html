@@ -83,6 +83,47 @@
             line-height: 1.6;
         }
         
+        /* 記事本文。原稿の改行と空白をそのまま見せる */
+        .post-text {
+            white-space: pre-wrap;
+            line-height: 1.9;
+            color: #444;
+        }
+
+        .post-text + .post-text,
+        .post-photo + .post-text,
+        .post-text + .post-photo {
+            margin-top: 16px;
+        }
+
+        /* 写真は別途差し替えるため枠だけ置く */
+        .post-photo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 4 / 3;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            color: #bbb;
+            font-size: 13px;
+        }
+
+        /* 記事の写真 */
+        .post-image {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .post-text + .post-image,
+        .post-image + .post-text {
+            margin-top: 16px;
+        }
+
         .back-link {
             display: inline-block;
             margin-top: 30px;
@@ -190,35 +231,98 @@
     
     <div class="container">
         <div class="blog-post">
-            <div class="post-date">2025.02.14</div>
-            <h2 class="post-title">最近のこと</h2>
-            <p class="post-excerpt">
-                みなさんこんにちは！あきです。
-                最近はレッスンが続いていて、毎日充実しています。
-                応援いつもありがとうございます♪
-            </p>
+            <div class="post-date">2027.1.29</div>
+            <h2 class="post-title">大切なお知らせ</h2>
+            <p class="post-text">センター･暁月りんの活動休止が発表されました。
+
+ファンの皆様にはご心配をおかけしております。
+私達にも辛い顔を見せないりんさんなので、ひとりで抱えていたことが沢山あったのかもしれません。
+ゆっくり休んで、また元気なりんさんに会える日が来ることを願っています。
+
+その日まで私たちは6人で走り続けます。
+
+引き続きUnRe:al、暁月りんの応援をよろしくお願いします。
+
+燈真あき</p>
         </div>
-        
+
         <div class="blog-post">
-            <div class="post-date">2025.02.01</div>
-            <h2 class="post-title">新曲について</h2>
-            <p class="post-excerpt">
-                新曲「Signal」がリリースされました！
-                今回はメンバーみんなで一生懸命練習しました。
-                ぜひ聴いてくださいね。
-            </p>
+            <div class="post-date">2026.10.21</div>
+            <h2 class="post-title">あき</h2>
+            <p class="post-text">私の季節だ～🍁
+誕生日は全然秋じゃないんだけど。
+やっぱり名前が"あき"だから思い入れもあるってもんで。</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">オフに自転車でちょっと遠出してきたよ～🚲
+紅葉が綺麗だったんだ🫶🧡
+
+久々にプライベートで運動した気がするな～！風が気持ちよかった！</p>
         </div>
-        
+
         <div class="blog-post">
-            <div class="post-date">2025.01.20</div>
-            <h2 class="post-title">UnRe:alとして</h2>
-            <p class="post-excerpt">
-                UnRe:alのメンバーになれて本当に嬉しいです。
-                これからもみんなと一緒に頑張っていきます！
-                応援よろしくお願いします！
-            </p>
+            <div class="post-date">2026.4.2</div>
+            <h2 class="post-title">新年度</h2>
+            <p class="post-text">新年度始まったね！
+
+新入生の方、新社会人の方、おめでとうございます🌸
+
+私は特に何も変わらないけど、せっかくだし新しいこと始めてみようかな～なんて考えるこの頃。</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">新曲書き始めたよ！いい曲になりますように…🙏</p>
         </div>
-        
+
+        <div class="blog-post">
+            <div class="post-date">2025.11.12</div>
+            <h2 class="post-title">久々の！</h2>
+            <p class="post-text">2026年1月スタートのドラマ｢美しい遺書｣にて、主人公の妹･沙耶を演じさせていただきます！</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">久々のお芝居！そして初めてのミステリー🥀
+私も読んだことがある小説原作のドラマということで、お話を頂いたときはビックリしたけど凄く嬉しかったです。
+
+1つの事件を皮切りに、様々な事件が次々に巻き起こる…そんなお話です。詳しくは言えないけど…
+
+まだ撮影続いてるので、体調崩さないように頑張らねば～✊🏻🔥
+
+見てね👀</p>
+        </div>
+
+        <div class="blog-post">
+            <div class="post-date">2025.6.25</div>
+            <h2 class="post-title">作業風景</h2>
+            <p class="post-text">今日は作業風景をチラ見せ👀</p>
+            <div class="post-photo">写真</div>
+            <p class="post-text">みんなにいい曲届けられるように頑張ってるよ～
+
+私の部屋、作業出来るように防音仕様にしてキーボードとかモニターとか入れてるんだけど、そこそこ広いからいろはさんもよく来てくれるんだ🐱
+
+二人で缶詰になってあれこれ意見出し合いながら作ってます
+
+まだまだ頑張るぞ～</p>
+        </div>
+
+        <div class="blog-post">
+            <div class="post-date">2025.2.15</div>
+            <h2 class="post-title">燈真あきです！</h2>
+            <p class="post-text">皆さまはじめまして！そしてお待たせしました！
+
+このたび、UnRe:al(アンリアル)というグループでデビューさせていただくことになりました、
+
+燈真あき
+
+です🍁
+
+オレンジ色担当になりました🧡🍊
+太陽みたいにみんなを照らせるように頑張ります！
+
+今日公開されたアー写は見ていただけましたか？
+デビューに合わせて人生初の金髪にしてみました🥇似合ってるかな？
+
+実は2年ほど作曲をやってきて、19日発売のデビューシングルではカップリング曲｢白昼夢｣を作らせていただきました✏️沢山聞いてね🎧
+
+これから沢山思い出作ろうね！
+よろしくお願いします🧡</p>
+        </div>
+
         <a href="../../pages/blog.html" class="back-link">ブログ一覧に戻る</a>
     </div>
     <footer class="site-common-footer" style="margin-top:60px;padding:24px 20px;text-align:center;font-size:11px;line-height:1.9;opacity:0.55;">
